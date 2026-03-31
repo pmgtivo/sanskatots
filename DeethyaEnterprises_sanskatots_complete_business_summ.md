@@ -520,26 +520,47 @@ Launch 3 books on June 1. Reach ₹ 1 crore annual revenue. Build 20 - book cata
 ### Y 2
 
 ```
-YEAR 2 — SCALE (2027)
-Launch all 25 + planned books. Switch to FBA (Amazon fulfilment). Enter Flipkart Fulfilment. Launch
-Kannada + Tamil + Telugu versions of all core books. First school supply contracts. Target ₹ 5 crore annual
-revenue. Launch digital product (kids mythology app or QR audio series).
+YEAR 2 — SCALE & EXPAND CATEGORIES (2027)
+Launch all 25+ planned books. Switch to FBA (Amazon fulfilment). Enter Flipkart Fulfilment. Launch
+Kannada + Tamil + Telugu versions of all core books. First school supply contracts.
+NEW: Launch SanskaTots card games ("Guess the God", "Guess the Festival", "Guess the State"),
+art kits (Madhubani, Warli, Rangoli, Diya Painting), and first board games.
+Target 80+ SKUs across books, games, and kits. Target ₹ 5 crore annual revenue.
+Launch digital product (kids mythology app or QR audio series).
+Raise angel/seed funding (₹1-3 Crore) for US expansion.
 ```
 ### Y 3
 
 ```
-YEAR 3 — EXPAND (2028)
-International distribution (Amazon.com, .co.uk, .com.au) targeting Indian diaspora globally. Corporate
-gifting programme at scale. Consider Pvt Ltd structure at ₹ 25 – 50 L monthly revenue. First DIY craft kits
-under Sanskatots. Target ₹ 25 crore revenue.
+YEAR 3 — GO GLOBAL (2028)
+Amazon US launch: List 50+ products on Amazon.com via FBA. Primary targets: NRI diaspora (5M+
+families in US) + mainstream US parents seeking "world culture" educational products.
+File USPTO trademark for "SanskaTots". Launch flash cards, wooden puzzles, magnetic play sets.
+100+ total SKUs. Corporate gifting programme at scale. Convert to Pvt Ltd structure.
+D2C website (SanskaTots.com) generating 15%+ revenue. Target ₹ 15-25 crore revenue.
 ```
+### Y 4-6
+
+```
+YEARS 4-6 — MARKET LEADER (2029-2031)
+US market = 40%+ of total revenue. 200+ SKUs across 8+ categories (books, card games, board games,
+art kits, puzzles, wooden toys, flash cards, outdoor play, magnetic toys, sensory kits).
+US retail partnerships (Target, Barnes & Noble, Walmart — following Skillmatics' playbook).
+India retail: 500+ stores (Crossword, Hamleys, FirstCry). Licensed Indian IPs (Amar Chitra Katha,
+Chhota Bheem). Launch "SanskaTots Crate" subscription box (India + US).
+Original character IP + YouTube animated shorts. Expand to UK, Australia, Middle East, Singapore.
+Series A/B funding (₹20-50 Crore). Target ₹ 50-100 Crore annual revenue.
+NORTH STAR: India's #1 Indian-culture educational play brand + leading "world culture" kids
+brand on Amazon US.
+```
+
 P R O D U C T E X P A N S I O N R O A D M A P
 
-**From 20 Books to 50+ Titles by Year 3**
+**From 20 Books to 250+ Products by Year 6 (Skillmatics-Inspired)**
 
 R E V E N U E D I V E R S I F I C A T I O N
 
-**5 Revenue Streams by Year 2**
+**8 Revenue Streams by Year 3 (Expanded from 5)**
 
 →Year 1 : 20 books ( 3 at launch, 20 by December)
 
@@ -549,14 +570,50 @@ R E V E N U E D I V E R S I F I C A T I O N
 
 →Year 2 : Indian Values Board Book Gift Box Set (corporate gifting)
 
+→Year 2 : **NEW — Card games & board games with Indian cultural themes**
+
+→Year 2 : **NEW — Art & craft kits (Madhubani, Warli, Rangoli, Diya painting)**
+
 →Year 3 : DIY mythology craft kits (Ganesha idol making, Diwali diya painting)
 
 →Year 3 : Digital companion — QR audio for all books
 
 →Year 3 : Puzzles and games under Sanskatots brand
 
-→Amazon + Flipkart FBA: 60 % of revenue (scale, passive)
+→Year 3 : **NEW — Flash cards, wooden puzzles, magnetic play sets**
 
-→WhatsApp D 2 C direct: 15 % (highest margin, zero platform fees)
+→Year 3 : **NEW — Amazon US revenue stream (NRI diaspora + mainstream US)**
+
+→Year 4+ : **NEW — Subscription box ("SanskaTots Crate"), licensed IP products, retail channel**
+
+→Amazon India + Flipkart FBA: 40% of revenue (India e-commerce)
+
+→Amazon US FBA: 25% of revenue (US market — highest margin channel)
+
+→D2C website (SanskaTots.com): 15% (highest India margin, zero platform fees)
+
+→WhatsApp D 2 C direct: 5% (community sales)
+
+→Schools + Corporate: 8% (bulk orders)
+
+→Retail (India + US): 5% (brand presence + new customer acquisition)
+
+→Subscriptions: 2% (recurring revenue)
+
+C O M P A N Y  V I S I O N  —  T H E  S K I L L M A T I C S  P L A Y B O O K
+
+**Benchmark: Skillmatics grew from 1 product category to 100+ SKUs, captured the US market via Amazon,
+and became India's most successful kids' educational brand internationally.**
+
+**SanskaTots' Unique Advantage: Indian cultural DNA — a moat Skillmatics (generic Western themes) does
+NOT have. Zero brands sell Indian-heritage educational products in the US at scale.**
+
+**Revenue Vision:**
+→2026: ₹50L–1 Cr (India launch, books only)
+→2027: ₹3–5 Cr (category expansion — games + kits)
+→2028: ₹8–15 Cr (Amazon US launch)
+→2029: ₹25–40 Cr (US scale + retail)
+→2030: ₹50–80 Cr (global expansion)
+→2031: ₹100 Cr+ (market leader position)
 
 

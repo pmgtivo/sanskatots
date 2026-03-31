@@ -4,6 +4,7 @@
 ---
 
 # Table of Contents
+0. [Company Vision — The Skillmatics Playbook for SanskaTots](#0-company-vision--the-skillmatics-playbook-for-sanskatots)
 1. [Marketing Strategy & The Zerodha Question](#1-marketing-strategy--the-zerodha-question)
 2. [How to Get First 1000 Amazon Sales](#2-how-to-get-first-1000-amazon-sales)
 3. [GST & Income Tax Optimization](#3-gst--income-tax-optimization)
@@ -11,6 +12,187 @@
 5. [Unit Economics & Competitor Analysis](#5-unit-economics--competitor-analysis)
 6. [Designing Defensible Velcro Books](#6-designing-defensible-velcro-books)
 7. [Mythology Book Series — 50K Copies Playbook](#7-mythology-book-series--50k-copies-playbook)
+
+---
+
+# 0. Company Vision — The Skillmatics Playbook for SanskaTots
+
+## North Star: "Become India's Skillmatics — But With Indian Cultural DNA"
+
+Skillmatics (founded 2017, Mumbai) grew from a single line of reusable educational mats into a **100+ SKU educational play brand** selling across Amazon US, Amazon India, Target, and Walmart. They are now India's most successful kids' educational brand in the US market, competing head-to-head with Melissa & Doug, Learning Resources, and ThinkFun.
+
+**SanskaTots' ambition: Replicate Skillmatics' category expansion and US market capture, but anchored in Indian cultural content — a moat Skillmatics does NOT have.**
+
+---
+
+## How Skillmatics Grew — And How SanskaTots Will Follow
+
+```
+SKILLMATICS JOURNEY (2017–2026)
+├── Phase 1: Reusable activity mats (1 category, India-first)
+├── Phase 2: Card games — "Guess in 10" series (breakout hit)
+├── Phase 3: Board games, art & craft kits (category expansion)
+├── Phase 4: Amazon US launch → became US primary market
+├── Phase 5: 100+ SKUs — flash cards, wooden toys, outdoor toys,
+│            magnetic toys, sand art, scratch art, sticker art,
+│            inflatable art, party favors, water-based books
+├── Phase 6: Licensed products (Disney, Marvel, NASA, Animal Planet)
+└── TODAY: Market leader on Amazon US in educational toys/games
+```
+
+```
+SANSKATOTS ROADMAP (2026–2031)
+├── Phase 1 (2026): Books — velcro, tracing, activity, mythology (CURRENT)
+├── Phase 2 (2027): Card games + board games with Indian themes
+├── Phase 3 (2027-28): Art & craft kits — Indian art forms (Madhubani, Warli, etc.)
+├── Phase 4 (2028): Amazon US launch — NRI diaspora + mainstream US parents
+├── Phase 5 (2029-30): 100+ SKUs — puzzles, wooden toys, flash cards,
+│                      magnetic play, sensory kits, subscription boxes
+├── Phase 6 (2030-31): Licensed products (Indian IPs — Chhota Bheem,
+│                      Amar Chitra Katha, mythological characters)
+└── GOAL: India's #1 Indian-culture educational play brand + US market leader
+         in "world culture" kids' educational products
+```
+
+---
+
+## SHORT-TERM GOALS (June 2026 – May 2027) — Year 1
+
+**Theme: "Survive, Validate, Build the Foundation"**
+
+| # | Goal | Target | Measurement |
+|---|------|--------|-------------|
+| 1 | **Launch on Amazon India successfully** | 20+ SKUs live by September 2026 | Active listings on Amazon |
+| 2 | **Hit ₹50L–1Cr revenue in Year 1** | ₹60L realistic, ₹1Cr stretch | Amazon + Flipkart + D2C revenue |
+| 3 | **Dominate regional language tracing books** | #1 BSR in Kannada, Telugu, Tamil tracing | Amazon BSR rankings |
+| 4 | **Build social proof** | 500+ Amazon reviews across catalog | Amazon review count |
+| 5 | **Establish velcro books as profit engine** | 150+ velcro units/month by Month 6 | Monthly unit sales |
+| 6 | **Build brand community** | 5,000+ Instagram followers, 1,000+ WhatsApp community | Platform follower counts |
+| 7 | **Validate mythology series** | 10,000+ mythology book copies sold in Year 1 | Cumulative unit sales |
+| 8 | **Secure school & corporate channel** | 20+ school partnerships, 5+ corporate Diwali orders | Active partnerships |
+| 9 | **Achieve production cost parity** | Sivakasi offset at ₹18–28/book (2,000+ runs) | Per-unit COGS |
+| 10 | **Incorporate as Pvt Ltd** | When turnover crosses ₹40–50L | MCA registration |
+
+---
+
+## MID-TERM GOALS (2027–2028) — Years 2–3
+
+**Theme: "Expand Categories, Build the Brand, Prepare for US"**
+
+| # | Goal | Target | Inspired By (Skillmatics) |
+|---|------|--------|--------------------------|
+| 1 | **Launch card games line** | "Guess the God" / "Guess the Festival" — 5+ card game SKUs | Skillmatics' "Guess in 10" series (their breakout US hit) |
+| 2 | **Launch board games line** | Indian mythology strategy games — 3+ board games | Skillmatics' "To The Top", "Catch The Crook" |
+| 3 | **Enter art & craft kits** | Indian art kits — Madhubani, Warli, Rangoli, Diya painting — 10+ SKUs | Skillmatics' Foil Fun, Dot It, Sand Art, Scratch Art |
+| 4 | **Revenue target** | ₹5–8 Crore annual revenue | — |
+| 5 | **Total SKU count** | 80–100 products across books, games, kits | Skillmatics has 100+ SKUs |
+| 6 | **Multi-language expansion** | Add Tamil, Marathi, Bengali, Gujarati tracing + activity books | — |
+| 7 | **Amazon US soft launch** | List 10–15 best-performing products on Amazon US (FBA) | Skillmatics' "Skillmatics USA" seller on Amazon.com |
+| 8 | **D2C website launch** | SanskaTots.com with 15%+ revenue from own website | — |
+| 9 | **Hire & scale team** | 10–15 employees (design, ops, marketing, assembly) | — |
+| 10 | **Raise angel/seed funding** | ₹1–3 Crore for US expansion & inventory scaling | Skillmatics raised funding before US push |
+| 11 | **Premium subscription box** | "SanskaTots Crate" — monthly Indian culture activity box | Inspired by KiwiCo (US $100M+ brand) |
+| 12 | **Trademark in US** | File "SanskaTots" trademark with USPTO | IP protection before US launch |
+
+### Category Expansion Roadmap (Skillmatics-Inspired)
+
+```
+YEAR 2 (2027) — "Beyond Books"
+├── Q1: Launch SanskaTots Card Games
+│   ├── "Guess the God" — 10-clue Indian mythology card game
+│   ├── "Guess the Festival" — Indian festivals + traditions
+│   └── "Guess the State" — Indian geography + culture
+├── Q2: Launch SanskaTots Art Kits
+│   ├── Madhubani Art Kit (paint-by-numbers, Indian style)
+│   ├── Warli Art Sticker Kit (peel & stick tribal art)
+│   ├── Rangoli Design Kit (reusable stencils + colored powder)
+│   └── Diwali Diya Painting Kit (seasonal bestseller)
+├── Q3: Launch SanskaTots Board Games
+│   ├── "Dashavatar" — strategy game based on Vishnu's 10 avatars
+│   └── "Karma" — action-consequence board game (values-based)
+└── Q4: Soft-launch on Amazon US (NRI diaspora as first customers)
+
+YEAR 3 (2028) — "Go Global"
+├── Q1: Flash Cards (Indian animals, Indian foods, Hindi/Sanskrit words)
+├── Q2: Wooden Puzzles (Indian map, temple architecture, festivals)
+├── Q3: Magnetic Play Sets (Indian Kitchen, Indian Wedding, Temple)
+└── Q4: Full US push — 50+ SKUs on Amazon US, PPC campaign
+```
+
+---
+
+## LONG-TERM GOALS (2029–2031) — Years 4–6
+
+**Theme: "Market Leader in India, Serious Player in US"**
+
+| # | Goal | Target |
+|---|------|--------|
+| 1 | **₹50–100 Crore annual revenue** | Multi-channel: Amazon India + US + Flipkart + D2C + retail + international |
+| 2 | **US market = 40%+ of revenue** | Amazon US + Target/Walmart placement (follow Skillmatics' retail path) |
+| 3 | **200+ SKUs across 8+ categories** | Books, card games, board games, art kits, puzzles, wooden toys, flash cards, outdoor play, magnetic toys, sensory kits |
+| 4 | **India's #1 Indian-culture kids' brand** | Highest brand recall for "Indian educational toys/books" |
+| 5 | **Licensed products** | Partner with Indian IPs: Amar Chitra Katha, Chhota Bheem, or original Sanskatots character universe |
+| 6 | **Series A/B funding** | ₹20–50 Crore for global expansion, retail partnerships, team scaling |
+| 7 | **Retail presence** | 500+ retail stores in India (Crossword, Hamleys, FirstCry) + US retail (Target, Barnes & Noble) |
+| 8 | **International expansion beyond US** | UK, Australia, Middle East, Singapore — NRI + multicultural markets |
+| 9 | **Own character IP** | Create original SanskaTots characters (like Skillmatics has brand identity) — animated shorts on YouTube |
+| 10 | **Subscription model at scale** | 50,000+ monthly subscribers (India + US) for "SanskaTots Crate" |
+
+---
+
+## SanskaTots vs. Skillmatics — Strategic Differences
+
+| Dimension | Skillmatics | SanskaTots (Our Play) |
+|-----------|-------------|----------------------|
+| **Cultural angle** | Zero — generic Western themes (dinosaurs, unicorns, princesses) | **Indian-first** — mythology, festivals, regional languages, values |
+| **Starting category** | Reusable educational mats | Velcro books + tracing + activity books |
+| **US market angle** | Generic educational games (competes on gameplay quality) | **"World culture" positioning** — Indian heritage as unique selling point in US |
+| **NRI advantage** | None — NRIs have no special reason to choose Skillmatics | **Strong** — NRI parents actively seek Indian cultural content for kids |
+| **Licensed IP potential** | Disney, Marvel, NASA (expensive, competitive) | Indian IPs (Amar Chitra Katha, Chhota Bheem) — less competitive, more authentic |
+| **Category expansion** | Games → Art → Toys (gameplay-driven) | Books → Games → Art Kits → Toys (culture-driven) |
+| **Moat** | Game design quality + brand recognition | **Cultural authenticity + regional language depth** — impossible for Western brands to replicate |
+
+---
+
+## Year-by-Year Revenue Vision
+
+```
+YEAR    REVENUE         SKUs    MARKETS         KEY MILESTONE
+2026    ₹50L–1 Cr      20–30   India           Amazon India launch
+2027    ₹3–5 Cr        60–80   India            Category expansion (games + kits)
+2028    ₹8–15 Cr       100+    India + US       Amazon US launch
+2029    ₹25–40 Cr      150+    India + US + UK  Retail partnerships
+2030    ₹50–80 Cr      200+    Global           Series A, Target/Walmart
+2031    ₹100 Cr+       250+    Global           Market leader position
+```
+
+---
+
+## The US Market Playbook (Adapted from Skillmatics)
+
+### Why the US Market Matters
+- Skillmatics generates **majority of revenue from Amazon US** — not India
+- US parents pay **$9.99–$24.99** per educational toy/game (₹800–2,000) — 3–5x Indian prices
+- **Zero cultural competition** — no brand sells Indian-heritage educational products in the US
+- **5M+ NRI families** in the US actively want Indian cultural content for their kids
+- Amazon US FBA is straightforward — ship to US warehouse, Amazon handles everything
+
+### US Entry Strategy (Year 3 — 2028)
+1. **Start with NRI diaspora** — they're already searching "Indian mythology for kids", "teach Hindi to toddlers"
+2. **Lead with card games + art kits** (not books) — games travel well, universally appealing
+3. **Position as "world culture" brand** — not just "Indian brand" but "explore world cultures starting with India"
+4. **Price at $12.99–$19.99** — premium to Indian price, competitive in US market
+5. **Amazon US PPC** — exact match keywords: "Indian mythology game", "cultural educational toys", "world culture kids"
+6. **Gradually expand to mainstream US customers** — "Guess the Festival" appeals to ANY parent who wants cultural education
+
+### US Product Prioritization
+| Priority | Product | US Price | Why |
+|---|---|---|---|
+| 1 | "Guess the God" Card Game | $14.99 | Proven format (Skillmatics' Guess in 10), unique cultural angle |
+| 2 | Madhubani Art Kit | $16.99 | Art kits are huge on Amazon US, Indian art is novel |
+| 3 | Mythology Flash Cards | $12.99 | Flash cards are top sellers on Amazon US for toddlers |
+| 4 | "Guess the Festival" Card Game | $14.99 | Multicultural education is trending in US schools |
+| 5 | India Map Wooden Puzzle | $19.99 | Wooden puzzles are premium category on Amazon US |
 
 ---
 
