@@ -73,6 +73,7 @@ This is achievable — top velcro book sellers on Amazon India move 1,500–2,50
    - "hindi alphabet tracing book"
 3. **Instagram: 4 reels/week** — follow your April calendar. No paid ads. Organic only.
 4. **Switch to Sivakasi printers by end of July** — COGS drops from ₹60-100 to ₹35-55/book. This is the single biggest margin unlock.
+5. **NO Meta/Facebook/Google ads in Months 1-3.** Every rupee goes to Amazon PPC (trackable, high-intent) and organic Instagram. Meta ads are only allowed after ALL 4 conditions are met: (a) 100+ Amazon reviews, (b) Amazon ACoS < 20%, (c) a reel format consistently hitting 50K+ organic views, (d) ₹50K/month available to experiment. Earliest: Month 5-6.
 
 #### Key Milestone
 > **By August 31: 50+ Amazon reviews across your top 5 products, BSR in top 100 for "kannada tracing book" and "activity book for kids"**

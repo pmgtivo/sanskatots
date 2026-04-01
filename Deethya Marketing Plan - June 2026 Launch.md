@@ -194,7 +194,7 @@ build trust
 - [ ] Launch **"Summer Learning Challenge"** campaign — 30-day activity challenge using books
 - [ ] Partner with 5 parenting bloggers for sponsored blog posts
 - [ ] Expand to Flipkart / Meesho listing
-- [ ] Start Facebook Ads (retarget Instagram + website visitors)
+- [ ] **NO Meta/Facebook ads yet** — continue organic Instagram only. Meta ads are not allowed until the conditions in Section 7 are met
 - [ ] Introduce product bundles at discounted pricing
 
 **August**
@@ -318,16 +318,62 @@ build trust
 
 ---
 
-## 7. Marketing Plan
+## 7. Marketing Plan — Capital-Efficient Ad Channel Strategy
 
-* Spend money, but only on Amazon PPC (₹15K–25K/month) — this is non-negotiable for product discovery on Amazon
-* Spend zero on Instagram/Google ads — build organic content instead (this is your Zerodha moment)
+### Core Principle
+> **Spend money to capture demand (Amazon PPC). Spend time to create demand (Instagram, WhatsApp, schools). Don't spend money to create demand until you can afford to lose it.**
+
+### Why Amazon PPC First, Meta Ads Later
+
+| Factor | Amazon PPC | Meta Ads |
+|---|---|---|
+| Buyer intent | **High** — they're actively searching for your product | **Zero** — you're interrupting their scroll |
+| Attribution | Clear — click → sale | Murky — view → maybe later → maybe Amazon |
+| Conversion for new brand | 8-15% (search intent) | 0.5-2% (cold traffic) |
+| Minimum spend to learn | ₹15-20K | ₹50-80K (algorithm needs data) |
+| Your capital situation (₹80K-1.5L) | Fits budget | Doesn't |
+
+### Phased Ad Spend Rules
+
+**Months 1-3 (Jun-Aug): Amazon PPC ONLY**
+* ₹15K-25K/month on Amazon PPC — non-negotiable for product discovery
+* Every rupee must generate a direct, trackable sale
+* Zero spend on Meta/Instagram/Google ads — build organic content instead (this is your Zerodha moment)
+* Meta ads at this stage = burning cash on awareness for a brand with zero reviews and no social proof. Conversion rate will be terrible
+
+**Months 4-6 (Sep-Nov): Add Meta Ads ONLY If All 4 Conditions Are Met**
+1. Amazon PPC is profitable (ACoS consistently < 25%)
+2. You have 100+ Amazon reviews across top products
+3. You have a proven reel format that gets 50K+ organic views
+4. You have ₹50K/month you can afford to experiment with
+
+If conditions are met:
+* Budget: ₹5-8K/month MAX — retargeting campaigns ONLY (not cold traffic)
+* Target: Parents who visited your Amazon listing or engaged with your Instagram
+* Creative: Repurpose your best-performing organic reels as ads
+* **Hard kill rule:** Stop immediately if cost per purchase > ₹80
+
+**Months 7-12: Scale What's Working, Cut What Isn't**
+* If Meta retargeting is profitable → cautiously increase to ₹10-15K/month
+* If it's not profitable → kill it and redirect budget to Amazon PPC
+* Never let Meta spend exceed 20% of total ad budget
+
+### Free Channels That Outperform Paid Ads for a New Brand
+These "free" channels compound over time. Meta ads stop the moment you stop paying.
+
+1. **Instagram reels (₹0)** — 4-5 reels/week. This IS your awareness engine. Follow the 50-day content plan
+2. **Friends & family review blitz (₹5-10K one-time)** — 20+ reviews in Week 1-2 is worth more than ₹50K in Meta ads
+3. **WhatsApp community (₹0)** — zero-fee D2C sales channel, target 12% of revenue
+4. **School/corporate outreach (₹0)** — 10 schools × 30 books = 300 units, no ad spend
+
+### Evergreen Principles
 * Don't compete on price — compete on uniqueness (regional languages, velcro books, Indian cultural depth)
-* company moat is content + niche — no amount of competitor ad spend can create "Kannada tracing book" content that you can create authentically
-* Cap ad spend at 25–30% of revenue — if it goes higher, reduce budget, don't chase volume
+* Company moat is content + niche — no amount of competitor ad spend can create "Kannada tracing book" content that you can create authentically
+* Cap total ad spend at 25% of revenue — if it goes higher, reduce budget, don't chase volume
 * Bundle aggressively — ₹599 bundle of 3 books feels like premium value, not cheap competition
 
-### Influencer marketing Strategy: Currently planning not to spend on any influencers including micro/mini instagram influencers, they might charge 6k-20k INR. which occording to me doesn't have much ROI
+### Influencer Marketing Strategy
+Currently planning NOT to spend on any influencers including micro/mini Instagram influencers (they charge ₹6K-20K INR with unclear ROI). Instead: seed 10-15 free book copies to parenting micro-influencers — product-only collabs, no payment. If they post, great. If not, you only lost ₹2-3K in books
 
 ---
 
@@ -356,16 +402,19 @@ build trust
 
 ## 9. Budget Estimate
 
-| Category | Monthly Budget (₹) | 3-Month Total (Apr–Jun) |
-|---|---|---|
-| Amazon PPC Advertising | 25,000–40,000 | 75,000–1,20,000 |
-| Instagram Ads (Post-launch) | 10,000–15,000 | 30,000–45,000 |
-| Influencer Partnerships | 10,000–25,000 | 30,000–75,000 |
-| Product Photography | One-time | 5,000–10,000 |
-| Packaging & Branding | One-time | 10,000–15,000 |
-| Tools (Canva Pro, etc.) | 1,000 | 3,000 |
-| Giveaway Products | 5,000 | 15,000 |
-| **Total Estimated** | — | **₹1,68,000 – ₹2,83,000** |
+| Category | Monthly Budget (₹) | 3-Month Total (Jun–Aug) | Notes |
+|---|---|---|---|
+| Amazon PPC Advertising | 20,000–30,000 | 65,000–85,000 | Non-negotiable. Primary revenue driver |
+| Instagram/Meta Ads | **₹0** | **₹0** | No paid Meta ads in Months 1-3. Organic only |
+| Influencer Partnerships | **₹0 cash** | ₹2,000–3,000 (free books only) | Product seeding only, no paid collabs |
+| Product Photography | One-time | 5,000–10,000 | |
+| Packaging & Branding | One-time | 10,000–15,000 | |
+| Tools (Canva Pro, etc.) | 1,000 | 3,000 | |
+| Friends & Family Review Blitz | One-time (Month 1) | 5,000–10,000 | UPI cashbacks for early reviews |
+| Giveaway Products | 3,000 | 9,000 | |
+| **Total Estimated** | — | **₹99,000 – ₹1,31,000** | ~₹70K-150K saved vs. previous plan |
+
+**Post Month 3 (Sep onwards):** If all 4 Meta ads conditions (Section 7) are met, add ₹5-8K/month for retargeting only
 
 *Budget can be scaled up/down based on initial performance. Start conservative, invest more in what works.*
 
