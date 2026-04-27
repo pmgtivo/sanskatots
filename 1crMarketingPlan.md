@@ -14,7 +14,7 @@
 | Monthly avg needed | **~2,604 units** |
 | Daily avg needed | **~87 units/day** |
 
-This is achievable — top velcro book sellers on Amazon India move 1,500–2,500 units/month per ASIN. You have **20 ASINs at launch** and will add more.
+This is achievable — top velcro book sellers on Amazon India move 1,500–2,500 units/month per ASIN. You have **7 ASINs at launch** and will add more in Phase 2 after first launch success.
 
 ---
 
@@ -24,12 +24,12 @@ This is achievable — top velcro book sellers on Amazon India move 1,500–2,50
 2. **Amazon 0% referral fee** for books ≤₹1,000 (effective March 2026) — this alone adds ₹50-80/unit profit vs the 12% in some of your older calculations
 3. **Zero competition** in Kannada/Telugu/Tamil tracing books
 4. **Women-owned MSME** — MUDRA loans, PMEGP 25% subsidy, GeM preference
-5. **49 book designs ready** — most competitors launch with 3-5 books
+5. **40+ book designs ready** — only 7 launching in Phase 1. Remaining launch in different phases after first launch success.
 6. **Velcro books = 43-52% margins** — your profit engine
 
 ### WHAT'S WORKING AGAINST YOU
 
-1. **₹80K-1.5L starting capital** — thin runway, must be capital-efficient
+1. **₹10L initial capital** (potential to invest up to ₹40L if needed) — invest based on ROAS, not speculation. Profit First approach.
 2. **No brand recognition** — zero reviews, zero social proof
 3. **Manual velcro assembly** — bottleneck at scale (8-10 books/day per person)
 4. **Two-person team** (Prashanth + Nagarathna) — capacity constraints
@@ -45,16 +45,22 @@ This is achievable — top velcro book sellers on Amazon India move 1,500–2,50
 
 **Revenue target: ₹3-5 Lakhs cumulative**
 
-#### Product Strategy
-| Priority | Books to Launch | Why | Price |
+#### Product Strategy (Phase 1 — 7 Books)
+| Priority | Books to Launch | Category | Price |
 |---|---|---|---|
-| 1 | Kannada Alphabet Tracing | Zero competition, Bengaluru hometown advantage | ₹199 |
-| 2 | All-in-One Activity Book (A4) | Highest search volume in category | ₹299 |
-| 3 | Pencil Control Level 1 | Evergreen, every preschooler needs it | ₹179 |
-| 4 (Week 3) | Hindi Alphabet Tracing | Massive market, moderate competition | ₹179 |
-| 5 (Week 3) | Ramayana Moral Stories | Emotional purchase, gifting appeal | ₹199 |
+| 1 | All In One Activity Book (velcro) | Velcro Activity Book | ₹449–549 |
+| 2 | Montessori Busy Book (velcro) | Velcro Activity Book | ₹449–549 |
+| 3 | Animals Busy Book (velcro) | Velcro Activity Book | ₹449–549 |
+| 4 | Pencil Tracing Book | Educational / Motor Skills | ₹199–249 |
+| 5 | Kannada 5-in-1 Tracing Book | Regional Language | ₹249–349 |
+| 6 | BhagavadGita for Kids | Mythology / Gifting / Moral | ₹199–299 |
+| 7 | Shloka Board Book | Mythology / Gifting / Moral | ₹199–299 |
 
-**Print runs: 100-200 copies each (Bengaluru printers). Don't over-invest before validation.**
+> **Note:** Mythology books (BhagavadGita + Shloka) are also positioned as Return Gifts for parents. Emphasize gift positioning in listing copy.
+
+**Create book combos** — bundle velcro books + mythology books to charge premium and avoid commoditization.
+
+**Print runs: 100-200 copies each (Bengaluru printers) for initial launch. Scale with Sivakasi printers as sales ramp.**
 
 #### Revenue Math (Phase 1)
 | Month | Units/day | Avg Price | Monthly Revenue |
@@ -66,14 +72,14 @@ This is achievable — top velcro book sellers on Amazon India move 1,500–2,50
 
 #### Critical Actions
 1. **Friends & Family Blitz (Week 1-2):** Get 50-75 paid purchases + reviews. Use the script from your strategy: "Order on Amazon, I'll Paytm ₹100 back." Target **20+ verified reviews by end of Week 2**.
-2. **Amazon PPC — exact match only:** ₹500-800/day on proven keywords:
-   - "kannada tracing book" (near-zero competition)
-   - "activity book for 3 year old"
-   - "pencil control book for kids"
-   - "hindi alphabet tracing book"
-3. **Instagram: 4 reels/week** — follow your April calendar. No paid ads. Organic only.
+2. **Amazon PPC — exact match only, cautious:** Start with ₹300–500/day. With no reviews initially, ROAS is uncertain. Monitor daily and scale only if profitable. Keywords:
+   - "velcro activity book for toddlers"
+   - "busy book for 1 year old"
+   - "kannada tracing book"
+   - "bhagavad gita for kids" / "return gift for kids"
+3. **Instagram + YouTube: 4 reels/week** — organic only. This is the primary awareness engine for first 6 months.
 4. **Switch to Sivakasi printers by end of July** — COGS drops from ₹60-100 to ₹35-55/book. This is the single biggest margin unlock.
-5. **NO Meta/Facebook/Google ads in Months 1-3.** Every rupee goes to Amazon PPC (trackable, high-intent) and organic Instagram. Meta ads are only allowed after ALL 4 conditions are met: (a) 100+ Amazon reviews, (b) Amazon ACoS < 20%, (c) a reel format consistently hitting 50K+ organic views, (d) ₹50K/month available to experiment. Earliest: Month 5-6.
+5. **NO paid social media ads (Meta/Facebook/Instagram/Google) for first 6 months.** ROAS is poor with no reviews and no brand recognition. Build organic social media instead. After 6 months, evaluate and test a better marketing approach. Amazon PPC is run cautiously and monitored for ROAS.
 
 #### Key Milestone
 > **By August 31: 50+ Amazon reviews across your top 5 products, BSR in top 100 for "kannada tracing book" and "activity book for kids"**
@@ -283,7 +289,7 @@ Your 8 coloring books at ₹99 each won't make you rich per unit, but:
 |---|---|---|---|
 | 1 | **Get 20+ reviews in first 2 weeks** via friends/family blitz | June 14 | Unlocks organic ranking |
 | 2 | **Switch to Sivakasi by July** for 500-copy runs | July 31 | Cuts COGS by 40% |
-| 3 | **Launch 20 SKUs by September** (individual + bundles) | Sep 30 | Catalog breadth = more search surface |
+| 3 | **Launch Phase 2 books by September** (based on Phase 1 success) | Sep 30 | More SKUs = more search surface |
 | 4 | **Hire 2 velcro assembly workers by September** | Sep 15 | Removes production bottleneck |
 | 5 | **Go FBA by Month 4** (September) | Sep 30 | Better delivery, Buy Box, higher conversion |
 | 6 | **Stock 500+ units per top seller before Diwali** | Sep 15 | Don't run out during peak |
@@ -296,7 +302,7 @@ Your 8 coloring books at ₹99 each won't make you rich per unit, but:
 
 ## THE HONEST TRUTH
 
-₹1 Crore in Year 1 from a ₹80K starting investment is **aggressive but not impossible**. Here's the probability breakdown:
+₹1 Crore in Year 1 from a ₹10L starting investment is **aggressive but achievable**. Here's the probability breakdown:
 
 | Outcome | Revenue | Probability | What Gets You Here |
 |---|---|---|---|

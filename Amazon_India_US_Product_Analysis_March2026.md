@@ -334,20 +334,23 @@ The US market has a MASSIVE "Social-Emotional Learning (SEL)" category for kids 
 
 # 📈 PART 4: STRATEGIC RECOMMENDATIONS
 
-## Immediate Launch Products (June 2026) — Based on What You Already Have
+## Immediate Launch Products — Phase 1 (June 2026) — FINAL 7 BOOKS
 
-| Priority | Product | Why Launch First | Expected Price |
-|----------|---------|-----------------|----------------|
-| 1 | **All-in-One Velcro Busy Book** | Highest demand, you have production ready | ₹499-599 |
-| 2 | **Hindi Varnamala Velcro Book** | ZERO competition, massive search volume | ₹499 |
-| 3 | **Kannada Alphabets Tracing Book** | Near-zero competition, Bangalore market | ₹149 |
-| 4 | **Telugu Alphabets Tracing Book** | Near-zero competition, huge Telugu market | ₹149 |
-| 5 | **Krishna's Characteristics for Kids** | UNIQUE product, no competitor has this angle | ₹249 |
-| 6 | **Rama's Characteristics for Kids** | Same — character-focused mythology is a gap | ₹249 |
-| 7 | **Phonics Patterns Book (1000 Words)** | Comprehensive resource, low competition | ₹199 |
-| 8 | **Coloring Books (Bundle of 8)** | High volume, impulse buy, ₹399-499 bundle | ₹99 each or ₹499 bundle |
+| Priority | Product | Category | Expected Price |
+|----------|---------|---------|----------------|
+| 1 | **All In One Activity Book (velcro)** | Velcro Activity Book — Main Priority | ₹449–549 |
+| 2 | **Montessori Busy Book (velcro)** | Velcro Activity Book — Main Priority | ₹449–549 |
+| 3 | **Animals Busy Book (velcro)** | Velcro Activity Book — Main Priority | ₹449–549 |
+| 4 | **Pencil Tracing Book** | Educational / Motor Skills | ₹199–249 |
+| 5 | **Kannada 5-in-1 Tracing Book** | Regional Language | ₹249–349 |
+| 6 | **BhagavadGita for Kids** | Mythology + Moral + **Return Gift** (ages 2–10) | ₹199–299 |
+| 7 | **Shloka Board Book** | Mythology + Moral + **Return Gift** (ages 2–10) | ₹199–299 |
 
-## Wave 2 Products (August-September 2026)
+> **Combos:** Create book bundles to charge premium and avoid commoditization.
+> **40+ more designs** are done and ready for Phase 2+ after Phase 1 success.
+> Brand is Profit First — validate Phase 1 before scaling.
+
+## Wave 2 Products — Phase 2 (After Phase 1 Success)
 
 | Priority | Product | Why | Expected Price |
 |----------|---------|-----|----------------|

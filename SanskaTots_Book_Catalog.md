@@ -1,9 +1,13 @@
 # SanskaTots — Complete Book Catalog
-## Deethya Enterprises | Updated: March 2026
+## Deethya Enterprises | Updated: April 2026
 
 ---
 
-# Total Books: 49
+# Total Books: 40+
+
+> **Phase 1 Launch (June 2026): 7 books** (locked)
+> Remaining 33+ books to be reviewed and launched in Phase 2+ after Phase 1 success.
+> Brand is Profit First — no new phases until Phase 1 validates.
 
 | Category | Count |
 |---|---|

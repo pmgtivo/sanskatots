@@ -7,9 +7,9 @@
 
 **Brand:** Deethya Enterprises (Consumer brand:  **Sanskatots**)  
 **Launch Date:** June 1, 2026  
-**Products:** 20 children's educational & activity books (Phase 1)  
-**Primary Channels:** Amazon India + Instagram  
-**Target Market:** Indian parents of children aged 1–8 years  
+**Products:** 7 children's educational & activity books (Phase 1) — All In One Activity Book (velcro), Montessori Busy Book (velcro), Animals Busy Book (velcro), Pencil Tracing Book, Kannada 5-in-1 Tracing Book, BhagavadGita for Kids, Shloka Board Book  
+**Primary Channels:** Amazon India + Instagram + YouTube (organic only for first 6 months)  
+**Target Market:** Indian parents of toddlers & preschool-age children (1.5–3 years for activity/velcro books; 2–10 years for mythology books)  
 
 This plan covers the **pre-launch (March–May)**, **launch week (June 1–7)**, and **post-launch (June–August)** marketing strategy to build awareness, generate early reviews, and drive sustained sales.
 
@@ -28,9 +28,9 @@ This plan covers the **pre-launch (March–May)**, **launch week (June 1–7)**,
 | **Pain Points** | Screen time concerns, lack of quality Indian-culture kids' content, wants structured learning at home |
 
 ### Secondary Audience — The User (Children)
-- **Toddlers (1–3):** Board books, pencil control, mini tracing books
-- **Pre-schoolers (3–5):** Activity books, alphabet tracing (English, Kannada, Hindi, Telugu)
-- **Young readers (5–8):** Story/moral books (Ramayana, Mahabharata, Gita for Kids, Vivekananda)
+- **Toddlers (1.5–3):** Velcro activity books, busy books, pencil tracing — targeting home-schooling before preschool
+- **Pre-schoolers (3–5):** Tracing books, activity books — completing preschool syllabus readiness
+- **Young readers (2–10):** Mythology/moral books (Gita for Kids, Shloka Board Book) — also positioned as Return Gifts
 
 ### Buyer Personas
 
@@ -321,7 +321,20 @@ build trust
 ## 7. Marketing Plan — Capital-Efficient Ad Channel Strategy
 
 ### Core Principle
-> **Spend money to capture demand (Amazon PPC). Spend time to create demand (Instagram, WhatsApp, schools). Don't spend money to create demand until you can afford to lose it.**
+> **Build organic audience (Instagram + YouTube) first. Capture demand with Amazon PPC cautiously. Do NOT spend on brand awareness or product ads on social media for the first 6 months — ROAS is bad with no reviews. Capital is restricted; only goal is better ROAS. We are currently in a testing phase.**
+
+### Marketing Strategy — Organic First
+
+**First 6 months (Jun–Nov): Organic Social + Cautious Amazon PPC**
+- Primary: Build Instagram and YouTube organically — this is your awareness engine
+- Amazon PPC: Run with caution. With zero reviews initially, ROAS is uncertain. Start small (exact-match only), monitor closely, scale only if ROAS is acceptable
+- Strictly NO paid brand awareness campaigns on social media (Instagram ads, Facebook ads, Google ads) for first 6 months — ROAS is poor at this stage
+- Every rupee must generate a direct, trackable sale
+- After 6 months: Evaluate learnings and figure out a better marketing strategy before committing more spend
+
+**After 6 months: Test & Decide**
+- Only add paid social media ads if: Amazon PPC is profitable (ACoS < 25%), 100+ reviews exist, a reel format consistently hits 50K+ organic views, and ₹50K/month is available to experiment
+- Capital restriction is real — do not chase volume at the cost of profit
 
 ### Why Amazon PPC First, Meta Ads Later
 
@@ -331,32 +344,26 @@ build trust
 | Attribution | Clear — click → sale | Murky — view → maybe later → maybe Amazon |
 | Conversion for new brand | 8-15% (search intent) | 0.5-2% (cold traffic) |
 | Minimum spend to learn | ₹15-20K | ₹50-80K (algorithm needs data) |
-| Your capital situation (₹80K-1.5L) | Fits budget | Doesn't |
+| Risk with no reviews | Uncertain — watch ROAS carefully | Very high — no social proof = terrible conversion |
 
 ### Phased Ad Spend Rules
 
-**Months 1-3 (Jun-Aug): Amazon PPC ONLY**
-* ₹15K-25K/month on Amazon PPC — non-negotiable for product discovery
-* Every rupee must generate a direct, trackable sale
-* Zero spend on Meta/Instagram/Google ads — build organic content instead (this is your Zerodha moment)
-* Meta ads at this stage = burning cash on awareness for a brand with zero reviews and no social proof. Conversion rate will be terrible
+**Months 1-3 (Jun–Aug): Organic Instagram/YouTube + Cautious Amazon PPC**
+* Focus 90% of effort on building organic Instagram/YouTube audience
+* Amazon PPC: exact-match only, low budget, monitor daily. If ROAS is poor, reduce or pause
+* Zero spend on Meta/Instagram ads, Google ads — build organic content instead
+* Meta/social ads at this stage = burning cash on awareness for a brand with zero reviews and no social proof
 
-**Months 4-6 (Sep-Nov): Add Meta Ads ONLY If All 4 Conditions Are Met**
-1. Amazon PPC is profitable (ACoS consistently < 25%)
-2. You have 100+ Amazon reviews across top products
-3. You have a proven reel format that gets 50K+ organic views
-4. You have ₹50K/month you can afford to experiment with
+**Months 4-6 (Sep–Nov): Continue organic + evaluate PPC performance**
+* Assess Amazon PPC results. If ROAS is good, increase budget
+* Still no paid social media ads for brand awareness
+* Consider retargeting ONLY if: 100+ Amazon reviews, ACoS < 25%, proven reel format at 50K+ organic views, and ₹50K budget available to experiment
 
-If conditions are met:
-* Budget: ₹5-8K/month MAX — retargeting campaigns ONLY (not cold traffic)
-* Target: Parents who visited your Amazon listing or engaged with your Instagram
-* Creative: Repurpose your best-performing organic reels as ads
-* **Hard kill rule:** Stop immediately if cost per purchase > ₹80
-
-**Months 7-12: Scale What's Working, Cut What Isn't**
-* If Meta retargeting is profitable → cautiously increase to ₹10-15K/month
-* If it's not profitable → kill it and redirect budget to Amazon PPC
-* Never let Meta spend exceed 20% of total ad budget
+**Months 7-12: Scale what works**
+* If Amazon PPC is profitable → scale it
+* If a paid social format proves ROAS → cautiously scale
+* Never let any paid channel exceed 25% of total revenue
+* Profit First — do not burn money to acquire customers
 
 ### Free Channels That Outperform Paid Ads for a New Brand
 These "free" channels compound over time. Meta ads stop the moment you stop paying.

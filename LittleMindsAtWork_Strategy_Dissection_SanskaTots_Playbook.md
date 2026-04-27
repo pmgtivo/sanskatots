@@ -205,7 +205,7 @@ Little Minds at Work [Product Name] Activity Book for Kids [Age Range] |
 They don't sell ONE product. They sell a SYSTEM. A mom buys the ₹699 binder, loves it, then buys Animals (₹799), then Alphabets (₹799), then a Combo (₹1,398). **Lifetime value per customer: ₹3,000-5,000.** SanskaTots needs this.
 
 ### Pillar 2: KEYWORD MOAT
-76 products = 76 ASINs = 76 unique keyword positions on Amazon. They rank for "busy book," "activity binder," "Montessori book," "logical reasoning book," "animal activity," "alphabet binder," etc. One product can't compete with this. **You need 15-20 SKUs minimum in year 1.**
+76 products = 76 ASINs = 76 unique keyword positions on Amazon. They rank for "busy book," "activity binder," "Montessori book," "logical reasoning book," "animal activity," "alphabet binder," etc. One product can't compete with this. **SanskaTots Phase 1 launches 7 SKUs; Phase 2+ adds more after Phase 1 success. 40+ designs already done.**
 
 ### Pillar 3: DUAL-CHANNEL (Amazon + D2C)
 Amazon for discovery + trust. D2C for margin + repeat customers + customer data. They're NOT Amazon-dependent. If Amazon fees rise, they have D2C. If D2C traffic drops, Amazon organic keeps running.

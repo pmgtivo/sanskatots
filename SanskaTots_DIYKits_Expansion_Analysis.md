@@ -259,32 +259,35 @@
 
 ---
 
-## 5. STRATEGIC ROADMAP — 18-MONTH EXPANSION PLAN
+## 5. STRATEGIC ROADMAP — EXPANSION PLAN (Updated April 2026)
 
-### Phase 1: Foundation (Month 1-6) — BOOKS ONLY
-- Launch 15-20 books on Amazon (velcro, tracing, mythology, coloring)
-- Get 100+ reviews, establish brand presence
-- Revenue target: ₹3-5L/month by Month 6
-- **0% GST advantage = higher margins = fund expansion**
+### Phase 1: Foundation (June 2026) — 7 BOOKS LAUNCH
+- Launch 7 Phase 1 books on Amazon India (velcro activity books, tracing books, mythology/moral books)
+- Initial investment: ₹10L; potential up to ₹40L
+- 40+ designs ready — launch only Phase 1 first. Phase 2+ books after Phase 1 success.
+- Build organic Instagram + YouTube audience. No paid social ads.
+- Profit First — validate before scaling.
 
-### Phase 2: First Expansion (Month 7-9) — BOOKS + FLASH CARDS + FIRST KIT
-- Launch 3-4 flash card sets (Indian themed, 0% GST)
-- Launch 1 festival activity box (Diwali Box — launch by August for Sept-Oct Diwali season)
-- Launch 1 Indian culture craft kit (My First Rangoli Kit or DIY Diya Kit)
-- Revenue target: ₹8-12L/month
+### Phase 2: DIY Kits + Import/White-label Exploration (After Phase 1 Success)
+- **DIY kits are the first expansion category** after books are stable
+- Start with 1-3 Indian cultural craft kits (e.g., DIY Diya Kit, My First Rangoli Kit, Madhubani Art Kit for Kids)
+- Evaluate importing or sourcing from traders in the same business genre (books/educational/craft) \u2014 can sell under SanskaTots brand or a new brand to protect SanskaTots brand equity
+- Expand remaining 40+ book designs in different phases
 
-### Phase 3: Category Expansion (Month 10-15) — MULTI-CATEGORY
-- Launch Indian State Explorer Kit (3 states to start)
-- Launch 2 more craft kits (Madhubani for Kids, Festival Craft Box)
-- Launch seasonal boxes (Holi, Rakhi, Pongal)
-- Explore "SanskaTots Monthly Box" subscription on website (not Amazon)
-- Revenue target: ₹15-25L/month
+### Phase 3: More Category Expansion (Year 2)
+- Flash card sets (Indian themed, 0% GST)
+- Seasonal festival boxes
+- Card games + memory games (Indian Gods, Festivals)
+- Subscription box option
 
-### Phase 4: Scale (Month 16-18) — BRAND PLATFORM
-- Full 49-book catalog + 10 flash card sets + 6 craft kits + 5 festival boxes + 3 explorer kits
-- Launch own D2C website with subscription model
-- Start Amazon Global Selling (US, UAE — Indian diaspora)
-- Revenue target: ₹30-50L/month
+### Phase 4: Toys Category (Year 2-3) — Only After Books + DIY Stable
+- Only enter toys when Books + DIY categories are stable and profitable
+- Toys need BIS certification, different supply chain, 18% GST \u2014 higher complexity
+- Do not rush this
+
+### Phase 5: International Expansion (Year 3+)
+- US first (NRI diaspora, then mainstream), then Europe, Middle East, UK, Australia
+- Start with best-performing books + kits
 
 ---
 
@@ -294,11 +297,11 @@
 Books alone won't build a ₹10Cr+ brand. But books are the **perfect starting point** because:
 - 0% GST = best margins in kids category
 - Low capital requirement
-- You already have 49 book designs
+- You already have 40+ book designs
 - Establishes brand + reviews quickly
 
-### ✅ The Expansion Path is Clear
-Books → Flash Cards (0% GST) → Festival Boxes → Indian Craft Kits → State Explorer Kits
+### ✅ The Expansion Path is Locked
+Books (Phase 1: 7 books) → DIY kits (first expansion) → Import/white-label evaluation → Toys (only after Books + DIY stable) → International (US first, then Europe)
 
 ### ✅ Your Unique Moat = "Indian Culture + Education"
 Nobody does this well. Skillmatics is Western-themed. Imagimake does Indian art but targets older kids. You can own the **"Indian culture learning for ages 2-8"** space.

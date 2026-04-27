@@ -5,7 +5,7 @@
 
 # Executive Summary
 
-You have an impressive portfolio of **50+ book designs** across multiple categories. This analysis identifies market gaps, provides pricing recommendations, and suggests new book opportunities based on your existing capabilities.
+You have an impressive portfolio of **40+ book designs** across multiple categories. This analysis identifies market gaps, provides pricing recommendations, and suggests new book opportunities based on your existing capabilities.
 
 ---
 

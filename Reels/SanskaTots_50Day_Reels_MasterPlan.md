@@ -52,7 +52,7 @@
 - **Voiceover:** "But then my daughter picked up a book I made… and didn't put it down for 20 minutes. That moment? That's when SanskaTots was born."
 
 **Scene 4 (25–38 sec):** You packing books, stacking them, camera reveals a whole table of 49+ books.
-- **Screen Text:** "50+ books later. Still just getting started. 🔥"
+- **Screen Text:** "40+ books later. Still just getting started. 🔥"
 - **Voiceover:** "50 books. Zero funding. One mom. And a dream that India's kids deserve better."
 
 **Scene 5 (38–45 sec):** End card — SanskaTots logo.
@@ -192,7 +192,7 @@
 - **Voiceover:** "Third order. My neighbor uncle. Sir doesn't even have children."
 
 **Scene 4 (28–35 sec):** You smiling, hugging a packed order.
-- **Screen Text:** "But family support > Venture capital. Always. 💛 Now we're 50+ books strong!"
+- **Screen Text:** "But family support > Venture capital. Always. 💛 Now we're 40+ books strong!"
 - **CTA (Caption):** "Who was YOUR first supporter? 😂❤️ Tag them! Drop a ❤️ for family businesses!"
 
 **Audio:** Trending comedy notification sound
@@ -286,8 +286,8 @@
 **HOOK (First 3 sec):**
 > Screen Text: *"How one mom created 50+ children's books with ZERO funding."*
 
-**Scene 1 (0–10 sec):** You standing behind a table. Camera starts close on your face, then slowly pulls back to reveal ALL 50+ books spread out.
-- **Screen Text:** "How one mom created 50+ books with ₹0 investor money."
+**Scene 1 (0–10 sec):** You standing behind a table. Camera starts close on your face, then slowly pulls back to reveal ALL 40+ books spread out.
+- **Screen Text:** "How one mom created 40+ books with ₹0 investor money."
 - **Voiceover:** "No VC. No angel investor. No rich uncle. Just a woman who believed Indian kids deserve books that look like THEM."
 
 **Scene 2 (10–22 sec):** Quick montage — hands designing on laptop, printer running, books being cut/bound, stacked.
@@ -659,8 +659,8 @@
 - **Screen Text:** "Him: '...velcro? In books? And people will... pay for this?'"
 - **Dialogue:** (skeptical) "So... you want to sell... paper... with stickers? In the age of iPads?"
 
-**Scene 3 (18–26 sec):** Fast-forward montage — books being designed, printed, stacked (50+ books).
-- **Screen Text:** "Fast forward → 50+ books. A registered brand. Real customers."
+**Scene 3 (18–26 sec):** Fast-forward montage — books being designed, printed, stacked (40+ books).
+- **Screen Text:** "Fast forward → 40+ books. A registered brand. Real customers."
 
 **Scene 4 (26–32 sec):** "Husband" now proudly telling someone: "Have you heard about SanskaTots? Yeah, my wife built that."
 - **Screen Text:** "Him now: 'My wife is a GENIUS. Buy her books. NOW.'"
@@ -1342,7 +1342,7 @@
 > Screen Text: *"In 30 days, SanskaTots goes LIVE on Amazon India. Here's everything we've built for YOUR child."*
 
 **Scene 1 (0–10 sec):** Dramatic reveal — curtain pull or box opening to reveal ALL 49+ books spread out beautifully.
-- **Screen Text:** "50+ books. 1 dream. Built by a mom. For your child."
+- **Screen Text:** "40+ books. 1 dream. Built by a mom. For your child."
 - **Voiceover:** "In thirty days, every single one of these books goes live on Amazon India. Fifty books. Two years of work. And it all comes down to this."
 
 **Scene 2 (10–22 sec):** Quick flash cuts of categories — mythology books, tracing books, regional language books, busy books, coloring books, phonics.
@@ -1406,7 +1406,7 @@
 - **Voiceover:** "So here's my promise. Every book we ever make will have Indian roots. Every page will teach your child who they are. And no matter how big we get, every order will still feel like it was made JUST for you."
 
 **Scene 4 (38–45 sec):** SanskaTots logo, launch date, all details.
-- **Screen Text:** "🚀 LAUNCHING JUNE 1 ON AMAZON INDIA 🚀 50+ books | 10+ languages & categories | Made by an Indian mom, for Indian kids | DM 'BOOKS' to pre-order | LINK IN BIO 💛"
+- **Screen Text:** "🚀 LAUNCHING JUNE 1 ON AMAZON INDIA 🚀 40+ books designed | 7 books launching Phase 1 | Made by an Indian mom, for Indian kids | DM 'BOOKS' to pre-order | LINK IN BIO 💛"
 - **CTA (Caption):** "If you've made it to Day 50 — you are SanskaTots family forever. 💛 Comment 'DAY 50' and share this with EVERY parent you know! 🇮🇳📚🔥"
 
 **Audio:** Powerful, emotional, crescendo Indian fusion music — ending triumphant

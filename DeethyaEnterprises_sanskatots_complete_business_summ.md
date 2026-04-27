@@ -13,13 +13,13 @@ _"Indian Roots. Curious Minds."_
 _A complete summary of who we are, what we sell, and where we are going._
 
 ```
-We Design Kids Educational Books(Includes Busy Books/Activity books/basic educational preschool ready books) with Indian feel and covering Indian mythology and values books, we as a company concentrate more on Values than educational study. if kids learn values automatically sanakar of kids emerges within and grow as good citizen.
+We Design and Manufacture Kids Educational Activity Binders and Busy Books (Velcro-based) along with Mythological books with Indian feel and values. Velcro-based activity books are our main priority. We concentrate on screen-free, engaging learning — not conventional rote teaching. Our educational books cover the complete Preschool syllabus to prepare kids (1.5–3 years) for joining Preschool. Our Mythological books (Hindu-focused, ages 2–10) are India's first heavy focus on Moral learning through Mythology — also strategically positioned as Return Gifts. We believe in Profit First, not burning money to acquire customers.
 ```
 ```
 Planning to launch our first products on Amazon India on — June 1 , 2026
 ```
 
-#### Currently we designed and developed 50+ books(refer sanskatots_books dir)
+#### Currently we designed and developed 40+ books(refer sanskatots_books dir)
 
 
 ## 01
@@ -224,10 +224,12 @@ March 15 → June 1
 ```
 L A U N C H S K U S
 ```
-#### 3 Books
+#### 7 Books
 
 ```
-Toddler Velcro + Kannada Tracing + Pencil Control L 1
+All In One Activity Book (Velcro) · Montessori Busy Book (Velcro) · Animals Busy Book (Velcro)
+Pencil Tracing Book · Kannada 5-in-1 Tracing Book
+BhagavadGita for Kids · Shloka Board Book
 ```
 ```
 T O T A L B U D G E T
@@ -281,10 +283,10 @@ Different market segment — not a direct competitor.
 ▸
 ```
 
-#### ~₹ 80 K
+#### ~₹ 10 L
 
 ```
-Registration + print + design + ads (with MUDRA loan)
+Initial investment (registration + print + inventory + launch); up to ₹ 40 L available if needed
 ```
 ```
 T A R G E T R E V I E W S
@@ -562,7 +564,7 @@ R E V E N U E D I V E R S I F I C A T I O N
 
 **8 Revenue Streams by Year 3 (Expanded from 5)**
 
-→Year 1 : 20 books ( 3 at launch, 20 by December)
+→Year 1 : 7 books Phase 1 launch (June 2026); Phase 2+ books after Phase 1 success; 40+ designs already done
 
 →Year 2 : Add Tamil + Marathi + Bengali tracing books; Panchatantra series; Good Habits velcro series
 

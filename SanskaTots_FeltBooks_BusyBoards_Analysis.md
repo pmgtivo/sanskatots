@@ -314,7 +314,7 @@ SanskaTots is uniquely positioned because:
 | Indian festivals | ❌ | ❌ | ❌ | ✅ Diwali, Holi, Pongal |
 | Indian dress-up | ❌ | ❌ | ❌ | ✅ Saree, kurta, pattu pavadai |
 | Personalization | ❌ | ❌ | ✅ Child's name | 🔜 Can add later |
-| Velcro books (paper) | ✅ | ❌ | ❌ | ✅ Already have 49 books |
+| Velcro books (paper) | ✅ | ❌ | ❌ | ✅ Already have 40+ book designs |
 | Felt quiet books | ❌ | ✅ | ✅ | 🔜 Phase 1 launch |
 | LED busy boards | ✅ (Clapstore) | ❌ | ❌ | ❌ Not recommended |
 | Pricing sweet spot | ₹300-600 | ₹800-1,500 | ₹600-1,200 | ₹449-999 |

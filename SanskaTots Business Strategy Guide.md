@@ -42,16 +42,16 @@ SKILLMATICS JOURNEY (2017–2026)
 
 ```
 SANSKATOTS ROADMAP (2026–2031)
-├── Phase 1 (2026): Books — velcro, tracing, activity, mythology (CURRENT)
-├── Phase 2 (2027): Card games + board games with Indian themes
-├── Phase 3 (2027-28): Art & craft kits — Indian art forms (Madhubani, Warli, etc.)
-├── Phase 4 (2028): Amazon US launch — NRI diaspora + mainstream US parents
-├── Phase 5 (2029-30): 100+ SKUs — puzzles, wooden toys, flash cards,
-│                      magnetic play, sensory kits, subscription boxes
-├── Phase 6 (2030-31): Licensed products (Indian IPs — Chhota Bheem,
-│                      Amar Chitra Katha, mythological characters)
-└── GOAL: India's #1 Indian-culture educational play brand + US market leader
-         in "world culture" kids' educational products
+├── Phase 1 (2026): 7 books launch — velcro activity books (main priority), tracing books, mythology/moral books
+│                   Invest ₹10L initially; up to ₹40L available if needed
+│                   40+ designs done; Phase 2+ books launch after Phase 1 success
+├── Phase 2 (2027): DIY kits (first expansion) + Evaluate import/white-label products in same genre
+│                   (can be sold under SanskaTots or a new brand to protect SanskaTots brand value)
+├── Phase 3 (2027-28): Art & craft kits, card games — Indian themes
+├── Phase 4 (2028): Toys category — only after Books + DIY are stable
+├── Phase 5 (2028-29): Amazon US launch — NRI diaspora first, then mainstream
+├── Phase 6 (2029-31): Europe, UK, Middle East, Australia — NRI and multicultural markets
+└── GOAL: India's #1 Indian-culture educational play brand + international expansion
 ```
 
 ---
@@ -62,7 +62,7 @@ SANSKATOTS ROADMAP (2026–2031)
 
 | # | Goal | Target | Measurement |
 |---|------|--------|-------------|
-| 1 | **Launch on Amazon India successfully** | 20+ SKUs live by September 2026 | Active listings on Amazon |
+| 1 | **Launch 7 Phase 1 books on Amazon India** | 7 SKUs live by June 2026; Phase 2+ books launch after Phase 1 success | Active listings on Amazon |
 | 2 | **Hit ₹50L–1Cr revenue in Year 1** | ₹60L realistic, ₹1Cr stretch | Amazon + Flipkart + D2C revenue |
 | 3 | **Dominate regional language tracing books** | #1 BSR in Kannada, Telugu, Tamil tracing | Amazon BSR rankings |
 | 4 | **Build social proof** | 500+ Amazon reviews across catalog | Amazon review count |
@@ -218,17 +218,17 @@ SanskaTots sells **physical products** on Amazon India where:
 
 ## The Real Framework: Funded Visibility → Social Proof → Organic Flywheel
 
-### Phase 1: "Buy Your First 100 Reviews" (June–August) — SPEND STRATEGICALLY
+### Phase 1: "Build Organic Audience + Cautious PPC" (June–November — First 6 Months)
 
-Don't spend on *awareness* ads. Spend on **conversion** ads — target people already searching for your exact products on Amazon.
+Marketing priority: Organic Instagram + YouTube first. Amazon PPC cautiously. No paid social media ads for first 6 months.
 
 | What to Do | Why |
 |---|---|
-| Amazon PPC only — exact match keywords | You're catching people already searching "kannada tracing book" or "activity book for 3 year old" — these are buyers, not browsers |
-| Start at ₹500–800/day, not ₹2500–4000/day | Start lean, scale what works |
-| Target ACoS of 40–50% in month 1 | Accept thin margins initially — you're buying reviews and BSR ranking, not just sales |
-| Kill Instagram/Google ads entirely for now | Zero ROI for a new unknown brand. Organic Instagram is your play here |
-| Budget: ₹15,000–25,000/month on Amazon PPC only | Not ₹50,000–80,000 as original plan suggests |
+| Organic Instagram + YouTube reels (4–5x/week) | Primary awareness engine for first 6 months. Zero cost. Compounds over time. |
+| Amazon PPC — exact match, cautious | With zero reviews, ROAS is uncertain. Start at ₹300–500/day, monitor daily, scale only if ROAS is acceptable |
+| No paid social media ads for first 6 months | ROAS is poor with no brand recognition or reviews. Capital restricted — goal is ROAS not reach. |
+| No Instagram/Google brand awareness spend | Zero ROI for new brand without social proof. Organic is the play. |
+| Testing phase | After 6 months, evaluate learnings and develop a better marketing strategy before committing more spend. |
 
 ### Phase 2: "Content Moat" (Ongoing) — YOUR REAL COMPETITIVE EDGE
 
@@ -284,14 +284,15 @@ Monthly:
 
 ---
 
-## The Bottom Line — Your Strategy Should Be:
+## The Bottom Line — Marketing Strategy:
 
-1. **Spend money, but only on Amazon PPC** (₹15K–25K/month) — non-negotiable for product discovery
-2. **Spend zero on Instagram/Google ads** — build organic content instead (this is your Zerodha moment)
-3. **Don't compete on price** — compete on **uniqueness** (regional languages, velcro books, Indian cultural depth)
-4. **Your moat is content + niche** — no competitor ad spend can create "Kannada tracing book" content authentically
-5. **Cap ad spend at 25–30% of revenue** — if it goes higher, reduce budget, don't chase volume
-6. **Bundle aggressively** — ₹599 bundle of 3 books feels like premium value, not cheap competition
+1. **First 6 months: Organic Instagram + YouTube** — no paid brand awareness or product ads. This is your awareness engine.
+2. **Amazon PPC — run cautiously from launch.** No reviews = uncertain ROAS. Start small, monitor daily, scale only if profitable.
+3. **Capital restriction is real** — only spend what shows traceable ROAS. Profit First, not burn-money-to-acquire-customers.
+4. **After 6 months: Evaluate and test** — figure out a better marketing approach before committing more budget.
+5. **Don't compete on price** — compete on **uniqueness** (velcro books, Indian cultural depth, mythology as moral learning)
+6. **Cap ad spend at 25–30% of revenue** — if it goes higher, reduce budget, don't chase volume
+7. **Bundle aggressively** — book combos to charge premium and avoid commoditization. Never race to ₹99.
 
 ---
 

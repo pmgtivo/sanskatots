@@ -83,18 +83,20 @@
 
 ## 2.3 — Pricing Strategy
 
-| Product Category | Launch Price (Month 1-2) | Regular Price | Bundle Discount |
-|---|---|---|---|
-| Tracing Books (Kannada/Hindi/Telugu/English) | ₹169-179 | ₹199 | 25% off in 4-pack |
-| Activity Books (A4/A5) | ₹249-269 | ₹299 | — |
-| Mythology/Story Books | ₹169-179 | ₹199 | 25% off in 4-pack |
-| Pencil Control Books | ₹149-159 | ₹179 | — |
-| Coloring Books | ₹89 | ₹99 | 3 for ₹249 |
-| Board Books | ₹199-219 | ₹249 | 3 for ₹499 |
-| Velcro/Busy Books | ₹399-449 | ₹449-699 | — |
-| All-in-One Velcro Activity | ₹599-649 | ₹699 | — |
+**Phase 1 (7 books) pricing — premium positioning, no race to bottom:**
 
-- [ ] Set **List Price (MRP)** 30-40% above your selling price to show strikethrough discount
+| Product | Price Range | Notes |
+|---|---|---|
+| Velcro Activity Books (All In One, Montessori, Animals) | ₹449–699 | Main profit engine — premium priced |
+| Pencil Tracing Book | ₹199–249 | Educational / motor skills |
+| Kannada 5-in-1 Tracing Book | ₹249–349 | Regional language premium |
+| BhagavadGita for Kids | ₹199–299 | Mythology + Return Gift positioning |
+| Shloka Board Book | ₹199–299 | Mythology + Return Gift positioning |
+
+> **Bundle strategy:** Create combos (e.g., "Velcro 3-Pack" ₹999–1299, "Mythology Gift Set" ₹499–599) to charge premium, increase AOV, and avoid commoditization.
+> Mythology books: highlight "Perfect Return Gift" in listing copy and backend keywords.
+
+- [ ] Set **List Price (MRP)** 30-40% above selling price to show strikethrough discount
 - [ ] Launch with 10-15% introductory discount for first 30 days
 - [ ] Activate **"Sale" badge** via promotional pricing in Seller Central
 
@@ -102,28 +104,28 @@
 
 # SECTION 3: AMAZON PPC (PAY-PER-CLICK) CAMPAIGN STRATEGY
 
+> **⚠️ PPC Caution (Phase 1):** Amazon PPC is run with caution for the first 6 months. With zero reviews at launch, ROAS is uncertain — do not over-commit budget. Start small, monitor daily, and scale only when ROAS proves out. No paid social media ads (Instagram/Facebook/Google) for first 6 months \u2014 ROAS is poor without reviews and brand recognition. Goal is better ROAS, not customer acquisition at any cost. We are in a testing phase.
+
 ## 3.1 — Campaign Architecture (Set Before Launch Day)
 
 ### Campaign Type 1: Automatic Campaigns (Discovery)
-- [ ] Create 1 Auto campaign per top product (5 products × 1 = 5 campaigns)
-  - Budget: ₹100-150/day per campaign
+- [ ] Create 1 Auto campaign per Phase 1 book (7 books × 1 = 7 campaigns)
+  - Budget: ₹100/day per campaign (start conservatively)
   - Default bid: ₹3-5
   - Purpose: Discover what keywords Amazon thinks your product matches
   - Let run for 7-14 days before harvesting keywords
-  - **Naming:** `AUTO_[ProductName]_[Date]` e.g., `AUTO_KannadaTracing_Jun01`
+  - Monitor ACoS daily — pause if ACoS > 50% after 7 days
+  - **Naming:** `AUTO_[ProductName]_[Date]` e.g., `AUTO_VelcroActivityBook_Jun01`
 
 ### Campaign Type 2: Manual Exact Match (Conversion)
 - [ ] Create Manual campaigns with **exact match** keywords — your primary revenue driver
 
 | Campaign | Daily Budget | Exact Match Keywords | Starting Bid |
 |---|---|---|---|
-| Kannada Tracing | ₹150 | "kannada tracing book", "kannada alphabet book", "kannada akshra book for kids", "kannada writing practice book", "kannada varnamala book" | ₹4-6 |
-| Hindi Tracing | ₹150 | "hindi tracing book", "hindi alphabet book for kids", "hindi varnamala practice", "hindi writing book for children", "hindi akshar book" | ₹5-7 |
-| Telugu Tracing | ₹150 | "telugu tracing book", "telugu guninthalu book", "telugu alphabet for kids", "telugu writing practice" | ₹4-6 |
-| Activity Books | ₹200 | "activity book for 3 year old", "all in one activity book for kids", "preschool activity book", "activity book for toddlers", "kids activity book" | ₹5-8 |
-| Pencil Control | ₹100 | "pencil control book", "pencil control for kids", "pen control book for toddlers", "pre writing skills book" | ₹4-6 |
-| Mythology | ₹100 | "ramayana for kids", "gita for kids book", "mahabharata for kids", "indian mythology children book", "moral stories for kids indian" | ₹4-7 |
-| Board Books | ₹100 | "board book for toddlers", "baby first book india", "board book for 1 year old", "touch and feel book for babies" | ₹4-6 |
+| Velcro Activity Books | ₹200 | "velcro activity book for toddlers", "busy book for 1 year old", "montessori busy book", "activity binder for kids" | ₹5-8 |
+| Kannada Tracing | ₹150 | "kannada tracing book", "kannada alphabet book", "kannada akshra book for kids", "kannada varnamala book" | ₹4-6 |
+| Pencil Tracing | ₹100 | "pencil control book", "pencil control for kids", "pre writing skills book for toddlers" | ₹4-6 |
+| Mythology / Gifting | ₹150 | "bhagavad gita for kids", "shloka book for kids", "return gift for kids birthday", "mythological book for children", "gita for children" | ₹4-7 |
 | **Naming:** | `MANUAL_EXACT_[ProductName]_[Date]` | | |
 
 ### Campaign Type 3: Manual Phrase Match (Expansion)
