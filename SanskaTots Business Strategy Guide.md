@@ -25,6 +25,20 @@ Skillmatics (founded 2017, Mumbai) grew from a single line of reusable education
 
 ---
 
+## SanskaTots' Competitive Strategy: Two Fronts, One Brand
+
+**SanskaTots competes on two fronts simultaneously. This is not a "choose one" decision:**
+
+### Front 1 — Head-On Activity Book Competition (Revenue Engine)
+The All-in-One Busy Book, Montessori Busy Book, and Animals Busy Book are **direct competitors** to Little Minds at Work (LMAW), Curious Cub, and TodFod. These are mainstream preschool activity/velcro books built to beat competitors on SIZE (A4 vs A5), ACTIVITY COUNT, PRINT QUALITY, and PRICE. These are the volume drivers that fuel the business.
+
+### Front 2 — Indian Cultural Moat (Brand Differentiation)
+The mythology books, regional language tracing books, and shloka books are content competitors CANNOT copy. LMAW, Clapjoy, and Curious Cub have zero Indian cultural books. This is the long-term brand identity and the content that earns premium pricing, gifting occasions, and NRI sales.
+
+**Both fronts launch in Phase 1. Both matter equally.**
+
+---
+
 ## How Skillmatics Grew — And How SanskaTots Will Follow
 
 ```
@@ -42,9 +56,13 @@ SKILLMATICS JOURNEY (2017–2026)
 
 ```
 SANSKATOTS ROADMAP (2026–2031)
-├── Phase 1 (2026): 7 books launch — velcro activity books (main priority), tracing books, mythology/moral books
+├── Phase 1 (2026): 7 books launch — DUAL STRATEGY
+│                   FRONT 1 (revenue): All-in-One Busy Book, Montessori Busy Book, Animals Busy Book
+│                   → head-on LMAW competitors, designs final, print-ready NOW
+│                   FRONT 2 (moat): BhagavadGita for Kids, Shloka Board Book, Kannada Tracing, Pencil Control
+│                   → cultural IP, zero competition, brand differentiators
 │                   Invest ₹10L initially; up to ₹40L available if needed
-│                   40+ designs done; Phase 2+ books launch after Phase 1 success
+│                   40+ additional designs done; Phase 2+ launches after Phase 1 success
 ├── Phase 2 (2027): DIY kits (first expansion) + Evaluate import/white-label products in same genre
 │                   (can be sold under SanskaTots or a new brand to protect SanskaTots brand value)
 ├── Phase 3 (2027-28): Art & craft kits, card games — Indian themes

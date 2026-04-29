@@ -35,14 +35,34 @@ Now — the playbook to fix it.
 
 ## ❌ WHAT YOU'RE DOING WRONG (Fix Before Launch)
 
-### 1. **Phase 1 SKU strategy — 7 books, all done perfectly**
-Phase 1 is locked at 7 specific books: All In One Activity Book (velcro), Montessori Busy Book (velcro), Animals Busy Book (velcro), Pencil Tracing Book, Kannada 5-in-1 Tracing Book, BhagavadGita for Kids, and Shloka Board Book. With ₹10L capital and 40+ designs already done, there is temptation to launch more — resist it. Each of these 7 must have perfect QA, 7 listing images, A+ content, and good stock depth before going live. Additional books launch in Phase 2 after first launch success.
+### 1. **Phase 1 SKU strategy — 7 books, two parallel competitive pillars**
+
+**DUAL-PILLAR STRATEGY (both run simultaneously, neither is secondary):**
+
+**PILLAR 1 — Direct LMAW Competition: Activity Books / Busy Binders (Revenue Engine)**
+- All-In-One Busy Book (velcro, A4, 24 pages) — **direct head-on competitor to LMAW's Toddler Busy Binder and All-in-One Busy Book**
+- Montessori Busy Book (velcro, A5, 16 pages) — **direct competitor to LMAW's 16-in-1 Binder**
+- Animals Busy Book (velcro, A4, 16 pages) — **direct competitor to LMAW's Animal Busy Book**
+
+These 3 books fight for the same Amazon keywords, the same parent buyer, the same BSR. They are NOT positioned as "Indian alternatives" — they are built to beat LMAW on SIZE (A4 vs A5), ACTIVITY COUNT, and PRICE. Designs are final. Ready for print. This is the volume/revenue arm.
+
+**PILLAR 2 — Cultural Moat: Mythology + Regional Language (Brand Differentiation)**
+- BhagavadGita for Kids — content zero competitors have
+- Shloka Board Book — content zero competitors have
+- Kannada 5-in-1 Tracing Book — regional language moat
+- Pencil Control Level 1 — school readiness category
+
+Both pillars launch simultaneously in Phase 1. The busy binders generate volume, discovery, and repeat purchases. The mythology/regional books build the cultural moat and brand identity that LMAW, Clapjoy, and Curious Cub cannot replicate.
+
+With ₹10L capital and 40+ designs already done, there is temptation to launch more — resist it. Each of these 7 must have perfect QA, 7 listing images, A+ content, and good stock depth before going live. Additional books launch in Phase 2 after first launch success.
 
 ### 2. **No editorial / QA gate exists**
 You have *no* sign-off process between "design done" and "send to print." Your AGGRESSIVE_REVIEW files are catching problems *after* the design is "Final." That's expensive. **Mandate a 2-person sign-off (one native Kannada/Sanskrit speaker + one mom outside the team) on every SKU before print PO.**
 
 ### 3. **Brand identity is a category, not a brand**
-"Indian books for kids" is what you sell, not who you are. Compare to Little Minds at Work (Montessori) and Curious Cub (premium urban) — they own a *position*. Yours should be: **"The Indian Cultural Preschool Brand — what your grandmother would buy if she had Amazon."** Lock this and put it on every cover, every reel, every A+ page.
+"Indian books for kids" is what you sell, not who you are. Compare to Little Minds at Work (Montessori) and Curious Cub (premium urban) — they own a *position*. Yours is a dual position: **"SanskaTots makes the activity books Indian kids deserve — better than what's out there, and rooted in who we are."** This covers BOTH the busy binder competition AND the cultural moat. Lock this and put it on every cover, every reel, every A+ page.
+
+On Amazon listing level, the 3 velcro books target IDENTICAL keywords to LMAW (busy binder, activity binder, Montessori book, toddler activity book) AND add Indian-specific keywords (Indian activity book, Hindi activity book, cultural busy book) that LMAW does not rank for. Best of both worlds.
 
 ### 4. **Reliance on Amazon = 50%**
 Amazon can change BSR algorithms, kill your ads, or get gamed by Clapjoy with review farms. **Target getting D2C WhatsApp to 30% of revenue by Month 9, not 15%.** Each WhatsApp customer = repeat buyer + zero CAC.

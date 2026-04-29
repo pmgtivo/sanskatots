@@ -238,26 +238,48 @@ Started with 2-4 year olds → expanded DOWN to 0-1 (Montessori Boxes, Crinkle B
 
 ---
 
+### ⚠️ STRATEGIC INTENT — READ THIS FIRST
+
+**SanskaTots competes with LMAW on TWO fronts simultaneously:**
+
+**FRONT 1 — HEAD-ON COMPETITION (Activity Books / Busy Binders)**
+SanskaTots is NOT just an "Indian alternative" to LMAW. The All-in-One Busy Book, Montessori Busy Book, and Animals Busy Book are **direct competitors** built to beat LMAW on product specs (bigger size, more activities, better quality) and price. These 3 books target the same keywords, the same parents, and the same Amazon BSR. Designs are final and ready for print. This is the volume and revenue engine.
+
+**FRONT 2 — CULTURAL MOAT (Indian Content)**
+SanskaTots ALSO has content LMAW has zero of: mythology activity books, regional language tracing, shloka books. This is the moat that stops any well-funded competitor from copying the brand. These books capture a parent LMAW's product catalogue will never reach.
+
+**Both fronts run in parallel. Neither is "the strategy" — BOTH ARE the strategy.**
+
+---
+
 ### PHASE 1: FOUNDATION (Weeks 1-4) — "BUILD THE WAR MACHINE"
 
-#### 1A. Product Portfolio Launch Plan
+#### 1A. Product Portfolio Launch Plan — Phase 1 (7 Books, Print-Ready)
 
-**Launch with 6 SKUs simultaneously** (not 1 — this is how you build a keyword moat from Day 1):
+**FRONT 1 — Direct LMAW Competitors (3 books — designs final, READY FOR PRINT)**
 
-| # | Product | Price | MRP | Age | USP vs LMAW |
+| # | Product | Price | MRP | Age | Advantage vs LMAW |
 |---|---|---|---|---|---|
-| 1 | **SanskaTots All-in-One Velcro Book** | ₹499 | ₹799 | 1-4 yrs | 20 activities (vs LMAW's 10), A4 size (vs A5), ₹200 cheaper |
-| 2 | **SanskaTots Hindi Varnamala Velcro Book** | ₹499 | ₹799 | 2-5 yrs | **ZERO competition — Hindi velcro book doesn't exist** |
-| 3 | **SanskaTots Mythology Adventure Book (Krishna)** | ₹599 | ₹899 | 2-6 yrs | **ZERO competition — mythology velcro book doesn't exist** |
-| 4 | **SanskaTots Phonics Velcro Book (1000 Words)** | ₹599 | ₹899 | 2-5 yrs | Academic curriculum-aligned, phonics method |
-| 5 | **SanskaTots Animal Kingdom Velcro Book** | ₹499 | ₹799 | 1-4 yrs | Real photographs (not cartoons), 15+ animals |
-| 6 | **SanskaTots Fun with Numbers Velcro Book** | ₹499 | ₹799 | 2-5 yrs | Count, match, add — progressive difficulty |
+| 1 | **All-in-One Busy Book** (A4, 24 pages velcro) | ₹499 | ₹799 | 1–4 yrs | **A4 vs LMAW's A5** (bigger = more value), 24 activity pages vs LMAW's 15, ₹200 cheaper |
+| 2 | **Montessori Busy Book** (A5, 16 pages velcro) | ₹449 | ₹699 | 1–3 yrs | Same size, same category, beats LMAW on price + quality spec (300GSM, laminated F+B) |
+| 3 | **Animals Busy Book** (A4, 16 pages velcro) | ₹449 | ₹699 | 1–4 yrs | **A4 size, 6 die-cut pages**, beats LMAW's A5 Animal Binder at same or lower price |
 
-**Why 6 SKUs at once:**
-- 6 ASINs = 6 keyword entry points from Day 1
+These 3 are the revenue engine. Amazon keyword targeting is identical to LMAW: "busy book," "activity binder," "Montessori activity book," "toddler busy binder," "animal activity book," etc.
+
+**FRONT 2 — Cultural Moat Products (4 books)**
+
+| # | Product | Price | MRP | Age | Competitive Moat |
+|---|---|---|---|---|---|
+| 4 | **BhagavadGita for Kids** (A5, 16 pages spiral) | ₹299 | ₹499 | 3–8 yrs | **Zero competition** — no mythology activity book exists |
+| 5 | **Shloka Board Book** (A6, 32 pages spiral) | ₹249 | ₹399 | 1–5 yrs | **Zero competition** — shloka books for toddlers don't exist |
+| 6 | **Kannada 5-in-1 Tracing Book** (A5, 32 pages spiral) | ₹299 | ₹499 | 3–6 yrs | **Regional language moat** — Sawan is the only competitor, poor quality |
+| 7 | **Pencil Control Level 1** (A5, 48 pages spiral) | ₹249 | ₹399 | 2–4 yrs | Pre-writing / school readiness category |
+
+**Why 7 SKUs simultaneously:**
+- 7 ASINs = 7 keyword entry points from Day 1
 - Enables "Buy 2+ get 10% off" promotions immediately
-- Enables combo bundles immediately
-- 6x the surface area for Amazon organic search
+- Enables combo bundles (velcro + mythology = premium gift set)
+- Covers both the mainstream activity book buyer AND the cultural identity buyer
 
 **Product Spec (BUILD BETTER than LMAW):**
 
