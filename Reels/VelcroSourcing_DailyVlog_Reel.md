@@ -37,8 +37,7 @@
 > *"We're being very, very careful this time."*
 
 **Dialogue (direct to camera, calm but firm):**
-> "Velcro. Hook and loops. Sounds simple, right? But we are not taking any shortcuts here."
-
+> "After the pen incident, we are being very, very careful with every single material that goes into our books."
 **Sound effect:** Velcro rip-apart sound — satisfying, sharp. (This is your audio hook.)
 
 ---
@@ -56,7 +55,7 @@
 > *🔄 Velcro hook & loop — locked in today*
 
 **Voiceover / Dialogue (warm, conversational):**
-> "So today we have two big things happening — we are finalising our book designs for print, and also we've been on a hunt for the right hook and loop material for our felt busy books."
+> "So today we have two big things happening — we are finalising our book designs for print, and also we've been on a hunt for the right hook and loop material for our Busy books."
 
 ---
 
@@ -119,7 +118,7 @@
 > *Manufacturer has started production.*
 
 **Dialogue (relieved, satisfied, energetic):**
-> "Order is placed. The manufacturer has started production. And the best part? Our premium hook and loops should reach us in the next 5 to 6 days!"
+> "And just like that — order is placed. The manufacturer has started production. And the best part? Our premium hook and loops should reach us in the next 5 to 6 days!"
 
 ---
 
@@ -128,7 +127,7 @@
 **Visual:** You holding the winning velcro sample up with one hand, slight smile. Behind you — your workspace with book designs pinned or on screen. Real, lived-in, authentic.
 
 **Dialogue (warm, direct, community-building):**
-> "Every single material going into SanskaTots books — we are choosing it the hard way. The right way. Because your child deserves nothing less. See you tomorrow."
+> "Every single material going into SanskaTots books — we are choosing it the hard way. Because your child deserves nothing less. See you tomorrow."
 
 **Text overlay (final frames):**
 > *Day [X] done. 5–6 days to Velcro delivery.*
