@@ -29,8 +29,7 @@
 **Nagarathna says (excited, then deflated):**
 > But then I realised — I am not ready at all. I forgot one tiny detail that is actually kind of important for selling on Amazon.
 > Hi I am Nagarathna, founder of SanskaTots. We make educational activity books for kids. We are launching on Amazon in June. 
-> to launch designs are done, printing is in progress, everything is set.
->
+> to launch, designs are done, printing is in progress, everything is set.
 > And then we realised — 'what printer are we using for the labels?'
 
 **VISUAL DIRECTION:**
