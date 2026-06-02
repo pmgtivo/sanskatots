@@ -443,12 +443,11 @@ You can add videos in two places:
 **Headline:** `"Built in India. Built for India's Children."`
 **Body Text (150 words max):**
 ```
-SanskaTots was born from one simple belief: Indian children deserve learning tools that match their 
-curiosity, their culture, and their potential.
+SanskaTots was born from one simple belief: Indian children deserve learning tools that match their curiosity, their culture, and their potential.
 
 Every SanskaTots book is designed by Indian educators, printed in India, and tested by Indian children.
-The Montessori Busy Book is our flagship — a complete school-readiness system that meets your child 
-exactly where they are, from age 1 onwards.
+
+The Montessori Busy Book is our flagship — a complete school-readiness system that meets your child exactly where they are, from age 1 onwards.
 
 We don't make generic books. We make books that become part of your child's first memories.
 ```
@@ -513,18 +512,13 @@ Q: From what age can my child use this book?
 A: From 1 year onwards with parental support. Independently from 2 years.
 
 Q: Is the pen safe for toddlers?
-A: Yes. The pen is non-toxic and child-safe. The chunky barrel prevents choking and aids grip.
+A: Yes. The pen is non-toxic and child-safe. The chunky barrel prevents choking and supports a comfortable grip.
 
-Q: What if a Velcro piece goes missing?
-A: The book includes extra Velcro cutting pages. You can also use standard Velcro from any craft store.
-
-Q: Can this replace preschool?
-A: It covers all foundational concepts taught in playgroup and Nursery. It's an excellent complement 
-   to formal schooling and a complete alternative for home-learning families.
+Q: Will this book help my kid become preschool-ready?
+A: Yes, it covers all foundational concepts taught in playgroup and Nursery. It's an excellent complement to formal schooling and a complete alternative for home-learning families.
 
 Q: Is it suitable as a gift?
-A: Absolutely — one of the most complete, reusable gifts for birthdays, baby showers, and school 
-   admission celebrations for children aged 1–5.
+A: Absolutely — one of the most complete, reusable gifts for birthdays, baby showers, and school admission celebrations for children aged 1–5.
 ```
 
 ---
