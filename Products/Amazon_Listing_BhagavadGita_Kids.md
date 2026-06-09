@@ -103,45 +103,49 @@ PERFECT FOR AGE 2+ | IDEAL GIFT FOR BIRTHDAYS, NAMKARAN, ANNAPRASHAN & FESTIVALS
 
 ### ✅ FULL DESCRIPTION (SEO + Keyword Optimized)
 
-```
-Does your child know who Krishna is — but doesn't know what Krishna actually TAUGHT?
+```html
+<p>Does your child know who Krishna is — but doesn't know what Krishna actually <b>TAUGHT</b>?</p>
 
-Most parents want their kids to connect with Indian culture and values. But most Gita books for children are either too complex, too preachy, or filled with images kids can't relate to.
+<p>Most parents want their kids to connect with Indian culture and values. But most Gita books for children are either too complex, too preachy, or filled with images kids can't relate to.</p>
 
-SanskaTots Bhagavad Gita for Kids solves this completely.
+<p><b>SanskaTots Bhagavad Gita for Kids solves this completely.</b></p>
 
-This book takes 22 of the most powerful, relevant teachings from the Bhagavad Gita and translates them into simple language and modern life situations that children aged 2 and above can genuinely understand and remember.
+<p>This book takes <b>22 of the most powerful, relevant teachings from the Bhagavad Gita</b> and translates them into simple language and modern life situations that children aged 2 and above can genuinely understand and remember.</p>
 
-WHAT'S INSIDE THE BOOK:
-✦ 22 teachings of Lord Krishna from the Bhagavad Gita
-✦ Each lesson explained in simple English, no Sanskrit overload
-✦ Modern examples: situations from school, playground, home & family
-✦ Vibrant 3D illustrations on every single page
-✦ Age-appropriate language for children aged 2 years and above
-✦ Compact A5 size — easy for little hands to hold
+<p><b>WHAT'S INSIDE THE BOOK:</b></p>
+<ul>
+<li>22 teachings of Lord Krishna from the Bhagavad Gita</li>
+<li>Each lesson explained in simple English, no Sanskrit overload</li>
+<li>Modern examples: situations from school, playground, home &amp; family</li>
+<li>Vibrant 3D illustrations on every single page</li>
+<li>Age-appropriate language for children aged 2 years and above</li>
+<li>Compact A5 size — easy for little hands to hold</li>
+</ul>
 
-WHAT YOUR CHILD WILL LEARN:
-✦ How to deal with anger and frustration
-✦ Why doing your best matters more than winning
-✦ How to be a good friend and show kindness
-✦ The value of patience, focus, and hard work
-✦ Why helping others makes us truly happy
-✦ How to face fear and be brave
+<p><b>WHAT YOUR CHILD WILL LEARN:</b></p>
+<ul>
+<li>How to deal with anger and frustration</li>
+<li>Why doing your best matters more than winning</li>
+<li>How to be a good friend and show kindness</li>
+<li>The value of patience, focus, and hard work</li>
+<li>Why helping others makes us truly happy</li>
+<li>How to face fear and be brave</li>
+</ul>
 
-WHY PARENTS CHOOSE THIS BOOK:
-✦ Not another mythology picture book — this is an actual life-lessons guide
-✦ Teaches values that hold relevance in today's screen-driven world
-✦ Great conversation starter between parent and child at bedtime
-✦ Rooted in India's greatest scripture — delivered in today's language
-✦ 100% Designed, printed, and made in India — supporting local creators
+<p><b>WHY PARENTS CHOOSE THIS BOOK:</b></p>
+<ul>
+<li>Not another mythology picture book — this is an actual life-lessons guide</li>
+<li>Teaches values that hold relevance in today's screen-driven world</li>
+<li>Great conversation starter between parent and child at bedtime</li>
+<li>Rooted in India's greatest scripture — delivered in today's language</li>
+<li>100% Designed, printed, and made in India — supporting local creators</li>
+</ul>
 
-PERFECT GIFTING OCCASION:
-Birthday gifts, Namkaran ceremonies, Annaprashan, Diwali, Christmas, Baby Showers, school reading corners, and any occasion you want to give a child the gift of wisdom.
+<p><b>PERFECT GIFTING OCCASION:</b><br>Birthday gifts, Namkaran ceremonies, Annaprashan, Diwali, Christmas, Baby Showers, school reading corners, and any occasion you want to give a child the gift of wisdom.</p>
 
-ABOUT SANSKATOTS:
-SanskaTots is an Indian children's education brand on a mission to preserve Indian culture, language, and values through beautifully designed books and activity kits. Every product is made in India, built with intention, and designed to make learning joyful.
+<p><b>ABOUT SANSKATOTS:</b><br>SanskaTots is an Indian children's education brand on a mission to preserve Indian culture, language, and values through beautifully designed books and activity kits. Every product is made in India, built with intention, and designed to make learning joyful.</p>
 
-Keywords: bhagavad gita for kids, gita for children, moral story book for kids, krishna stories for children, hindu mythology book, indian values for kids, life lessons for children, moral books for 2 year old, kids spiritual book india, bhagavad gita illustrated, gita teachings kids, sanskatots, made in india children book, 3d illustration book kids, good values book for children
+<p><i>Keywords: bhagavad gita for kids, gita for children, moral story book for kids, krishna stories for children, hindu mythology book, indian values for kids, life lessons for children, moral books for 2 year old, kids spiritual book india, bhagavad gita illustrated, gita teachings kids, sanskatots, made in india children book, 3d illustration book kids, good values book for children</i></p>
 ```
 
 ---

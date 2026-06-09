@@ -3,23 +3,19 @@ https://www.youtube.com/watch?v=x0GMf5ARXqs
 
 ---
 
-## ORIGINAL TRANSCRIPT (RAW)
+## Mini war
 
-* "My Goodness, I don't know how people are running businesses. 
-* I had to roam across half of Banglore just for one small product. 
-* This is another day and we waged another mini-war for these small little velcro dots."
-* "We searched from Bangalore to Delhi to see if we could find them anywhere for a lower price. 
-* In the end, what we found out is that in South India..."
-* "...there are no velcro manufacturing units anywhere. 
-* They are all just dealers. 
-* Whoever we asked told us the exact same thing: Ahmedabad. 
-* All the manufacturing units are located right there."
-* "But we were afraid of trusting them and placing an order online—unsure if it would actually arrive, or in what condition it would come."
-* "So, initially we thought we will find the good dealers in bangalore is safe. We went to a dealer in Bangalore, but he quoted us a very high price. So we had to take tough call and short listed 3 manufacturers initially and choosed final one manufacturer in ahmedabad and we booked from them.
-* They took almost 15 days to deliver the velcro dots.
-* and worst part is We had to pay 100% in advance to get the order delivered.
-* Gods grace we got the velcro dots in time and in good condition.
-
+* My Goodness..., I don't know how people are running businesses....
+* But, I am finding it Every single day as a mini war. let me tell you why.
+* we wanted to source velcro dots for our activity books. I roamed across Bangalore just for this small product.
+* I didn't get any good prices in Bangalore nor in south India. so I had to figure out online.
+* but I don't want to source it from china, because we are completely made in India brand. so I wanted to source it from India only.
+* I found some of manufacturers in India and... there prices will kick me out of business in.. no time.
+* But I never gave up. I kept searching and finally found a manufacturer in Gujarat who was giving me a good price.
+* And then we had to take a tough call. We had to trust a manufacturer who is 1400 km away and make a full payment in advance then later wait for 15 days to get the velcro dots. hoping that they will arrive in time and in good condition.
+* For me this looks like a mini war. which I have not subscribed for. 
+* but I had to fight this war for my business.
+* I am not sure if I be winning this war or not. but feeling good factor is I am trying my best to win this war. and I am hoping for the best.
 ---
 
 ## REEL SCRIPT — REWRITTEN

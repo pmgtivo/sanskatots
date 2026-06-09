@@ -5,26 +5,25 @@
 ## Script
 
 **(0:00 - 0:04):**
-I thought everything is ready for the June launch.
-But somehow I forgot very basic thing for lanching our activity books on amazon.
+Everything is ready for launching our activity books on Amazon. 
+But wait... I forgot very basic thing in my todo list.
 
 **(0:04 - 0:14):**
 Designs done. Books getting printed. Packaging sorted. 
-I thought myself that Everything I figured it out in my todo list.
-And then lately I realised. We are selling on ecommerce. How am I printing shipping labels?
+ohh my god.. I thought I figured it out Everything in my todo list.
+And then lately realised. we totally forgot printer for printing shipping labels.
 
 **(0:14 - 0:24):**
-So I went to Google, thinking it's a five-minute decision to purchase a printer.
-But turns out there are multiple types of printers — InkJet, Direct Thermal, and more.
-And now I have to research which one is actually right for ecommerce. this is not simple as I thought. it drained me for hours.
+So I Googled it, thinking it's a five-minute decision to purchase a printer.
+But turns out there are multiple types of printers — InkJet, Direct Thermal, and more. that's when my head started spinning.
+
 
 **(0:24 - 0:33):**
-After going through it all, I choosed to get Direct Thermal printer.
-Reason: No ink cartridges, no replacements, prints fast, built exactly for shipping labels.
-I ordered it online, and it arrived in two days.
+After spending hours researching, I choosed to get Direct Thermal printer.
+Reason: No ink cartridges, prints fast, built exactly for shipping labels.
 
 **(0:33 - 0:45):**
-and then start setting up the label printer.
+once I got the Printer, started setting up the label printer.
 I spent more than hour just trying to get one label to print correctly and align perfectly on the sticker sheet.
 
 **(0:45 - 0:55):**
