@@ -1,0 +1,16 @@
+# SanskaTots Book Validator — Dependencies
+
+# PDF parsing & rendering (text extraction, bounding boxes, page rendering)
+pymupdf>=1.24.0
+
+# Spell checking (pure Python, no server needed)
+pyspellchecker>=0.8.1
+
+# UI
+streamlit>=1.35.0
+
+# AI visual review (optional — only needed if using GPT-4o review)
+openai>=1.30.0
+
+# Image processing (used by render_page_annotated via PIL)
+Pillow>=10.0.0

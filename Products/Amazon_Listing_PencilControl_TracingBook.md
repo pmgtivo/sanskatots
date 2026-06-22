@@ -408,9 +408,18 @@ If you create a second cut for the A+ content video module:
 
 ### Module 6 — Age & Skills Mapping
 **Type:** Standard Image + Light Text  
-**Image:** Infographic — child at center, 6 skill branches (same as Slot 7 image above)  
+**Image:** Infographic — child at center, 6 skill branches (Skill bubbles as below)  
 **Headline:** `"Everything Your 2+ Year Old Needs to Be School-Ready"`  
 **Body:** "From the moment a child first holds a pen to the day they write their name at school — this book covers the entire pre-writing journey. Designed with early childhood education principles for children aged 2 to 6."
+
+| Skill Bubble | Supporting Copy (small) |
+|-------------|------------------------|
+| ✋ Pencil Grip Strength | "Builds correct hold before school" |
+| 👁️ Hand-Eye Coordination | "Lines, curves, and shapes train focus" |
+| 🅰️ Alphabet Recognition | "Trace A–Z with confidence" |
+| 🔢 Number Sense | "Numbers 0–9 through tactile tracing" |
+| 🔷 Shape Awareness | "Circles, squares, triangles & more" |
+| 🎨 Creative Confidence | "Drawing tracing sparks imagination" |
 
 ---
 

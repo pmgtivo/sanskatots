@@ -12,3 +12,20 @@ I want you to write a script for below concept, think of you are top talented In
 
 
 I want you to write a Instagram reel script on below story for my business. Keep that in ur context that I wanted engaged story like script(with very basic english where every Indian mother understands). Story should have first 5 seconds hook. 
+
+
+Reel length / pacing?
+A) ~30 sec (punchy, fast)
+B) ~45 sec (balanced storytelling — my recommendation for a vlog)
+C) ~60 sec (fuller day-in-the-life)
+2. Format / delivery style?
+A) Talking to camera (you narrating your day, vlog-style)
+B) Voiceover + B-roll (you filming the books, packaging, printer run)
+C) Mix of both
+3. Emotional tone for the ending?
+A) Hopeful & heartfelt ("we made it, wish us luck 🥹")
+B) Funny/relatable (panic over the forgotten invoice labels)
+C) Mix — light panic that lands on a heartfelt note (my recommendation)
+4. Where should I put it?
+A) Add as a new row (A9) in your Reels calendar with a posting date (next slot would be ~20-Jun, the day before launch — perfect for a vlog)
+B) Just write it here in chat for now
