@@ -1,0 +1,201 @@
+<!doctype html><html><head><meta charset="UTF-8"/><link rel="dns-prefetch" href="static.meeshosupply.com"/><link rel="dns-prefetch" href="images.meeshosupplyassets.com"/><link rel="dns-prefetch" href="panelchunks.meeshosupplyassets.com"/><link rel="preconnect" href="static.meeshosupply.com" crossorigin/><link rel="preconnect" href="images.meeshosupplyassets.com" crossorigin/><link rel="preconnect" href="panelchunks.meeshosupplyassets.com" crossorigin/><link rel="preload" href="https://static.meeshosupply.com/fonts/Mier_B02-Book.woff2" as="font" type="font/woff2" crossorigin/><link rel="preload" href="https://static.meeshosupply.com/fonts/Mier_B02-Bold.woff2" as="font" type="font/woff2" crossorigin/><style>/* Critical CSS for FCP optimization */
+            body {
+                margin: 0;
+                font-family:
+                    'Mier Book',
+                    -apple-system,
+                    BlinkMacSystemFont,
+                    'Segoe UI',
+                    'Roboto',
+                    'Oxygen',
+                    'Ubuntu',
+                    'Cantarell',
+                    sans-serif;
+                background-color: #f2f5fa;
+            }
+
+            .loading-container-wrapper {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+                background-color: #f2f5fa;
+                width: 100%;
+            }
+
+            .loading-container {
+                position: relative;
+                width: 36px;
+                height: 36px;
+            }
+
+            .loading-spinner {
+                width: 36px;
+                height: 36px;
+                transform: rotate(-90deg);
+                color: #edeaff;
+            }
+
+            .loading-progress {
+                color: #3c29b7;
+                position: absolute;
+                left: 0;
+                width: 36px;
+                height: 36px;
+                animation: rotate 1s linear infinite;
+            }
+
+            @keyframes rotate {
+                from {
+                    transform: rotate(0deg);
+                }
+
+                to {
+                    transform: rotate(360deg);
+                }
+            }</style><script>(function () {
+                var BASE_FONT_URL = 'https://static.meeshosupply.com/fonts/';
+                var FONT_FACES = [
+                    {
+                        name: 'Mier Bold',
+                        woff2: 'Mier_B02-Bold.woff2',
+                        woff: 'Mier_B02-Bold.woff',
+                    },
+                    {
+                        name: 'Mier Book',
+                        woff2: 'Mier_B02-Book.woff2',
+                        woff: 'Mier_B02-Book.woff',
+                    },
+                    {
+                        name: 'Mier Demi',
+                        woff2: 'Mier_B02-Demi.woff2',
+                        woff: 'Mier_B02-Demi.woff',
+                    },
+                ];
+
+                // Use FontFace API if available for better performance
+                if (window.FontFace) {
+                    // Load fonts asynchronously without blocking
+                    FONT_FACES.forEach(function (item) {
+                        var source =
+                            'url("' +
+                            BASE_FONT_URL +
+                            item.woff2 +
+                            '") format("woff2"), url("' +
+                            BASE_FONT_URL +
+                            item.woff +
+                            '") format("woff")';
+                        var fontFace = new FontFace(item.name, source, {
+                            display: 'swap',
+                            weight: item.name.includes('Bold')
+                                ? '700'
+                                : item.name.includes('Demi')
+                                  ? '600'
+                                  : '400',
+                        });
+
+                        fontFace
+                            .load()
+                            .then(function () {
+                                document.fonts.add(fontFace);
+                            })
+                            .catch(function (err) {
+                                console.warn('Font loading failed:', err);
+                                // Browser will automatically use fallback fonts
+                            });
+                    });
+                } else {
+                    // Fallback for older browsers
+                    FONT_FACES.reduce(function (acc, fontface) {
+                        acc.push({
+                            url: fontface.woff2,
+                            type: 'woff2',
+                        });
+                        acc.push({
+                            url: fontface.woff,
+                            type: 'woff',
+                        });
+                        return acc;
+                    }, []).forEach(function (item) {
+                        var linkElement = document.createElement('link');
+                        linkElement.rel = 'preload';
+                        linkElement.href = BASE_FONT_URL + item.url;
+                        linkElement.as = 'font';
+                        linkElement.type = 'font/' + item.type;
+                        linkElement.crossOrigin = 'anonymous';
+                        document.head.appendChild(linkElement);
+                    });
+                }
+            })();</script><noscript><link rel="stylesheet" href="https://static.meeshosupply.com/css/mier-fonts-swap.css"/></noscript><link rel="shortcut icon" href="https://static.meeshosupply.com/web/meesho-logo-fav.png"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Meesho | Supplier Panel</title><script>try {
+                (function () {
+                    var ROUTING_BASE_PATH =
+                        '/panel/v3/new';
+                    var PUBLIC_ROUTES = [
+                        'login',
+                        'forgot-password',
+                        'reset-password',
+                        'signup',
+                        'supplier-search',
+                    ];
+
+                    // Extract identifier from URL path
+                    var splitResult =
+                        window.location.pathname.split(ROUTING_BASE_PATH);
+                    var pathAfterBase =
+                        splitResult && splitResult[1] ? splitResult[1] : '';
+                    var pathParts = pathAfterBase.split('/').filter(Boolean);
+                    // pathParts[0] = service (e.g. 'growth'), pathParts[1] = identifier
+                    var identifier = pathParts[1] || '';
+
+                    var FETCH_HEADERS = {
+                        'Content-Type': 'application/json;charset=UTF-8',
+                        'client-type': 'web',
+                        identifier: identifier,
+                    };
+
+                    var isPublic = PUBLIC_ROUTES.indexOf(identifier) !== -1;
+
+                    // Skip prefetch for app clients (xoox bridge present) or public routes
+                    var isApp =
+                        window.xoox &&
+                        typeof window.xoox.getParams === 'function';
+                    if (isApp || !pathParts.length || isPublic || !identifier)
+                        return;
+                    var fallbackData = {
+                        registrationStatus: { isAuthenticated: false },
+                        supplier: null,
+                        user: null,
+                    };
+
+                    window.__SUPPLY_DATA_PROMISE__ = (function prefetchAPIs() {
+                        return fetch(
+                            '/api/container/supplier/prefetch-supply-data',
+                            {
+                                method: 'POST',
+                                credentials: 'include',
+                                headers: FETCH_HEADERS,
+                                body: JSON.stringify({
+                                    identifier: identifier,
+                                }),
+                            }
+                        )
+                            .then(function (res) {
+                                if (!res.ok) {
+                                    if (res.status === 403) {
+                                        window.__SUPPLY_DATA__ = fallbackData;
+                                    }
+                                    return;
+                                }
+                                return res.json().then(function (supplyData) {
+                                    window.__SUPPLY_DATA__ = supplyData;
+                                });
+                            })
+                            .catch(function () {
+                                //  React app will fall back to normal API calls
+                            });
+                    })();
+                })();
+            } catch (e) {
+                console.error('Prefetch failed!', e);
+            }</script><script defer="defer" src="/client/supplier-panel-container/latest/main.ed5bb45d7217a9355969.js"></script></head><body><noscript id="js-disabled-fallback"><div style="padding: 0 1.5rem"><h2>Meesho Supplier Panel</h2><span>Hello there! It seems like JavaScript is disabled in your browser.<br/>To fully experience our website's features and functionality, we recommend enabling JavaScript in your browser settings.</span></div></noscript><div id="root"><div class="loading-container-wrapper"><div class="loading-container"><span role="progressbar" aria-valuenow="100" class="loading-progress"><svg viewBox="22 22 44 44"><circle cx="44" cy="44" r="20" fill="none" stroke="currentColor" stroke-width="4" stroke-dasharray="80px, 200px" stroke-dashoffset="0"></circle></svg></span></div></div></div><div id="plugin"></div><div id="alerts"></div><script type="text/javascript"  src="/xA8SMmrbTK/AUtAf2/eXPx/uOEcDNEGEhcYJfc9/bGdLUXc/eUhSIS/FAFw4B"></script></body></html>

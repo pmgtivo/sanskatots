@@ -1,0 +1,5 @@
+# PDF handling / rendering
+pymupdf>=1.24.0
+
+# Optional: only needed for --sharpen / --contrast / --mono image enhancement
+Pillow>=10.0.0

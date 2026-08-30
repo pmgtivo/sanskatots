@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <h1>Order Command Center</h1>
+    <div class="grid" id="counts">
+      <div class="box"><span class="n" id="cNew">–</span><span class="l">To print</span></div>
+      <div class="box"><span class="n" id="cPack">–</span><span class="l">To pack</span></div>
+      <div class="box"><span class="n" id="cReady">–</span><span class="l">For pickup</span></div>
+      <div class="box"><span class="n" id="cProblem">–</span><span class="l">Problems</span></div>
+    </div>
+    <p class="today" id="today"></p>
+    <button id="open">Open dashboard</button>
+    <p class="hint" id="backupHint"></p>
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

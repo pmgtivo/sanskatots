@@ -6,6 +6,10 @@ pymupdf>=1.24.0
 # Spell checking (pure Python, no server needed)
 pyspellchecker>=0.8.1
 
+# Pronunciation / transliteration validation for regional-language books
+# (Kannada, Hindi, Telugu, Tamil, Malayalam, Sanskrit, …)
+indic-transliteration>=2.3.0
+
 # UI
 streamlit>=1.35.0
 

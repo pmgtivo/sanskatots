@@ -1,0 +1,48 @@
+{
+  "manifest_version": 3,
+  "name": "SanskaTots Order Command Center",
+  "version": "1.0.0",
+  "description": "One dashboard for Amazon, Flipkart and Meesho orders: pack-and-ship pipeline, RTO tracking and weekly/monthly profit reports. All data stays on this computer.",
+  "permissions": ["storage", "unlimitedStorage", "scripting", "activeTab", "downloads"],
+  "host_permissions": [
+    "https://sellercentral.amazon.in/*",
+    "https://seller.flipkart.com/*",
+    "https://supplier.meesho.com/*"
+  ],
+  "background": {
+    "service_worker": "src/background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "src/popup/popup.html",
+    "default_title": "Order Command Center",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://sellercentral.amazon.in/*",
+        "https://seller.flipkart.com/*",
+        "https://supplier.meesho.com/*"
+      ],
+      "js": ["src/content/grab.js"],
+      "css": ["src/content/grab.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["src/dashboard/index.html"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

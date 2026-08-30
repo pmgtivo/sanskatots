@@ -1,0 +1,5 @@
+Sub Order No,Order Date,SKU,Product Name,Quantity,Supplier Discounted Price (Incl GST and Commision),Reason for Credit Entry,AWB Number,Customer State
+1001_1,2026-07-29,ST-BUSY-01,All In One Busy Book,1,499,READY_TO_SHIP,VLM10001,Karnataka
+1002_1,2026-07-29,ST-FELT-02,Felt Craft Kit,2,838,READY_TO_SHIP,VLM10002,Maharashtra
+1003_1,2026-07-30,ST-BUSY-01,All In One Busy Book,1,499,RTO_COMPLETE,VLM10003,Delhi
+1004_1,2026-07-30,ST-BUSY-01,All In One Busy Book,1,499,DELIVERED,VLM10004,Tamil Nadu

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Order Command Center</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="logo">OCC</span>
+        <div>
+          <h1 id="bizName">SanskaTots</h1>
+          <p class="sub">Order Command Center — Amazon · Flipkart · Meesho</p>
+        </div>
+      </div>
+      <nav class="tabs">
+        <button class="tab active" data-tab="pack">Pack &amp; Ship</button>
+        <button class="tab" data-tab="orders">Orders</button>
+        <button class="tab" data-tab="import">Import</button>
+        <button class="tab" data-tab="skus">SKUs &amp; Costs</button>
+        <button class="tab" data-tab="reports">Reports</button>
+        <button class="tab" data-tab="settings">Settings</button>
+      </nav>
+    </header>
+
+    <main>
+      <!-- ============ PACK & SHIP ============ -->
+      <section class="panel active" id="tab-pack">
+        <div class="scanbar">
+          <div class="scanbox">
+            <label for="scanInput">Scan AWB / Order ID (or type it and press Enter)</label>
+            <input
+              id="scanInput"
+              type="text"
+              autocomplete="off"
+              placeholder="Point the scanner at the label barcode…"
+            />
+            <div class="scan-actions">
+              <span>Scan moves the order to:</span>
+              <select id="scanTarget">
+                <option value="AUTO">Next step automatically</option>
+                <option value="LABEL_PRINTED">Label printed</option>
+                <option value="PACKED">Packed</option>
+                <option value="HANDED_OVER">Handed over to courier</option>
+              </select>
+            </div>
+          </div>
+          <div id="scanResult" class="scan-result">Ready.</div>
+        </div>
+
+        <div class="stat-row" id="packStats"></div>
+
+        <div class="toolbar">
+          <input id="packSearch" type="search" placeholder="Filter this queue…" />
+          <select id="packPlatform">
+            <option value="">All platforms</option>
+            <option value="amazon">Amazon</option>
+            <option value="flipkart">Flipkart</option>
+            <option value="meesho">Meesho</option>
+          </select>
+          <button id="printPickList" class="btn">Print pick list</button>
+          <span class="spacer"></span>
+          <label class="chk"><input type="checkbox" id="packShowAll" /> Show shipped too</label>
+        </div>
+
+        <div class="lanes" id="lanes"></div>
+      </section>
+
+      <!-- ============ ORDERS ============ -->
+      <section class="panel" id="tab-orders">
+        <div class="toolbar">
+          <input id="orderSearch" type="search" placeholder="Search order ID, AWB, SKU, product…" />
+          <select id="filterPlatform">
+            <option value="">All platforms</option>
+            <option value="amazon">Amazon</option>
+            <option value="flipkart">Flipkart</option>
+            <option value="meesho">Meesho</option>
+            <option value="other">Other</option>
+          </select>
+          <select id="filterStatus"></select>
+          <input id="filterFrom" type="date" title="From order date" />
+          <input id="filterTo" type="date" title="To order date" />
+          <button id="clearFilters" class="btn ghost">Clear</button>
+          <span class="spacer"></span>
+          <button id="exportOrders" class="btn">Export CSV</button>
+        </div>
+        <div class="bulkbar">
+          <span id="selCount">0 selected</span>
+          <select id="bulkStatus"></select>
+          <select id="bulkReason"></select>
+          <button id="applyBulk" class="btn primary">Apply to selected</button>
+          <button id="deleteSelected" class="btn danger ghost">Delete selected</button>
+        </div>
+        <div class="table-wrap">
+          <table id="ordersTable">
+            <thead>
+              <tr>
+                <th><input type="checkbox" id="selAll" /></th>
+                <th>Date</th>
+                <th>Platform</th>
+                <th>Order / AWB</th>
+                <th>SKU</th>
+                <th>Product</th>
+                <th class="num">Qty</th>
+                <th class="num">Price</th>
+                <th class="num">Profit</th>
+                <th>Status</th>
+                <th>Reason</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="pager">
+          <button id="prevPage" class="btn ghost">Prev</button>
+          <span id="pageInfo"></span>
+          <button id="nextPage" class="btn ghost">Next</button>
+        </div>
+      </section>
+
+      <!-- ============ IMPORT ============ -->
+      <section class="panel" id="tab-import">
+        <div class="card">
+          <h2>1. Pick your order file</h2>
+          <p class="muted">
+            Download the order report from each seller panel, then drop it here. CSV, TSV or TXT.
+            Re-importing the same file is safe — existing orders are updated, your packing progress is kept.
+          </p>
+          <div id="dropZone" class="dropzone">
+            <input type="file" id="fileInput" accept=".csv,.tsv,.txt" multiple hidden />
+            <p><strong>Drop file(s) here</strong> or <button class="btn" id="browseBtn">browse</button></p>
+          </div>
+          <details class="help">
+            <summary>Where do I download these reports?</summary>
+            <ul>
+              <li><strong>Amazon:</strong> Seller Central → Orders → Order Reports → Request "Unshipped/All orders" → download the .txt</li>
+              <li><strong>Flipkart:</strong> Seller Hub → Orders → Download → "All orders" CSV</li>
+              <li><strong>Meesho:</strong> Supplier Panel → Orders → Download → order CSV (or Payments → order payments CSV for settled prices)</li>
+            </ul>
+          </details>
+        </div>
+
+        <div class="card hidden" id="mapCard">
+          <h2>2. Check the column mapping</h2>
+          <div class="row">
+            <label>Platform
+              <select id="mapPlatform">
+                <option value="amazon">Amazon</option>
+                <option value="flipkart">Flipkart</option>
+                <option value="meesho">Meesho</option>
+                <option value="other">Other</option>
+              </select>
+            </label>
+            <span id="mapFileName" class="muted"></span>
+          </div>
+          <div id="mapGrid" class="map-grid"></div>
+          <h3>Preview</h3>
+          <div class="table-wrap short">
+            <table id="previewTable">
+              <thead></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <div class="row">
+            <button id="confirmImport" class="btn primary big">Import these orders</button>
+            <button id="cancelImport" class="btn ghost">Cancel</button>
+            <span id="importMsg" class="muted"></span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Add one order by hand</h2>
+          <div class="manual-grid">
+            <label>Platform
+              <select id="mOrderPlatform">
+                <option value="amazon">Amazon</option>
+                <option value="flipkart">Flipkart</option>
+                <option value="meesho">Meesho</option>
+                <option value="other">Other</option>
+              </select>
+            </label>
+            <label>Order ID <input id="mOrderId" type="text" /></label>
+            <label>SKU <input id="mSku" type="text" list="skuList" /></label>
+            <label>Qty <input id="mQty" type="number" value="1" min="1" /></label>
+            <label>Price ₹ <input id="mPrice" type="number" step="0.01" /></label>
+            <label>AWB <input id="mAwb" type="text" /></label>
+            <label>Order date <input id="mDate" type="date" /></label>
+            <button id="addManual" class="btn primary">Add order</button>
+          </div>
+          <datalist id="skuList"></datalist>
+        </div>
+      </section>
+
+      <!-- ============ SKUS ============ -->
+      <section class="panel" id="tab-skus">
+        <div class="card">
+          <h2>Cost per SKU</h2>
+          <p class="muted">
+            Profit numbers are only as good as these costs. Fill the cost price once per SKU —
+            what you actually pay to make/buy one unit. Packaging is added on top.
+          </p>
+          <div class="row">
+            <button id="pullSkus" class="btn">Pull SKUs from my orders</button>
+            <button id="exportSkus" class="btn ghost">Export SKU costs</button>
+            <button id="importSkusBtn" class="btn ghost">Import SKU costs</button>
+            <input type="file" id="importSkusFile" accept=".csv" hidden />
+          </div>
+          <div class="table-wrap">
+            <table id="skuTable">
+              <thead>
+                <tr>
+                  <th>SKU</th>
+                  <th>Title</th>
+                  <th class="num">Cost price ₹</th>
+                  <th class="num">Packaging ₹</th>
+                  <th class="num">Units sold</th>
+                  <th class="num">Profit ₹</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ REPORTS ============ -->
+      <section class="panel" id="tab-reports">
+        <div class="toolbar">
+          <select id="reportPeriod">
+            <option value="week">Weekly (Mon–Sun)</option>
+            <option value="month">Monthly</option>
+          </select>
+          <select id="reportPlatform">
+            <option value="">All platforms</option>
+            <option value="amazon">Amazon</option>
+            <option value="flipkart">Flipkart</option>
+            <option value="meesho">Meesho</option>
+          </select>
+          <span class="spacer"></span>
+          <button id="exportReport" class="btn">Export this report</button>
+          <button id="printReport" class="btn ghost">Print</button>
+        </div>
+        <div class="stat-row" id="reportStats"></div>
+        <div class="card">
+          <h2 id="periodTitle">By period</h2>
+          <div class="table-wrap">
+            <table id="periodTable">
+              <thead>
+                <tr>
+                  <th>Period</th>
+                  <th class="num">Orders</th>
+                  <th class="num">Units</th>
+                  <th class="num">Revenue ₹</th>
+                  <th class="num">Fees ₹</th>
+                  <th class="num">Cost ₹</th>
+                  <th class="num">Profit ₹</th>
+                  <th class="num">Margin %</th>
+                  <th class="num">RTO %</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="two-col">
+          <div class="card">
+            <h2>By platform</h2>
+            <div class="table-wrap">
+              <table id="platformTable">
+                <thead>
+                  <tr><th>Platform</th><th class="num">Orders</th><th class="num">Revenue ₹</th><th class="num">Profit ₹</th><th class="num">Margin %</th><th class="num">RTO %</th></tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card">
+            <h2>By SKU</h2>
+            <div class="table-wrap">
+              <table id="skuReportTable">
+                <thead>
+                  <tr><th>SKU</th><th class="num">Units</th><th class="num">Revenue ₹</th><th class="num">Profit ₹</th><th class="num">RTO %</th></tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <h2>Why orders come back</h2>
+          <div class="table-wrap">
+            <table id="reasonTable">
+              <thead><tr><th>Reason</th><th class="num">Count</th><th class="num">Money lost ₹</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SETTINGS ============ -->
+      <section class="panel" id="tab-settings">
+        <div class="card">
+          <h2>Business</h2>
+          <div class="row">
+            <label>Business name <input id="setBizName" type="text" /></label>
+            <label>Default packaging cost ₹ <input id="setPackaging" type="number" step="0.5" /></label>
+            <label class="chk"><input type="checkbox" id="setBeep" /> Beep on scan</label>
+          </div>
+        </div>
+        <div class="card">
+          <h2>Platform fees</h2>
+          <p class="muted">
+            Put in the numbers from your own settlement reports. If a platform pays you a
+            final take-home amount (Meesho does), tick "price already net of fees" and leave the rest at zero.
+          </p>
+          <div id="feeGrid"></div>
+          <button id="saveSettings" class="btn primary">Save settings</button>
+          <span id="settingsMsg" class="muted"></span>
+        </div>
+        <div class="card">
+          <h2>Backup</h2>
+          <p class="muted">Everything is stored inside this browser profile only. Take a backup weekly.</p>
+          <div class="row">
+            <button id="backupJson" class="btn primary">Download full backup (.json)</button>
+            <button id="exportAllCsv" class="btn">Export all orders (.csv)</button>
+            <button id="restoreBtn" class="btn ghost">Restore from backup</button>
+            <input type="file" id="restoreFile" accept=".json" hidden />
+          </div>
+          <p id="backupMsg" class="muted"></p>
+        </div>
+        <div class="card danger-zone">
+          <h2>Danger zone</h2>
+          <button id="wipeData" class="btn danger">Delete all data</button>
+        </div>
+      </section>
+    </main>
+
+    <div id="toast" class="toast"></div>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

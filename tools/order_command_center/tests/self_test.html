@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Order Command Center — self test</title>
+    <style>
+      body { font-family: monospace; padding: 20px; background: #0f172a; color: #e2e8f0; }
+      .pass { color: #4ade80; }
+      .fail { color: #f87171; font-weight: bold; }
+      h1 { font-size: 16px; }
+    </style>
+  </head>
+  <body>
+    <h1>Self test</h1>
+    <div id="out"></div>
+    <script type="module">
+      import {
+        parseDelimited, toObjects, detectPlatform, autoMap, recordsToOrders,
+        parseDate, parseMoney, mapStatus, toCsv,
+      } from '../src/lib/csv.js';
+      import { computePnl, rollup, DEFAULT_SETTINGS, nextStatuses } from '../src/lib/model.js';
+      import { STORE_ORDERS, put, getAll, clearStore } from '../src/lib/db.js';
+
+      const out = document.getElementById('out');
+      let fails = 0;
+      function check(name, cond, extra) {
+        const d = document.createElement('div');
+        d.className = cond ? 'pass' : 'fail';
+        d.textContent = `${cond ? 'PASS' : 'FAIL'} — ${name}${cond || extra === undefined ? '' : ' → ' + JSON.stringify(extra)}`;
+        out.appendChild(d);
+        if (!cond) fails += 1;
+      }
+
+      /* ---------- CSV parser ---------- */
+      const csv = 'a,b,c\n1,"he said ""hi""",3\n4,"line\nbreak",6\n';
+      const rows = parseDelimited(csv);
+      check('parses quoted commas and newlines', rows.length === 3 && rows[1][1] === 'he said "hi"' && rows[2][1] === 'line\nbreak', rows);
+
+      /* ---------- Amazon ---------- */
+      const amazon = [
+        'order-id\torder-item-id\tpurchase-date\tsku\tproduct-name\tquantity-purchased\titem-price\torder-status\ttracking-id\tship-state',
+        '408-1234567-1234567\t1111\t2026-07-28T10:00:00+00:00\tST-BUSY-01\tAll In One Busy Book\t2\t1198.00\tUnshipped\tTRK123\tKarnataka',
+      ].join('\n');
+      let o = toObjects(parseDelimited(amazon));
+      let plat = detectPlatform(o.headers, 'amazon_orders.txt');
+      check('detects Amazon', plat === 'amazon', plat);
+      let map = autoMap(o.headers, plat);
+      let amzOrders = recordsToOrders(o.records, plat, map);
+      check('Amazon row parsed', amzOrders.length === 1 && amzOrders[0].sku === 'ST-BUSY-01' && amzOrders[0].qty === 2 && amzOrders[0].sellingPrice === 1198 && amzOrders[0].orderDate === '2026-07-28' && amzOrders[0].status === 'NEW', amzOrders[0]);
+
+      /* ---------- Flipkart ---------- */
+      const flipkart = [
+        'Order ID,Order Item ID,Ordered On,SKU,Product,Quantity,Selling Price Per Item,Order Status,Tracking ID,Customer State',
+        'OD5555,OI9999,28-07-2026,ST-FELT-02,Felt Craft Kit,1,"₹649.00",Shipped,FK998877,Maharashtra',
+      ].join('\n');
+      o = toObjects(parseDelimited(flipkart));
+      plat = detectPlatform(o.headers, 'x.csv');
+      check('detects Flipkart', plat === 'flipkart', plat);
+      let fkOrders = recordsToOrders(o.records, plat, autoMap(o.headers, plat));
+      check('Flipkart row parsed (day-first date, ₹ price)', fkOrders[0].orderDate === '2026-07-28' && fkOrders[0].sellingPrice === 649 && fkOrders[0].status === 'IN_TRANSIT', fkOrders[0]);
+
+      /* ---------- Meesho ---------- */
+      const meesho = [
+        'Sub Order No,Order Date,SKU,Product Name,Quantity,Supplier Discounted Price (Incl GST and Commision),Reason for Credit Entry,AWB Number,Customer State',
+        '12345_1,2026-07-27,ST-BUSY-01,Busy Book,1,499,RTO_COMPLETE,VLM777,Delhi',
+        '12345_1,2026-07-27,ST-BUSY-01,Busy Book,1,499,RTO_COMPLETE,VLM777,Delhi',
+      ].join('\n');
+      o = toObjects(parseDelimited(meesho));
+      plat = detectPlatform(o.headers, 'x.csv');
+      check('detects Meesho', plat === 'meesho', plat);
+      let mOrders = recordsToOrders(o.records, plat, autoMap(o.headers, plat));
+      check('Meesho duplicate rows merged into one line', mOrders.length === 1 && mOrders[0].qty === 2, mOrders);
+      check('RTO_COMPLETE maps to RTO_RECEIVED', mOrders[0].status === 'RTO_RECEIVED', mOrders[0].status);
+
+      /* ---------- dates & money ---------- */
+      check('parses 30 Jul 2026', parseDate('30 Jul 2026') === '2026-07-30');
+      check('parses Jul 30, 2026', parseDate('Jul 30, 2026') === '2026-07-30');
+      check('parses 05/08/2026 as 5 Aug', parseDate('05/08/2026') === '2026-08-05');
+      check('parses ₹1,198.50', parseMoney('₹1,198.50') === 1198.5);
+      check('cancelled status', mapStatus('CANCELLED_CUSTOMER') === 'CANCELLED');
+      check('door step exchange', mapStatus('DOOR_STEP_EXCHANGED') === 'EXCHANGE_REQUESTED');
+
+      /* ---------- profit engine ---------- */
+      const skus = { 'ST-BUSY-01': { sku: 'ST-BUSY-01', costPrice: 150, packagingCost: 10 } };
+      const settings = DEFAULT_SETTINGS;
+      const delivered = { platform: 'amazon', sku: 'ST-BUSY-01', qty: 1, sellingPrice: 999, status: 'DELIVERED' };
+      const p = computePnl(delivered, skus, settings);
+      check('Amazon delivered profit', Math.abs(p.profit - (999 - 119.88 - 25 - 65 - 37.7784 - 160)) < 0.01, p);
+      check('delivered counts as realized', p.state === 'realized');
+
+      const meeshoDelivered = { platform: 'meesho', sku: 'ST-BUSY-01', qty: 1, sellingPrice: 499, status: 'DELIVERED' };
+      const mp = computePnl(meeshoDelivered, skus, settings);
+      check('Meesho net price takes no extra fees', Math.abs(mp.profit - (499 - 160)) < 0.01, mp);
+
+      const rto = { platform: 'amazon', sku: 'ST-BUSY-01', qty: 1, sellingPrice: 999, status: 'RTO_RECEIVED' };
+      const rp = computePnl(rto, skus, settings);
+      check('RTO earns nothing and costs money', rp.revenue === 0 && rp.profit < 0 && rp.state === 'loss', rp);
+
+      const cancelled = computePnl({ platform: 'amazon', sku: 'ST-BUSY-01', qty: 1, sellingPrice: 999, status: 'CANCELLED' }, skus, settings);
+      check('cancelled is a no-op', cancelled.profit === 0 && cancelled.state === 'void');
+
+      const roll = rollup([delivered, rto, { ...delivered, status: 'CANCELLED' }], skus, settings);
+      check('rollup counts RTO rate over shipped only', Math.abs(roll.rtoRatePct - 50) < 0.01, roll.rtoRatePct);
+
+      check('pipeline advances NEW → LABEL_PRINTED', nextStatuses('NEW')[0] === 'LABEL_PRINTED');
+      check('delivered is terminal for packing', !nextStatuses('DELIVERED').includes('PACKED'));
+
+      /* ---------- csv writer ---------- */
+      const written = toCsv([{ a: 'x,y', b: 'he said "hi"' }]);
+      check('csv writer escapes', written === 'a,b\n"x,y","he said ""hi"""', written);
+
+      /* ---------- IndexedDB round trip ---------- */
+      await clearStore(STORE_ORDERS);
+      await put(STORE_ORDERS, { ...amzOrders[0] });
+      const back = await getAll(STORE_ORDERS);
+      check('IndexedDB stores and reads back', back.length === 1 && back[0].sku === 'ST-BUSY-01', back);
+      await clearStore(STORE_ORDERS);
+
+      const summary = document.createElement('h1');
+      summary.textContent = fails === 0 ? 'ALL TESTS PASSED' : `${fails} TEST(S) FAILED`;
+      summary.className = fails === 0 ? 'pass' : 'fail';
+      summary.id = 'summary';
+      out.appendChild(summary);
+    </script>
+  </body>
+</html>

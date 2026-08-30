@@ -1,6 +1,7 @@
 """
 SanskaTots Book Validator — Core Logic
-Checks PDF book designs for: spelling errors, alignment issues, AI visual review.
+Checks PDF book designs for: spelling errors, alignment issues,
+pronunciation (transliteration) accuracy, AI visual review.
 """
 
 import fitz  # PyMuPDF
@@ -8,7 +9,13 @@ import re
 import json
 import base64
 from dataclasses import dataclass, field
-from typing import List, Optional, Tuple
+from typing import Dict, List, Optional, Sequence, Tuple
+
+from pronunciation import (
+    PronunciationChecker,
+    SCRIPT_LABELS,
+    TRANSLITERATION_AVAILABLE,
+)
 
 try:
     from spellchecker import SpellChecker
@@ -47,7 +54,7 @@ CUSTOM_WORDS = {
 @dataclass
 class Issue:
     page: int           # 1-indexed page number
-    category: str       # spelling | alignment | design | content | print_risk
+    category: str       # spelling | alignment | design | content | print_risk | pronunciation
     severity: str       # error | warning | info
     description: str
     bbox: Optional[Tuple] = None  # (x0, y0, x1, y1) in PDF pts for annotation
@@ -99,16 +106,43 @@ class BookValidator:
     Validates a PDF book design for:
       1. Spelling mistakes (pyspellchecker)
       2. Alignment / layout issues (PyMuPDF bounding box analysis)
-      3. Visual design & fundamental issues (GPT-4o Vision)
+      3. Pronunciation / transliteration accuracy (indic-transliteration)
+      4. Visual design & fundamental issues (GPT-4o Vision)
     """
 
-    def __init__(self, openai_api_key: str = None):
+    def __init__(
+        self,
+        openai_api_key: str = None,
+        pronunciation_languages: Optional[Sequence[str]] = None,
+        flag_missing_pronunciation: bool = False,
+        pronunciation_exceptions: Optional[Dict[str, Sequence[str]]] = None,
+    ):
         # Spell checker
         if SPELLCHECK_AVAILABLE:
             self.spell = SpellChecker()
             self.spell.word_frequency.load_words(list(CUSTOM_WORDS))
         else:
             self.spell = None
+
+        # Pronunciation / transliteration checker.
+        # The spell checker doubles as an "is this a plain English word?" oracle
+        # so English translations printed next to an Indic word are not mistaken
+        # for wrong pronunciation guides.
+        english_oracle = None
+        if self.spell:
+            english_oracle = lambda w: w in self.spell  # noqa: E731
+
+        self.pronunciation = PronunciationChecker(
+            languages=pronunciation_languages,
+            flag_missing=flag_missing_pronunciation,
+            english_words=english_oracle,
+            exceptions=pronunciation_exceptions,
+        )
+        # page number -> set of Roman words that are pronunciation guides.
+        # Shared between the pronunciation and spelling checks so the same page
+        # is only analysed once, whichever check runs first.
+        self._guide_cache: Dict[int, set] = {}
+        self._pron_cache: Dict[int, list] = {}
 
         # OpenAI client for AI visual review
         self.openai_client = None
@@ -120,6 +154,7 @@ class BookValidator:
         pdf_path: str,
         run_spell: bool = True,
         run_alignment: bool = True,
+        run_pronunciation: bool = True,
         run_ai: bool = True,
     ) -> ValidationReport:
         """
@@ -128,6 +163,8 @@ class BookValidator:
         """
         doc = fitz.open(pdf_path)
         report = ValidationReport(filename=pdf_path, total_pages=len(doc))
+        self._guide_cache.clear()
+        self._pron_cache.clear()
 
         for idx in range(len(doc)):
             page = doc[idx]
@@ -139,6 +176,9 @@ class BookValidator:
             if run_alignment:
                 report.issues.extend(self._check_alignment(page, p))
 
+            if run_pronunciation:
+                report.issues.extend(self._check_pronunciation(page, p))
+
             if run_ai and self.openai_client:
                 report.issues.extend(self._ai_visual_review(page, p))
 
@@ -147,9 +187,23 @@ class BookValidator:
 
     # ─── 1. Spell Check ──────────────────────────────────────────────────────
 
+    def _analyze_pronunciation(self, page: fitz.Page, page_num: int):
+        """Run (and memoise) the pronunciation pass for a page."""
+        if page_num not in self._pron_cache:
+            findings, guides = self.pronunciation.analyze_page(page, page_num)
+            self._pron_cache[page_num] = findings
+            self._guide_cache[page_num] = guides
+        return self._pron_cache[page_num], self._guide_cache[page_num]
+
     def _check_spelling(self, page: fitz.Page, page_num: int) -> List[Issue]:
         issues = []
         blocks = page.get_text("dict")["blocks"]
+
+        # Roman pronunciation guides ("aane", "pusthaka") are not English words
+        # and must not be reported as misspellings.
+        guide_words = set()
+        if self.pronunciation.available:
+            guide_words = self._analyze_pronunciation(page, page_num)[1]
 
         for block in blocks:
             if block.get("type") != 0:  # 0 = text
@@ -164,11 +218,13 @@ class BookValidator:
                     # Extract only plain English words (3+ chars, no digits)
                     words = re.findall(r"[a-zA-Z]{3,}", text)
 
-                    # Filter out: ALL CAPS (acronyms), known custom words, proper nouns
+                    # Filter out: ALL CAPS (acronyms), known custom words,
+                    # proper nouns, and Indic pronunciation guides
                     words_to_check = [
                         w for w in words
                         if not w.isupper()                         # skip ALL_CAPS
                         and w.lower() not in CUSTOM_WORDS          # skip custom dict
+                        and w.lower() not in guide_words           # skip transliterations
                         and not w[0].isupper()                     # skip capitalised (proper nouns)
                     ]
 
@@ -297,7 +353,30 @@ class BookValidator:
 
         return issues
 
-    # ─── 3. AI Visual Review (GPT-4o Vision) ─────────────────────────────────
+    # ─── 3. Pronunciation / Transliteration Check ────────────────────────────
+
+    def _check_pronunciation(self, page: fitz.Page, page_num: int) -> List[Issue]:
+        """
+        Verify that the Roman pronunciation guide printed next to each Indic
+        word actually matches how that word is read.
+        """
+        if not self.pronunciation.available:
+            return []
+
+        findings = self._analyze_pronunciation(page, page_num)[0]
+
+        issues: List[Issue] = []
+        for finding in findings:
+            issues.append(Issue(
+                page=page_num,
+                category="pronunciation",
+                severity=finding.severity,
+                description=finding.description,
+                bbox=finding.bbox,
+            ))
+        return issues
+
+    # ─── 4. AI Visual Review (GPT-4o Vision) ─────────────────────────────────
 
     def _ai_visual_review(self, page: fitz.Page, page_num: int) -> List[Issue]:
         issues = []
@@ -322,6 +401,10 @@ class BookValidator:
                 "elements clearly off-grid or uncentered when they should be centered\n"
                 "- content: Grammatically wrong English, confusing activity instructions, "
                 "factually incorrect content (e.g., wrong mythology facts)\n"
+                "- pronunciation: The Roman pronunciation guide printed next to an Indic "
+                "(Kannada/Hindi/Telugu/Tamil/Malayalam/Sanskrit) word does not match how that "
+                "word is actually read; also broken/garbled Indic glyphs, missing matras or "
+                "vowel signs, tofu boxes, or clipped conjunct characters\n"
                 "- print_risk: Text or key elements very close to the page edge "
                 "(within ~5mm) that will likely be cut during print trimming\n\n"
                 "Rules:\n"

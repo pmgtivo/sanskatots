@@ -7,6 +7,7 @@ import streamlit as st
 import tempfile
 import os
 from validator import BookValidator, ValidationReport, render_page_annotated
+from pronunciation import SCRIPT_LABELS, TRANSLITERATION_AVAILABLE
 
 # ─── Page Config ─────────────────────────────────────────────────────────────
 
@@ -18,7 +19,7 @@ st.set_page_config(
 )
 
 st.title("📚 SanskaTots Book Validator")
-st.caption("Upload a PDF book design to check for spelling errors, alignment issues, and design problems.")
+st.caption("Upload a PDF book design to check for spelling errors, alignment issues, pronunciation accuracy, and design problems.")
 
 # ─── Sidebar — Settings ───────────────────────────────────────────────────────
 
@@ -36,8 +37,44 @@ with st.sidebar:
         value=True,
         help="Checks safe zone margins, overlapping text blocks, images off-page, and fonts too small for children.",
     )
+    run_pronunciation = st.checkbox(
+        "🗣️ Pronunciation Check",
+        value=True,
+        disabled=not TRANSLITERATION_AVAILABLE,
+        help="For regional-language books: verifies the Roman pronunciation guide matches the Indic word "
+             "(e.g. ಆನೆ → \"aane\", आम → \"aam\").",
+    )
 
-    if not run_spell and not run_alignment:
+    if not TRANSLITERATION_AVAILABLE:
+        st.caption("⚠️ Install `indic-transliteration` to enable pronunciation checks.")
+
+    # ── Pronunciation options ─────────────────────────────────────────────
+    pron_languages = None
+    flag_missing_pron = False
+
+    if run_pronunciation and TRANSLITERATION_AVAILABLE:
+        with st.expander("🗣️ Pronunciation Options", expanded=False):
+            lang_choices = st.multiselect(
+                "Languages in this book",
+                options=list(SCRIPT_LABELS.keys()),
+                default=[],
+                format_func=lambda s: f"{SCRIPT_LABELS[s]} ({s.title()})",
+                help="Leave empty to auto-detect every Indic script found in the PDF.",
+            )
+            pron_languages = lang_choices or None
+
+            flag_missing_pron = st.checkbox(
+                "Report Indic words with no pronunciation guide",
+                value=False,
+                help="Useful for language workbooks where every word must carry a Roman guide.",
+            )
+
+            st.caption(
+                "Matching is tolerant of normal romanisation styles "
+                "(aane / ane / aanay) but flags genuinely wrong guides."
+            )
+
+    if not run_spell and not run_alignment and not run_pronunciation:
         st.warning("Select at least one check to run.")
 
     st.divider()
@@ -61,7 +98,7 @@ with st.sidebar:
             st.caption("~₹0.50–1.50 per page (GPT-4o Vision pricing)")
         else:
             api_key = None
-            st.caption("Spelling + Alignment checks are 100% free and offline.")
+            st.caption("Spelling + Alignment + Pronunciation checks are 100% free and offline.")
 
 # ─── Main — File Upload ───────────────────────────────────────────────────────
 
@@ -86,18 +123,22 @@ if uploaded_file is not None:
         "🔍 Run Validation",
         type="primary",
         use_container_width=True,
-        disabled=(not run_spell and not run_alignment and not run_ai),
+        disabled=(not run_spell and not run_alignment and not run_pronunciation and not run_ai),
     ):
         # Sanity checks
-        if not run_spell and not run_alignment and not run_ai:
-            st.error("Please select at least one check (Spelling or Alignment) in the sidebar.")
+        if not run_spell and not run_alignment and not run_pronunciation and not run_ai:
+            st.error("Please select at least one check in the sidebar.")
             st.stop()
 
         if run_ai and not api_key:
             st.warning("AI Visual Review is enabled but no API key was provided. Running without AI review.")
             run_ai = False
 
-        validator = BookValidator(openai_api_key=api_key if run_ai else None)
+        validator = BookValidator(
+            openai_api_key=api_key if run_ai else None,
+            pronunciation_languages=pron_languages,
+            flag_missing_pronunciation=flag_missing_pron,
+        )
 
         # Progress bar — page by page
         import fitz
@@ -132,6 +173,9 @@ if uploaded_file is not None:
 
                 if run_alignment:
                     report.issues.extend(validator._check_alignment(page, page_label))
+
+                if run_pronunciation:
+                    report.issues.extend(validator._check_pronunciation(page, page_label))
 
                 if run_ai and validator.openai_client:
                     report.issues.extend(validator._ai_visual_review(page, page_label))
@@ -193,11 +237,12 @@ if "report" in st.session_state:
         cat_counts = Counter(i.category for i in report.issues)
         cat_cols = st.columns(len(cat_counts))
         CAT_ICONS = {
-            "spelling":   "🔤",
-            "alignment":  "📐",
-            "design":     "🎨",
-            "content":    "📝",
-            "print_risk": "✂️",
+            "spelling":      "🔤",
+            "alignment":     "📐",
+            "design":        "🎨",
+            "content":       "📝",
+            "pronunciation": "🗣️",
+            "print_risk":    "✂️",
         }
         for col, (cat, count) in zip(cat_cols, sorted(cat_counts.items())):
             with col:

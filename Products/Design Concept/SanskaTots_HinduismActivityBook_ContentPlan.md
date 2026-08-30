@@ -135,19 +135,27 @@ This book does NOT preach. It **explains** — in child-friendly language — WH
 
 ---
 
-#### PAGE 6 — "First Sight: See God's Face"
+#### PAGE 6 — "Karadarshanam: My Magic Palms"
 
-**Ritual:** First thing when you open your eyes, look at a picture of God (or an idol) and say a small prayer for what you want for the day.
+**Ritual (corrected — this is the authentic practice, not looking at a picture):** Before your feet touch the floor and before you look at anything else, hold both palms in front of your face and recite the *Karadarshanam* shloka:
+
+> कराग्रे वसते लक्ष्मी करमध्ये सरस्वती । करमूले तु गोविन्दः प्रभाते करदर्शनम् ॥
+>
+> *Karagre vasate Lakshmi, karamadhye Saraswati, Karamoole tu Govindah, prabhate kar-darshanam*
+>
+> **Meaning:** "At my fingertips lives Lakshmi (abundance), in the middle of my palm lives Saraswati (knowledge), and at the base of my palm lives Govinda (Vishnu, the protector). So every morning, I look at my own palms first."
 
 **Child-Friendly Explanation:**
-> *"Before you look at your toy, your phone, or your cereal — look at God first! Tell God one wish for today. It is like planting a tiny seed of hope in your heart every single morning!"*
+> *"Before your feet even touch the floor — look at your own hands! Your fingertips hold your 'wealth of good things,' the middle of your palm holds your 'smart brain power,' and the bottom of your palm holds your 'protector.' You are carrying good luck, brains, and protection with you everywhere, every single day — that's why we check in with our own hands first thing!"*
 
 **Velcro Activity:**
-- A felt "prayer corner" setup — child places God's picture frame, a small diya, flowers on a mini altar
-- A "My Wish Today" velcro card with fill-in picture tiles (I want to be: Kind / Brave / Focused / Happy)
+- A large felt pair of open palms — 3 velcro zones marked (fingertips / middle / base). Child places a Lakshmi-flower tile on the fingertips, a Saraswati-veena tile in the middle, and a Govinda-conch tile at the base
+- A "Say It in 10 Seconds" phonetic shloka card (Sanskrit + English sound-alike + meaning) child recites while doing the activity — this happens BEFORE the "touch the Earth" step on the next page
 
 **Parent Did-You-Know Box:**
-> *This is the Hindu version of modern "Morning Intention Setting" — a proven psychological technique taught in cognitive behavioural therapy and positive psychology. Looking at an inspiring/sacred image upon waking activates the prefrontal cortex (decision and values centre) before the amygdala (fear/reaction centre) gains dominance. People who set a positive intention within the first 5 minutes of waking report 37% better emotional regulation throughout the day (positive psychology research). The Hindu practice encoded this neurological truth 3,000 years ago.*
+> *This is a self-directed micro-gratitude practice performed in the first 10 seconds of consciousness — before any external stimulus (phone, toy, worry) can hijack attention. Positive psychology research shows that the very first thought pattern after waking strongly anchors the day's emotional tone, because the brain is still in a low-frequency theta/alpha state and highly suggestible. By training a child to look at their own hands and silently affirm abundance, knowledge, and protection before anything else, Hindu tradition built a 3,000-year-old version of what therapists now call "morning cognitive priming."*
+
+**Modern Touch (optional premium add-on):** A small QR code on the shloka card linking to a 15-second audio clip of correct pronunciation — useful for NRI parents who know the ritual but not the Sanskrit sounds.
 
 ---
 
@@ -215,6 +223,7 @@ This book does NOT preach. It **explains** — in child-friendly language — WH
 **Velcro Activity:**
 - Build your own home temple: felt temple structure, child places the bell, idol, diya, flowers, kumkum in correct positions
 - Sound-match game: match different worship bells to their temples (small home bell / large temple bell / hand cymbals / conch shell)
+- "My Wish Today" velcro card with fill-in picture tiles (I want to be: Kind / Brave / Focused / Happy) — placed at the altar after the bell is rung
 
 **Parent Did-You-Know Box:**
 > *Temple bells are made from a specific alloy (typically Panchaloha — 5 metals) that produces a rich sound at approximately 7 Hz — the Theta brainwave frequency. When your brain enters Theta state, it is in a deeply relaxed, meditative state associated with creativity and spiritual experience. Research from Indian Institute of Technology confirms that temple bell sound patterns help synchronise both brain hemispheres, creating bilateral brain coherence — a state normally only achievable after 20 minutes of meditation.*
@@ -447,6 +456,43 @@ This book does NOT preach. It **explains** — in child-friendly language — WH
 
 ---
 
+### BONUS PAGE — "My Hindu Day Wheel" (Poster/Fold-Out Page, after Page 24)
+
+**Purpose:** Pages 4–24 teach each ritual one at a time in depth. This bonus page is the payoff — a single reusable spread that ties morning-to-night into one living daily routine chart, so the book becomes something the family actually *uses* every day, not just reads once.
+
+**Format:** A circular felt "clock wheel" (12 segments) forming a full day, sits on a fold-out flap so it can be opened flat and propped up like a stand next to the child's bed.
+
+**The 12 segments (in order), each a small velcro icon the child moves a felt arrow/pointer past as the day progresses:**
+
+| # | Segment | Icon | Ties back to |
+|---|---------|------|---------------|
+| 1 | Wake up, right side first | Sunrise + right-foot icon | Page 5 |
+| 2 | Karadarshanam — look at my palms | Two open palms | Page 6 |
+| 3 | Thank the Earth | Foot on globe | Page 7 |
+| 4 | Namaste to elders | Folded hands | Page 8 |
+| 5 | Surya Namaskar | Sun + stick figure | Page 9 |
+| 6 | Bath + Tilak/Bindi | Water drop + dot | Pages 12 |
+| 7 | Grateful breakfast (Annam Brahma) | Plate + folded hands | Page 13 |
+| 8 | School/play — practice Dharma, Ahimsa, kindness | Books + heart | Pages 21, 23 |
+| 9 | Evening Diya | Small flame | Page 11 |
+| 10 | Grateful dinner | Plate at dusk | Page 13 |
+| 11 | Touch elders' feet (Pranam) | Hand to feet | Page 14 |
+| 12 | Bedtime gratitude + forgiveness | Moon + journal | Page 24 |
+
+**Child-Friendly Explanation:**
+> *"Your whole day is a big, beautiful circle — just like the Sun's journey across the sky! Every time you finish something on the wheel, move your arrow to the next stop. By night time, you will have gone all the way around — and tomorrow, the circle starts again!"*
+
+**Velcro Activity:**
+- Child moves a felt "Sun/Moon" arrow-pointer clockwise around the wheel as each activity is completed through the real day
+- A small removable "star" tile is added to the centre of the wheel for each fully-completed day — after 7 stars, a "Blessed Week" badge unlocks (habit-streak mechanic, laminated card so it's wipeable/reusable daily)
+
+**Parent Did-You-Know Box:**
+> *Routine charts are one of the most evidence-backed tools in child development for building autonomy and reducing bedtime/morning power struggles (referenced in pediatric behavioural literature on visual schedules). This wheel does the same job as a Western "morning/night routine chart" — except every single step is rooted in an actual Hindu practice, so the child is building both a healthy habit AND a cultural identity in one motion.*
+
+**Why this page matters for the brand pitch:** it directly answers the #1 objection parents have with values books — "my child read it once and never touched it again." This page is designed to be touched every single day.
+
+---
+
 ## VELCRO ACTIVITY SUMMARY TABLE
 
 | Page | Activity Type | Skill Developed |
@@ -475,6 +521,7 @@ This book does NOT preach. It **explains** — in child-friendly language — WH
 | 22 | Karma Boomerang game | Cause-effect thinking |
 | 23 | Ahimsa 3-level sort | Empathy, non-violence |
 | 24 | Gratitude board (nightly reset) | Reflection, emotional wellbeing |
+| Bonus | Day Wheel — rotating arrow + habit streak | Routine-building, daily reuse |
 
 ---
 

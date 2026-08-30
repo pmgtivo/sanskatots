@@ -672,6 +672,617 @@ A simple AI-powered daily workflow for a 2-person team:
 
 ---
 
+## Part 13 — Additional Quality-Focused AI Tools
+
+The existing book validator handles English spell + alignment + GPT-4o visual review. These add the layers that matter most for a *children's* book brand selling in *Indian regional* markets.
+
+### 13.1 Multi-Language Spell + Grammar Checker (Sanskrit, Kannada, Hindi, Tamil, Telugu)
+
+**Problem:** Your current validator ignores non-English text. But regional language books are the biggest growth opportunity — and a single wrong Devanagari conjunct or Kannada vowel mark in a kids' book is a brand-killer.
+
+**Engineering Build — Bhashini-Powered Multilingual Checker:**
+```python
+# Tool: Indic Language Proofreader (extends book_validator)
+# Stack: Python + Bhashini API (Govt of India — FREE) + IndicNLP library
+# What it does:
+#   - Detects script per text block (Devanagari / Kannada / Tamil / Telugu / Gujarati)
+#   - Spell-checks against IndicNLP dictionaries
+#   - Grammar-checks via Bhashini's ULCA pipeline
+#   - For shlokas: validates against verified Sanskrit corpus (Gita, Ramayana, common stotras)
+#   - Flags mixed-script issues (Hindi word in Kannada page)
+# Time to build: 3-4 days
+# Cost: ₹0 (Bhashini is free for Indian businesses)
+# Why this matters: zero competitor does this. It is your QC moat for regional launches.
+```
+
+---
+
+### 13.2 AI Age-Appropriateness & Readability Scorer
+
+**Problem:** Your books claim 1.5–3 years or 3–5 years. Marketing says so, but does the actual vocabulary + sentence complexity match? Mismatched age claims drive 1-star reviews ("too hard for my 2-year-old").
+
+**Engineering Build — Age-Match Scorer:**
+```python
+# Tool: Reading-Level vs Claimed-Age Matcher
+# Stack: Python + textstat + custom toddler vocabulary corpus
+# What it does:
+#   - Extracts all text from book PDF
+#   - Calculates: avg syllables/word, avg words/sentence, % words outside top-500 toddler vocab
+#   - Outputs: "Claimed 2-3 years. Actual reading level: 4-5 years. Risk: HIGH"
+#   - Suggests simpler word swaps from a kids' vocabulary thesaurus
+# Time to build: 2 days
+# Saves: prevents costly reprints + protects rating
+```
+
+---
+
+### 13.3 Brand Style & Illustration Consistency Checker
+
+**Problem:** Across 40+ books designed over months, illustrations drift — character proportions change, color palette shifts, line weights inconsistent. Customers feel it subconsciously and the brand loses "premium" perception.
+
+**Engineering Build — Visual Brand Auditor:**
+```python
+# Tool: SanskaTots Style Consistency Checker
+# Stack: Python + OpenAI CLIP embeddings + scikit-learn
+# What it does:
+#   - Embeds every illustration from every book into vector space
+#   - Clusters: which books are "on brand" vs outliers
+#   - Flags pages where character (e.g., Krishna, Arjun mascot) looks structurally different
+#   - Extracts dominant color palette per book; alerts on drift from brand palette
+#   - Outputs: heatmap of brand consistency across catalogue
+# Time to build: 3-4 days
+# Why: this is what makes Skillmatics look "premium" and most Indian competitors look amateur
+```
+
+---
+
+### 13.4 Accessibility & Inclusive Design Validator
+
+**Problem:** ~5% of toddlers have early visual processing issues. Plus, parents of neurodivergent kids spend more on educational books and become loyal evangelists if you serve them.
+
+**Engineering Build — Kids' Accessibility Checker:**
+```python
+# Tool: WCAG-for-Kids Validator
+# Stack: Python + Pillow + colormath
+# Checks per page:
+#   - Text/background contrast ratio ≥ 4.5:1 (WCAG AA)
+#   - Color-blind safe palette (red-green confusable elements flagged)
+#   - Min text size ≥ 14pt for board books
+#   - Image-heavy pages tagged for adding tactile/texture for sensory books
+# Time to build: 1-2 days
+# Marketing angle: "Designed inclusively — verified for color-blind safe and high-contrast reading"
+```
+
+---
+
+### 13.5 AI Plagiarism + IP Originality Checker
+
+**Problem:** Indian kids' book market has rampant copycats. Two risks: (a) someone accuses *you* of copying; (b) someone copies *you* and you need proof of prior originality.
+
+**Tool Stack:**
+- **Originality.ai** (₹2,000/mo) — text plagiarism + AI-generation detection
+- **Google Vision API reverse image search** — finds visual copies of your illustrations on Amazon / Meesho / Flipkart
+- **Engineering build:** Weekly scan + dated PDF hash registry (proof of prior creation date for IP disputes)
+
+```python
+# Tool: IP Watchdog
+# Stack: Python + Google Vision API + Amazon/Meesho scraping + SHA-256 hashing
+# What it does:
+#   - Every Monday: reverse-searches your 40+ book covers on competitor marketplaces
+#   - Logs cryptographic hash of every book PDF with timestamp (legal proof of priority)
+#   - Alerts founder of any visual match with >70% similarity
+# Time to build: 2-3 days
+```
+
+---
+
+### 13.6 Smartphone-Based Print QC at Receiving
+
+**Problem:** When the Bengaluru printer delivers 5,000 copies, you sample 10–20 manually. A ₹3,000 scanner is overkill for a 2-person team; a phone is not.
+
+**Engineering Build — Mobile Print QC App:**
+```python
+# Tool: SanskaTots QC Camera (Progressive Web App)
+# Stack: React + TensorFlow.js + browser camera API
+# Workflow:
+#   - Open URL on phone, point camera at printed page
+#   - Compares live frame to original PDF design
+#   - Real-time flags: color delta >10%, misregistration, text blur
+#   - One-tap "log defect" creates dated record with photo
+# Time to build: 4-5 days
+# Cost: ₹0 (PWA, no app store needed)
+# Replaces: physical scanner + manual QC sheet
+```
+
+---
+
+### 13.7 Sanskrit / Shloka Pronunciation Validator (For Audio Books)
+
+**Problem:** If you launch shloka audio cards or NFC-enabled books (Part 5.3 roadmap), wrong pronunciation will trigger backlash from traditional parents — your highest-LTV segment.
+
+**Engineering Build — Pronunciation Grader:**
+```python
+# Tool: Sanskrit Audio QC
+# Stack: Python + OpenAI Whisper + phoneme alignment + reference shloka corpus
+# What it does:
+#   - Transcribes recorded audio
+#   - Aligns against canonical Sanskrit phoneme sequence
+#   - Grades: A/B/C/D per shloka with timestamp of mispronunciation
+#   - Flags swara (pitch accent) errors for Vedic recitations
+# Time to build: 4-5 days
+# Why: traditional Hindu parents will pay 2x premium for verified-correct pronunciation
+```
+
+---
+
+## Part 14 — Advanced Marketing AI Tools
+
+Marketing is where AI compounding pays off most for a 2-person team. These are tools NOT covered in Part 2 / Part 7.
+
+### 14.1 HeyGen / Synthesia — Multi-Language Reel Cloning
+
+**The Insight:** Your target market speaks Hindi, Kannada, Tamil, Telugu, Marathi, Bengali. Filming one reel in 6 languages is impossible. HeyGen clones your face + voice and lip-syncs you speaking any language.
+
+**Workflow:**
+1. Record one 30-sec reel in English (founder's natural voice)
+2. HeyGen generates 5 versions: Hindi, Kannada, Tamil, Telugu, Marathi — same face, same gestures, lip-synced
+3. Post to language-specific Instagram/YouTube accounts
+
+**Cost:** ₹2,500/mo HeyGen Creator plan  
+**Impact:** 5× reach without 5× filming time. Critical for unlocking regional markets.
+
+---
+
+### 14.2 Google NotebookLM — Books to AI Podcast (FREE)
+
+**The Hack:** Upload your book PDFs + brand strategy docs to NotebookLM. It auto-generates 10–15 minute "podcast episodes" with two AI hosts discussing the content. Distribute as **SanskaTots StoryTime / Parenting Podcast** on Spotify + JioSaavn.
+
+**Why this works for SanskaTots:**
+- Indian moms listen to podcasts during cooking / school pickup
+- Zero recording equipment, zero editing
+- Each book becomes a discovery channel back to Amazon
+- Builds founder thought-leadership for Shark Tank pitch
+
+**Cost:** ₹0  
+**Time:** 15 min to generate one episode
+
+---
+
+### 14.3 AI Pinterest Pin Generator + Scheduler
+
+**Why Pinterest matters for you:** Indian urban moms search Pinterest for "toddler activity ideas", "Montessori at home", "Indian festival crafts" more than any other platform. Most Indian brands ignore it.
+
+**Tool Stack:**
+- **Canva Magic Studio** — auto-generate 30 vertical pins/week from existing book photos
+- **Tailwind AI** — schedules + AI-writes Pinterest descriptions with SEO keywords
+- **Pin links → Amazon listing** with UTM tags
+
+**Engineering Build — Pin Auto-Generator:**
+```python
+# Tool: Pinterest Pin Factory
+# Stack: Python + PIL + OpenAI API + Tailwind API
+# Input: one book photo + book metadata
+# Output: 10 pin variations (different overlays: "5 ways to use this", "Montessori at home", etc.)
+# Auto-schedules across 30 days
+# Time to build: 2-3 days
+```
+
+---
+
+### 14.4 AI Reddit / Quora Engagement Engine
+
+**The Goldmine:** r/IndianParenting, r/Bangalore, r/India parenting threads. Quora has 10,000+ "best book for 2-year-old" questions. These rank on Google forever.
+
+**Engineering Build — Community Question Finder:**
+```python
+# Tool: Parenting Q&A Opportunity Scanner
+# Stack: Python + Reddit API + Quora scraping + GPT-4
+# What it does:
+#   - Daily scan: new posts on parenting subreddits + Quora questions matching your keywords
+#   - GPT drafts a HELPFUL (non-spammy) expert reply that subtly references SanskaTots
+#   - Founder approves in 5 min, posts via personal account (not brand — more authentic)
+# Time to build: 2-3 days
+# Impact: each well-ranked Quora answer drives traffic for years
+```
+
+**Critical rule:** Always disclose founder identity. Reddit/Quora ban undisclosed brand promotion.
+
+---
+
+### 14.5 AI Trend Forecasting — Spot Festivals 3 Weeks Early
+
+**Engineering Build — Trend Radar:**
+```python
+# Tool: Festival/Trend Demand Forecaster
+# Stack: Python + Google Trends API (pytrends) + Pinterest Trends + Amazon search trends
+# What it does:
+#   - Tracks 100 parenting/festival keywords daily
+#   - Detects rising trends 14-21 days before peak (e.g., "Janmashtami activity" surges in early August)
+#   - Auto-creates content brief: "Make 5 Krishna-themed reels by Aug 10"
+#   - Cross-references with your inventory: "Order 500 more Krishna books NOW"
+# Time to build: 3-4 days
+# This connects marketing intelligence to operations — your unfair advantage.
+```
+
+---
+
+### 14.6 AI Email Drip Sequences (Klaviyo AI / Brevo AI)
+
+**Problem:** You collect emails on D2C site but don't nurture. Every email subscriber should auto-receive a 12-month journey.
+
+**AI Workflow:**
+- **Day 0:** Welcome + free printable activity sheet
+- **Day 3:** Founder's story (emotional reel embedded)
+- **Day 7:** Behind-the-scenes of how books are made
+- **Day 30:** First repeat-purchase offer
+- **Day 90:** "Your child is now older — try this next book"
+- **Birthday/festival triggers:** Auto-emails on child's birthday (collected at signup)
+
+**Tools:**
+- **Brevo (formerly Sendinblue)** — free up to 300 emails/day, AI-powered subject lines
+- **Klaviyo AI** — $20/mo, gold standard for D2C
+
+---
+
+### 14.7 Real-Time Social Sentiment & PR Crisis Detection
+
+**Engineering Build — Brand Watch Bot:**
+```python
+# Tool: Social Sentiment Monitor
+# Stack: Python + Twitter/X API + Instagram mention API + GPT-4 sentiment
+# What it does:
+#   - Monitors mentions of: "SanskaTots", "Deethya Enterprises", founder name
+#   - Classifies each: positive / neutral / negative / CRISIS
+#   - If 3+ negatives in 1 hour → immediate WhatsApp alert to founder
+#   - Drafts response options
+# Time to build: 2 days
+# Why: in Indian social media, a single viral negative review can sink a launch
+```
+
+---
+
+### 14.8 AI Meme & Relatable-Mom Content Generator
+
+**The Reality:** 70% of viral mom-niche reels are relatable humor ("when toddler dumps the activity book on dog at 6 AM"). You can't out-design Skillmatics — you can out-relate them.
+
+**Tool Stack:**
+- **Custom GPT — "SanskaTots Mom Meme Writer"** — trained on Indian mom humor + SanskaTots brand voice
+- **Imgflip AI** — generates meme images
+- **Output:** 10 meme reels/month, often outperform polished content
+
+---
+
+### 14.9 AI Festival & Event Marketing Calendar (India-Specific)
+
+**Engineering Build — 12-Month Cultural Marketing Auto-Planner:**
+```python
+# Tool: India Festival Marketing Calendar
+# Stack: Python + 50-festival database (regional split) + GPT-4
+# What it does:
+#   - Knows every regional festival: Ugadi (Karnataka), Onam (Kerala), Pongal (TN),
+#     Bihu (Assam), Navratri (Gujarat), Durga Puja (WB), etc.
+#   - 30 days before each: generates content brief + product bundle idea + ad targeting plan
+#   - Outputs: "Sept 15: prep Janmashtami coloring book promo. Target: Mathura, Mumbai, Bengaluru moms"
+# Time to build: 2-3 days (festival DB is the work)
+# Impact: never miss a regional moment; competitors do
+```
+
+---
+
+### 14.10 AI Testimonial Video Auto-Editor
+
+**Engineering Build — UGC Reel Factory:**
+```python
+# Tool: Customer Video → Polished Reel
+# Stack: Python + ffmpeg + Whisper + OpenAI + Remotion
+# Workflow:
+#   - Customer sends raw 2-min phone video on WhatsApp ("my daughter loves this book")
+#   - System: transcribes, picks best 15-30 sec clip via GPT-4, vertical-crops, adds branded captions + outro
+#   - Output: ready-to-post Reel in 5 minutes vs 2 hours manual editing
+# Time to build: 4-5 days
+# Critical for scaling UGC — your highest-converting content type
+```
+
+---
+
+### 14.11 AI A/B Image Tester (Pickfu Alternative)
+
+**Problem:** Pickfu charges $50 per 50-respondent test. You'll run 100+ tests on listing images, ad creatives, book covers.
+
+**Engineering Build — WhatsApp Poll Tester:**
+```python
+# Tool: SanskaTots Mom Panel (WhatsApp poll bot)
+# Stack: Python + WhatsApp Business API
+# What it does:
+#   - Recruit 100-200 moms (your existing customers) into opt-in panel
+#   - Send poll: "Which cover would make you click? A or B?"
+#   - Collects votes in 2-4 hours
+#   - Costs ₹0 per test vs $50 per Pickfu test
+# Time to build: 2-3 days
+# Bonus: panel becomes a moat — competitors don't have this insight loop
+```
+
+---
+
+### 14.12 AI Press Release + PR Pitch Generator
+
+**Engineering Build — Founder PR Engine:**
+```python
+# Tool: PR Pitch Personalizer
+# Stack: Python + OpenAI API + journalist database (YourStory, Inc42, Femina, Femina Mom & Baby)
+# What it does:
+#   - For each milestone (Shark Tank, ₹1Cr revenue, regional launch, school partnership):
+#     drafts press release + personalized pitch email to 50 relevant journalists
+#   - Tracks open/reply rates
+# Time to build: 2-3 days
+# Cost saved: ₹30,000-50,000/mo PR agency retainer
+```
+
+---
+
+### 14.13 Brand Voice Consistency Tool
+
+**Engineering Build — Voice Guardian:**
+```python
+# Tool: SanskaTots Voice Checker
+# Stack: Python + OpenAI fine-tuning OR few-shot prompting
+# What it does:
+#   - Trained on your best-performing captions + brand voice doc
+#   - Any new caption / ad / email gets a "voice match score" (1-10)
+#   - Flags drift when interns / freelancers / new content creators don't sound like SanskaTots
+# Time to build: 1-2 days
+# Critical when you scale past founder-only content creation
+```
+
+---
+
+## Part 15 — Operations AI Tools (Beyond Existing IMS / GST / Shipping)
+
+### 15.1 AI Meeting Notes for Vendor Calls
+
+**Problem:** You'll have 10+ calls/week with printers, distributors, school heads, potential investors. Notes get lost, action items missed.
+
+**Tool Stack:**
+- **Fireflies.ai** (free tier up to 800 min/mo) — joins Google Meet / Zoom automatically
+- **Otter.ai** — alternative
+- Auto-extracts: action items, deadlines, decisions, follow-up emails
+
+**Output flow:** Call ends → Fireflies summary in your inbox in 2 min → ClickUp tasks auto-created.
+
+---
+
+### 15.2 AI Email Triage & Drafting
+
+**Tool Stack:**
+- **Superhuman AI** (₹2,500/mo) — drafts replies in your voice, prioritizes inbox
+- **Shortwave** (₹1,500/mo) — Gmail-only, similar features
+- **Free alternative:** Gmail's built-in "Help me write"
+
+**Impact:** Founder saves 1-2 hours/day. Most ROI of any single tool.
+
+---
+
+### 15.3 AI Contract Review for Vendor / Partnership Deals
+
+**Engineering Build — Contract Risk Scanner:**
+```python
+# Tool: Contract Clause Auditor
+# Stack: Python + OpenAI API + clause library
+# What it does:
+#   - Upload printer agreement / distributor MOU / school partnership PDF
+#   - GPT-4 flags: unlimited liability, auto-renewal, exclusivity, IP transfer, payment terms
+#   - Outputs negotiation talking points
+# Time to build: 1-2 days
+# Saves: ₹10,000-25,000 per legal review (CA or lawyer fee)
+```
+
+For complex deals (Series A term sheet, distribution deals >₹20L), still use a real lawyer. This is for the routine 80%.
+
+---
+
+### 15.4 AI Return Reason Analyzer
+
+**Engineering Build — Returns Intelligence:**
+```python
+# Tool: Returns Pattern Detector
+# Stack: Python + Amazon SP-API + GPT-4 clustering
+# What it does:
+#   - Pulls all return reasons (Amazon free-text fields)
+#   - GPT clusters into themes: "page tearing", "wrong age", "shipping damage", "doesn't match listing"
+#   - Per-SKU breakdown: "Book X has 12% returns vs catalog avg 3% — issue: binding quality"
+#   - Auto-creates action items: "Talk to printer about Book X binding"
+# Time to build: 2 days
+# Impact: returns above 4% silently kill profitability; this catches it early
+```
+
+---
+
+### 15.5 AI Order Fraud Detection
+
+**Engineering Build — Fraud Sentinel:**
+```python
+# Tool: Suspicious Order Detector
+# Stack: Python + Amazon SP-API + rule engine + ML anomaly detection
+# Flags:
+#   - Multiple orders to different addresses from one buyer (reseller arbitrage)
+#   - Sudden bulk orders at deep discount (return-fraud risk)
+#   - Address mismatch with payment region
+# Time to build: 2-3 days
+# Saves: ~2-4% of revenue typically lost to refund fraud
+```
+
+---
+
+### 15.6 AI Internal Knowledge Base
+
+**Tool: Notion AI** (₹850/user/mo) OR **Mem.ai** (₹1,200/mo)
+
+**What to store:**
+- All SOPs (how to launch a new book, how to handle a return, how to brief a designer)
+- Vendor contacts + last quote + MOQ + lead time
+- Design templates + brand guidelines
+- Every Amazon listing's keyword history
+
+**The magic:** Ask "What was Bengaluru printer Aravind's MOQ for hardcover board books last quarter?" — gets answer instantly. As you scale past 2 people, this becomes your institutional memory.
+
+---
+
+### 15.7 AI Vendor Negotiation Assistant
+
+**Workflow (no engineering needed — just ChatGPT / Claude):**
+
+Before each printer / supplier negotiation, paste:
+1. Current quote
+2. Industry benchmark rates (Perplexity research takes 5 min)
+3. Your order volume + future commitments
+
+Ask: "What is my BATNA? Suggest 3 counter-offers ranked by likely acceptance. Draft an email."
+
+**Result:** Saves 5-15% on every print order. On ₹10L/year printing = ₹50K-1.5L saved.
+
+---
+
+### 15.8 AI Document Translation (Multi-Language)
+
+**Tool Stack:**
+- **Bhashini** (FREE, Govt of India) — best for Indic ↔ English, official documents
+- **DeepL** — best for European languages (when you launch in US/UK markets)
+
+**Use cases:**
+- Translate GST notices, BIS certificates between Hindi ↔ English
+- Vendor quotes from Kannada-only printers
+- Customer support replies to non-English WhatsApp messages
+
+---
+
+### 15.9 AI Project Management
+
+**Tool Stack:**
+- **ClickUp Brain** (₹650/user/mo) — AI summarizes status, predicts deadlines, drafts updates
+- **Linear** (better for engineering team) — AI triage
+
+**Sample use:** "Show me all blocked book launches and why." → Instant answer across 40+ projects.
+
+---
+
+### 15.10 AI Founder Wellness / Burnout Detection
+
+**The Hidden Risk:** A 2-person team running toward ₹1,000 Cr will hit burnout. Burnout kills more startups than competitors do.
+
+**Tool Stack:**
+- **Reclaim.ai** — auto-blocks deep-work + recovery time on calendar
+- **Rise** — sleep tracking + AI suggestions
+- **Daily journal via ChatGPT** — 5 min/day text dump; weekly AI summary of mood patterns
+- **Calendar density alerts** — if >70% of week is meetings, auto-cancel non-critical ones
+
+**This is not a soft skill. This is operational risk management.**
+
+---
+
+## Part 16 — Product Innovation AI (Books-Specific R&D)
+
+Future-facing R&D bets that build defensible product moats.
+
+### 16.1 AR (Augmented Reality) Books
+
+**Tools:** Artivive, Zappar, 8th Wall
+
+**Concept:** Parent scans SanskaTots book page with phone → 3D Krishna character pops up, speaks the shloka, dances. Book becomes phygital experience.
+
+**Why this wins:**
+- Premium pricing (2-3× standard book)
+- Zero competition in Indian kids' books market
+- Viral social proof (parents film & share the AR effect)
+- Builds tech-brand perception for fundraising
+
+**Cost:** ₹15,000-30,000 per AR experience (one-time). Distributed across 5,000+ units = ₹3-6 per unit.
+
+---
+
+### 16.2 AI Music & Lullaby Generator (Suno / Udio)
+
+**Use cases:**
+- Generate original SanskaTots theme music for Reels (replaces generic copyright-safe music)
+- Lullaby tracks bundled with newborn sensory books (audio QR code on book)
+- Shloka backing music in age-appropriate melodies
+
+**Cost:** ₹850/mo Suno Pro. Far cheaper than music licensing.
+
+---
+
+### 16.3 AI Character Consistency System
+
+**Engineering Build — Brand Character Generator:**
+```python
+# Tool: SanskaTots Character Consistency
+# Stack: Python + Stable Diffusion + LoRA fine-tuning OR Midjourney character reference
+# What it does:
+#   - Train a LoRA on your existing mascot / hero characters
+#   - Generate them in infinite new scenarios while keeping faces / proportions identical
+#   - Output: usable illustrations for new books in 1/10th the design time
+# Time to build: 5-7 days (mostly training)
+# Strategic impact: creates "characters" — the asset Disney built on. Yours: Sanska + Tot mascots?
+```
+
+---
+
+### 16.4 AI Story Drafter (Indian Cultural Lens)
+
+**Custom GPT approach (no code):**
+- Train a custom GPT on: Panchatantra, Jataka tales, Ramayana, Mahabharata, regional folktales
+- Prompt: "Generate 5 story drafts about courage for 3-year-olds, using only positive Hindu/Buddhist/Jain references, no violence, max 20 words per page, 16 pages"
+- Human editor refines
+
+**Output:** 10x the new book ideation speed.
+
+---
+
+### 16.5 AI Sound Effect Library
+
+**Tool:** ElevenLabs Sound Effects, Adobe Audio Generative
+
+**Use case:** For future interactive / peel-and-listen / NFC-enabled books — temple bells, animal sounds, festival ambience, all generated on demand.
+
+---
+
+## Part 17 — Emerging 2026 AI Tools Worth Watching
+
+| Tool | Use Case for SanskaTots | When to Adopt |
+|---|---|---|
+| **Google NotebookLM** | Convert books to AI podcast | Use today (free) |
+| **Gamma.app / Tome.app** | Auto-generate investor + school partnership decks | Use today (₹850/mo) |
+| **Perplexity Pro** | Real-time competitor + market research | Use today (₹1,700/mo) |
+| **Claude Projects** | Multi-document strategy planning, brand voice memory | Use today (₹1,700/mo) |
+| **Cursor / Windsurf** | AI pair-programming for engineering builds | Engineering team — today |
+| **v0.dev (Vercel)** | Rapid UI for internal Streamlit replacements | Engineering team — today |
+| **Lovable / Bolt.new** | Build full apps from prompts (no engineer needed) | Non-engineer prototyping |
+| **HeyGen Interactive Avatar** | 24/7 AI sales rep on D2C website | Test Q4 2026 |
+| **Sora 2 / Runway Gen-4** | AI-generated video ads (no shoot needed) | Test for low-budget ads |
+| **Granola** | AI notes specifically for founder 1:1s + investor calls | Use today (₹1,200/mo) |
+| **Bhashini (Govt of India)** | Free Indic NLP — translation, ASR, TTS, transliteration | Use today (₹0) |
+
+---
+
+## Part 18 — Updated Total Cost Savings (with Parts 13–16 Additions)
+
+Adding the new builds:
+
+| Category | Without AI | With Engineering Build | Monthly Saving |
+|---|---|---|---|
+| Regional language QC (manual proofreader) | ₹8,000/mo | ₹0 (Bhashini) | ₹8,000 |
+| Pickfu A/B testing | ₹4,000/mo | ₹0 (WhatsApp panel) | ₹4,000 |
+| PR agency retainer | ₹30,000/mo | ~₹500 API | ₹29,500 |
+| Multi-language reel filming (5× time) | ₹20,000/mo | ₹2,500 (HeyGen) | ₹17,500 |
+| Music licensing | ₹3,000/mo | ₹850 (Suno) | ₹2,150 |
+| Meeting note-taker | ₹4,000/mo | ₹0 (Fireflies free) | ₹4,000 |
+| Email assistant | ₹15,000/mo (VA time) | ₹2,500 (Superhuman) | ₹12,500 |
+| Contract review (routine) | ₹15,000/mo (CA/lawyer) | ~₹500 API | ₹14,500 |
+| **Additional Monthly Saving** | | | **₹92,150/mo** |
+
+**Combined with Part 11: total ₹1.45–1.7 Lakh/month savings = ₹17–20 Lakh/year. At 45% margin, that is ₹38–45 Lakh of equivalent revenue covered by AI tooling.**
+
+---
+
 ## Summary: Where to Start
 
 **This week (no engineering needed):**
@@ -691,6 +1302,31 @@ A simple AI-powered daily workflow for a 2-person team:
 2. Personalized Book Generator (your biggest competitive moat)
 3. WhatsApp AI Support Bot
 4. All competitor and keyword intelligence tools running
+
+---
+
+## New Picks From Parts 13–17 — Highest ROI to Add Next
+
+**Quality (Part 13) — Add these to your existing book_validator:**
+1. **Bhashini-powered Indic spell + grammar checker** (3–4 days) — unlocks regional language launches with zero defect risk
+2. **Age-appropriateness scorer** (2 days) — prevents 1-star reviews and reprints
+3. **Smartphone Print QC PWA** (4–5 days) — replaces scanners; works at printer receiving dock
+
+**Marketing (Part 14) — Pick these first:**
+1. **HeyGen multi-language reel cloning** (₹2,500/mo, today) — 5× regional reach without 5× filming
+2. **Google NotebookLM podcast** (₹0, today) — every book becomes a Spotify discovery channel
+3. **Festival/Trend Radar** (3–4 days) — never miss Janmashtami / Onam / Ugadi peak demand
+4. **WhatsApp Mom Panel A/B tester** (2–3 days) — replaces Pickfu, builds a customer-insight moat
+
+**Operations (Part 15) — Today, no engineering:**
+1. **Fireflies.ai** (free) — auto-notes every vendor call
+2. **Superhuman / Shortwave** (₹1,500–2,500/mo) — 1–2 hrs/day founder time back
+3. **Notion AI knowledge base** (₹850/user) — institutional memory before you hire #3
+4. **ChatGPT vendor-negotiation prompt** (₹0) — 5–15% off every print order
+
+**Future moat (Part 16) — Begin R&D now:**
+1. **AR books with Artivive/Zappar** — premium pricing + viral social proof
+2. **Character consistency LoRA** — your "Disney mascot" foundation
 
 ---
 
