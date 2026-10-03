@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PnL Studio — SanskaTots</title>
+<link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<header>
+  <div class="brand">
+    <span class="logo">₹</span>
+    <div>
+      <h1>PnL Studio</h1>
+      <p class="sub">Marketplace profit &amp; loss, by order cohort</p>
+    </div>
+  </div>
+  <div class="controls">
+    <label>Platform
+      <select id="platform"></select>
+    </label>
+    <label>Month
+      <select id="month"></select>
+    </label>
+    <label>Resell rate
+      <span class="inline">
+        <input id="resell" type="range" min="0" max="100" step="5">
+        <output id="resellOut">70%</output>
+      </span>
+    </label>
+    <label>Return ship ₹
+      <input id="retship" type="number" min="0" step="1" class="num">
+    </label>
+    <button id="refresh" class="primary">Recalculate</button>
+  </div>
+</header>
+
+<nav class="tabs" id="tabs">
+  <button data-tab="overview" class="active">Overview</button>
+  <button data-tab="books">Books</button>
+  <button data-tab="skus">SKUs</button>
+  <button data-tab="statement">P&amp;L Statement</button>
+  <button data-tab="risk">Risk &amp; Break-even</button>
+  <button data-tab="compare">Compare Months</button>
+  <button data-tab="report">Report</button>
+  <button data-tab="data">Data Sources</button>
+  <button data-tab="config">Config</button>
+</nav>
+
+<div id="banner" class="banner hidden"></div>
+<div id="loading" class="loading hidden">Crunching numbers…</div>
+
+<main>
+  <section id="tab-overview" class="tab active"></section>
+  <section id="tab-books" class="tab"></section>
+  <section id="tab-skus" class="tab"></section>
+  <section id="tab-statement" class="tab"></section>
+  <section id="tab-risk" class="tab"></section>
+
+  <section id="tab-compare" class="tab">
+    <div class="card">
+      <h2>Month-over-month</h2>
+      <div id="compareMonths" class="chips"></div>
+      <button id="runCompare" class="primary">Compare selected</button>
+    </div>
+    <div id="compareOut"></div>
+  </section>
+
+  <section id="tab-report" class="tab">
+    <div class="card">
+      <h2>Markdown report</h2>
+      <p class="muted">Same structure as the existing <code>SanskaTots_Meesho_PnL_&lt;Month&gt;.md</code> files.</p>
+      <div class="row">
+        <button id="genReport" class="primary">Generate</button>
+        <button id="copyReport">Copy</button>
+        <button id="downloadReport">Download</button>
+        <button id="saveReport">Save into Finance/</button>
+      </div>
+      <label class="wide">Save path (relative to repo root)
+        <input id="reportPath" type="text" placeholder="Finance/Sep_Profit_Loss/SanskaTots_Meesho_PnL_September2026.md">
+      </label>
+      <textarea id="reportText" spellcheck="false" placeholder="Generated markdown appears here…"></textarea>
+    </div>
+  </section>
+
+  <section id="tab-data" class="tab">
+    <div class="card">
+      <h2>Upload exports</h2>
+      <div id="drop" class="drop">
+        <p>Drop marketplace payment files here, or <label class="link">browse<input id="fileInput" type="file" multiple hidden></label></p>
+        <p class="muted">.xlsx / .xls / .csv — saved to <code>tools/pnl_studio/uploads/</code> and merged with the Finance folder automatically.</p>
+      </div>
+      <div id="uploadOut"></div>
+    </div>
+    <div id="dataOut"></div>
+  </section>
+
+  <section id="tab-config" class="tab">
+    <div class="card">
+      <h2>Catalog &amp; assumptions</h2>
+      <p class="muted">SKU → book mapping and per-unit manufacturing cost. Saved to <code>tools/pnl_studio/config/catalog.json</code>.</p>
+      <div class="row">
+        <button id="addSku">Add SKU</button>
+        <button id="saveConfig" class="primary">Save config</button>
+        <button id="reloadConfig">Discard changes</button>
+      </div>
+      <div id="configOut"></div>
+    </div>
+  </section>
+</main>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

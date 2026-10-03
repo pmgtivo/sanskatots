@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "currency": "Rs",
+  "skus": {
+    "ST-ABB-02": { "book": "All In One Busy Book", "cost": 262 },
+    "ST-ABB-03": { "book": "All In One Busy Book", "cost": 262 },
+    "ST-MBB-01": { "book": "Montessori Busy Book", "cost": 177 },
+    "ST-MBB-03": { "book": "Montessori Busy Book", "cost": 177 },
+    "ST-ABB-01": { "book": "Animals Busy Book", "cost": 150 },
+    "ST-ABB-04": { "book": "Animals Busy Book", "cost": 150 },
+    "ST-BGK-01": { "book": "BhagavadGita Busy Book", "cost": 57 },
+    "ST-BGK-02": { "book": "BhagavadGita Busy Book", "cost": 57 },
+    "ST-LK-01": { "book": "Learn Kannada Book", "cost": 106 },
+    "ST-LK-02": { "book": "Learn Kannada Book", "cost": 106 },
+    "ST-SM-01": { "book": "Shloka and Mantras Book", "cost": 58 },
+    "ST-SM-02": { "book": "Shloka and Mantras Book", "cost": 58 },
+    "SiGenhwc": { "book": "Shloka and Mantras Book", "cost": 58, "note": "board-book variant, same family/cost as ST-SM-01/02" },
+    "ST-PCB-01": { "book": "Pencil Control Tracing Book", "cost": 122 },
+    "ST-PCB-04": { "book": "Pencil Control Tracing Book", "cost": 122, "note": "cost assumed = ST-PCB-01" },
+    "ST-IMB-01": { "book": "Indian Mythology Busy Book", "cost": 160 },
+    "ST-SM-CB": { "book": "Shlokas & Mantras Birthday Gift Pack (10)", "cost": 450, "note": "pack-of-10 gift bundle" }
+  },
+  "platforms": {
+    "meesho": {
+      "default_resell_rate": 0.7,
+      "return_shipping_per_order": 157,
+      "months": {
+        "2026-08": { "resell_rate": 0.5, "note": "user directive Aug 2026: 50% resellable" },
+        "2026-09": { "resell_rate": 0.7, "note": "user directive Sep 2026: 70% resellable" }
+      }
+    },
+    "flipkart": {
+      "default_resell_rate": 0.7,
+      "return_shipping_per_order": 0,
+      "months": {}
+    },
+    "amazon": {
+      "default_resell_rate": 0.7,
+      "return_shipping_per_order": 0,
+      "months": {}
+    }
+  }
+}

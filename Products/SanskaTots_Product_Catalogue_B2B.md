@@ -68,7 +68,7 @@ So we built something different.
 
 ---
 
-# Product Catalogue — All 7 Books
+# Product Catalogue — All 8 Books
 
 ---
 
@@ -255,7 +255,73 @@ Birthday | Baby Shower | Diwali | First Day of School | Curious Toddlers
 
 ---
 
-## 04 | Write & Wipe Pencil Control Tracing Book
+## 04 | Mythology Busy Book for Kids
+
+**Brand:** SanskaTots™<br>
+**Format:** A4 Spiral Bound | Write-Wipe-Repeat | 16 Pages | 70+ Reusable Velcro Stickers<br>
+**Age:** 2+ Years<br>
+**Includes:** Book + Pen + Duster (FREE)
+
+### MRP & Wholesale Price
+
+| | Price |
+|---|---|
+| **MRP** | ~~₹899~~ |
+| **Wholesale Price** | **₹420** |
+| **You Save** | ₹479 (53% OFF) |
+
+### Description
+
+The SanskaTots™ Mythology Busy Book makes Indian mythology hands-on, interactive, and memorable for children aged 2 and above. Instead of a flat, text-heavy mythology book, children learn through matching, sequencing, building, and reusable Velcro activities featuring Hindu Gods, the Ramayana, Krishna's stories, Dashavatar, Hanuman, temples, and Bhagavad Gita wisdom.
+
+Every page is printed on premium 300 GSM laminated paper and spiral-bound so it lies flat during play. With 70+ reusable Velcro stickers, children can repeat each activity again and again. The included pen and duster also support write-wipe-repeat learning, making this a screen-free way to build cultural identity, vocabulary, memory, and early understanding of Indian values.
+
+### Topics & Curriculum Covered
+
+| # | Topic | Activity Type |
+|---|-------|---------------|
+| 1 | Meet the Gods | Match names to faces |
+| 2 | Gods & Their Vahanas | Match each God with their vehicle |
+| 3 | Ramayana Story | Sequence the key story events |
+| 4 | Krishna's Story | Sequence important moments from Krishna's life |
+| 5 | Ravana's Heads | Learn about and match Ravana's ten heads |
+| 6 | Dashavatar | Arrange the 10 avatars of Vishnu in order |
+| 7 | Hanuman's Qualities | Explore courage, devotion, strength, and loyalty |
+| 8 | Famous Indian Temples | Recognise and match famous temples |
+| 9 | Bhagavad Gita | Learn short, child-friendly verses |
+| 10 | Build Ganesha | Build Lord Ganesha piece by piece |
+
+**Total: 16 Pages | 10 Mythology Activities | 70+ Reusable Velcro Stickers**
+
+### What Your Child Learns
+
+- Recognise major Hindu Gods and Goddesses by name
+- Match Gods with their Vahanas and symbols
+- Understand the story sequence of the Ramayana and Krishna's life
+- Arrange the 10 Avatars of Vishnu in order
+- Learn Hanuman's qualities and why he is loved and respected
+- Recognise famous Indian temples and short Bhagavad Gita verses
+- Build cultural identity and values through screen-free play
+
+### Key Product Highlights
+
+- 10 interactive mythology activities in one book
+- 70+ reusable Velcro stickers for matching, placing, and sequencing
+- 300 GSM laminated pages — durable, wipe-clean, and reusable
+- Spiral binding — lies flat for comfortable hands-on play
+- A4 size — spacious for little hands and multiple activities
+- FREE pen and soft duster included for write-wipe-repeat use
+- Simple, age-appropriate content for children aged 2 years and above
+- Screen-free way to learn Hindu mythology, stories, and values
+- Proudly designed and made in India
+
+### Perfect Gift For
+
+Birthday | Diwali | Ganesh Chaturthi | Namkaran | Annaprashan | Return Gift | Indian Culture Gift
+
+---
+
+## 05 | Write & Wipe Pencil Control Tracing Book
 
 **Brand:** SanskaTots™  
 **Format:** A5 Write-Wipe-Repeat  
@@ -267,8 +333,8 @@ Birthday | Baby Shower | Diwali | First Day of School | Curious Toddlers
 | | Price |
 |---|---|
 | **MRP** | ~~₹499~~ |
-| **Sale Price** | **₹280** |
-| **You Save** | ₹219 (44% OFF) |
+| **Sale Price** | **₹210** |
+| **You Save** | ₹289 (58% OFF) |
 
 ### Description
 
@@ -316,7 +382,7 @@ Birthday | School Admission Gift | Home Learning Starter | Return Gift Alternati
 
 ---
 
-## 05 | Shlokas and Mantras for Kids — Board Book
+## 06 | Shlokas and Mantras for Kids — Board Book
 
 **Brand:** SanskaTots™  
 **Format:** A6 Board Book | 32 Pages | Bilingual  
@@ -386,7 +452,7 @@ Diwali | Namakaran Ceremony | Annaprashan | First Birthday | Baby Shower | Navra
 
 ---
 
-## 06 | Bhagavad Gita for Kids
+## 07 | Bhagavad Gita for Kids
 
 **Brand:** SanskaTots™  
 **Format:** A5 Moral Story Book | 3D Illustrated  
@@ -435,7 +501,7 @@ Birthday | Namakaran | Annaprashan | Diwali | Christmas | Baby Shower | School R
 
 ---
 
-## 07 | Kannada 5 In 1 Write-Wipe-Repeat Book
+## 08 | Kannada 5 In 1 Write-Wipe-Repeat Book
 
 **Brand:** SanskaTots™  
 **Format:** A5 Spiral Bound | Write-Wipe-Repeat | 32 Pages  
@@ -512,7 +578,7 @@ Birthday | Diwali | Baby Shower | First Day of School | Karnataka/Kannada Herita
 | **Montessori Starter** | Montessori Busy Book + Animals Busy Book | Hands-on learners aged 1–4 |
 | **Cultural Heritage Set** | Shlokas Board Book + Bhagavad Gita for Kids | Spiritual & cultural grounding aged 2+ |
 | **Bilingual Language Kit** | Kannada 5-in-1 + All In One Busy Book | Bilingual Kannada+English home learning |
-| **Ultimate Learning Library** | All 7 Books | Complete SanskaTots™ collection |
+| **Ultimate Learning Library** | All 8 Books | Complete SanskaTots™ collection |
 
 ---
 

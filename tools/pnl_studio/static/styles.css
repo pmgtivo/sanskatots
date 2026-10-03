@@ -1,0 +1,150 @@
+:root {
+  --bg: #0f1216;
+  --panel: #171c23;
+  --panel-2: #1e242d;
+  --line: #2a323d;
+  --text: #e6ebf2;
+  --muted: #8b97a8;
+  --accent: #4ea1ff;
+  --good: #3ecf8e;
+  --bad: #ff6b6b;
+  --warn: #ffb84d;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.brand { display: flex; gap: 12px; align-items: center; }
+.logo {
+  width: 40px; height: 40px; border-radius: 10px;
+  background: linear-gradient(135deg, var(--accent), #8b5cf6);
+  display: grid; place-items: center; font-size: 22px; font-weight: 700; color: #fff;
+}
+h1 { margin: 0; font-size: 19px; letter-spacing: .2px; }
+.sub { margin: 0; color: var(--muted); font-size: 12px; }
+
+.controls { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-end; }
+.controls label, label.wide {
+  display: flex; flex-direction: column; gap: 4px;
+  font-size: 11px; text-transform: uppercase; letter-spacing: .6px; color: var(--muted);
+}
+label.wide { margin: 12px 0; }
+.inline { display: flex; align-items: center; gap: 8px; }
+
+select, input[type="text"], input[type="number"], textarea {
+  background: var(--panel-2); color: var(--text);
+  border: 1px solid var(--line); border-radius: 8px;
+  padding: 7px 10px; font: inherit; min-width: 120px;
+}
+input.num { width: 90px; min-width: 0; }
+input[type="range"] { width: 120px; accent-color: var(--accent); }
+output { font-variant-numeric: tabular-nums; color: var(--text); min-width: 42px; }
+
+button {
+  background: var(--panel-2); color: var(--text);
+  border: 1px solid var(--line); border-radius: 8px;
+  padding: 8px 14px; font: inherit; cursor: pointer;
+}
+button:hover { border-color: var(--accent); }
+button.primary { background: var(--accent); border-color: var(--accent); color: #07101d; font-weight: 600; }
+button.primary:hover { filter: brightness(1.1); }
+
+.tabs {
+  display: flex; gap: 4px; overflow-x: auto;
+  padding: 8px 24px; background: var(--panel);
+  border-bottom: 1px solid var(--line);
+  position: sticky; top: 76px; z-index: 19;
+}
+.tabs button { border: none; background: none; color: var(--muted); border-radius: 8px; white-space: nowrap; }
+.tabs button.active { background: var(--panel-2); color: var(--text); }
+
+main { padding: 20px 24px 60px; }
+.tab { display: none; }
+.tab.active { display: block; }
+
+.card {
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 12px; padding: 18px; margin-bottom: 18px;
+}
+.card h2 { margin: 0 0 4px; font-size: 15px; letter-spacing: .3px; }
+.card h3 { margin: 18px 0 6px; font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: .8px; }
+.muted { color: var(--muted); font-size: 12px; }
+.row { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+
+.kpis { display: grid; grid-template-columns: repeat(auto-fill, minmax(178px, 1fr)); gap: 12px; }
+.kpi {
+  background: var(--panel-2); border: 1px solid var(--line);
+  border-radius: 10px; padding: 12px 14px;
+}
+.kpi .label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .6px; }
+.kpi .value { font-size: 21px; font-weight: 650; font-variant-numeric: tabular-nums; margin-top: 4px; }
+.kpi .value.pos { color: var(--good); }
+.kpi .value.neg { color: var(--bad); }
+.kpi .hint { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+th, td { padding: 7px 10px; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th:first-child, td:first-child { text-align: left; }
+th { color: var(--muted); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: .5px; }
+tbody tr:hover { background: var(--panel-2); }
+td.pos { color: var(--good); }
+td.neg { color: var(--bad); }
+tr.emphasis td { font-weight: 700; background: rgba(78, 161, 255, .07); }
+tr.divider td { padding: 0; height: 8px; border-bottom: none; }
+tr.current td { background: rgba(255, 184, 77, .1); }
+.scroll { overflow-x: auto; }
+
+.bar { height: 6px; border-radius: 3px; background: var(--accent); display: block; }
+.bar.neg { background: var(--bad); }
+.barcell { min-width: 120px; }
+
+.banner { margin: 12px 24px; padding: 10px 14px; border-radius: 10px; font-size: 13px; }
+.banner.warn { background: rgba(255, 184, 77, .12); border: 1px solid var(--warn); color: var(--warn); }
+.banner.err { background: rgba(255, 107, 107, .12); border: 1px solid var(--bad); color: var(--bad); }
+.banner.ok { background: rgba(62, 207, 142, .12); border: 1px solid var(--good); color: var(--good); }
+.hidden { display: none; }
+.loading { margin: 12px 24px; color: var(--muted); }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+.chip {
+  display: flex; align-items: center; gap: 6px;
+  background: var(--panel-2); border: 1px solid var(--line);
+  border-radius: 999px; padding: 6px 12px; cursor: pointer; font-size: 13px;
+}
+.chip.on { border-color: var(--accent); color: var(--accent); }
+
+.drop {
+  border: 2px dashed var(--line); border-radius: 12px;
+  padding: 26px; text-align: center; margin-top: 10px;
+}
+.drop.hot { border-color: var(--accent); background: rgba(78, 161, 255, .06); }
+.link { color: var(--accent); cursor: pointer; text-decoration: underline; }
+
+textarea {
+  width: 100%; min-height: 420px; font: 12px/1.6 ui-monospace, SFMono-Regular, Menlo, monospace;
+  resize: vertical; margin-top: 10px;
+}
+code { background: var(--panel-2); padding: 1px 5px; border-radius: 4px; font-size: 12px; }
+.note { border-left: 3px solid var(--warn); padding: 8px 12px; margin: 12px 0; color: var(--muted); font-size: 12px; background: rgba(255,184,77,.06); }
+.cfgtable input { width: 100%; min-width: 0; }
+.cfgtable td { white-space: normal; }
