@@ -18,7 +18,16 @@
     "ST-PCB-01": { "book": "Pencil Control Tracing Book", "cost": 122 },
     "ST-PCB-04": { "book": "Pencil Control Tracing Book", "cost": 122, "note": "cost assumed = ST-PCB-01" },
     "ST-IMB-01": { "book": "Indian Mythology Busy Book", "cost": 160 },
-    "ST-SM-CB": { "book": "Shlokas & Mantras Birthday Gift Pack (10)", "cost": 450, "note": "pack-of-10 gift bundle" }
+    "ST-SM-CB": { "book": "Shlokas & Mantras Birthday Gift Pack (10)", "cost": 450, "note": "pack-of-10 gift bundle" },
+    "ST-AIOB-01": { "book": "All In One Busy Book", "cost": 262, "note": "Flipkart SKU; same book as ST-ABB-02/03, cost assumed equal" },
+    "ST-SMB-01": { "book": "Shloka and Mantras Book", "cost": 58, "note": "Flipkart SKU, board book; cost assumed = SiGenhwc" },
+    "ST-BGFK-01": { "book": "BhagavadGita Busy Book", "cost": 57, "note": "Amazon SKU for Bhagavad Gita for Kids; cost assumed = ST-BGK-01" },
+    "ST-HBB-01": { "book": "Indian Mythology Busy Book", "cost": 160, "note": "Amazon 'Hindu Mythology Activity Book'; cost assumed = ST-IMB-01 - confirm" },
+    "AF-C5PE-R738": { "book": "Montessori Busy Book", "cost": 177, "note": "Amazon auto-generated SKU for the Montessori Busy Book" },
+    "Z6-0EAA-VBFM": { "book": "Pencil Control Tracing Book", "cost": 122, "note": "Amazon auto-generated SKU" },
+    "4Z-QLDD-V8B2": { "book": "Shloka and Mantras Book", "cost": 58, "note": "Amazon auto-generated SKU, board book" },
+    "EY-QW5X-NSUY": { "book": "All In One Busy Book", "cost": 262, "note": "Amazon auto-generated SKU" },
+    "J9-Z82A-TQ1M": { "book": "Learn Kannada Book", "cost": 106, "note": "Amazon auto-generated SKU for the Kannada write-and-wipe book" }
   },
   "platforms": {
     "meesho": {
@@ -31,12 +40,28 @@
     },
     "flipkart": {
       "default_resell_rate": 0.7,
-      "return_shipping_per_order": 0,
+      "return_shipping_per_order": 60,
+      "fee_model": {
+        "commission_pct": 0.06,
+        "fixed_fee": 10,
+        "fwd_shipping": 60,
+        "fee_gst_pct": 0.18,
+        "tds_pct": 0.001,
+        "note": "PLACEHOLDER - the Sales Report carries no fees. Replace with the rates in your Flipkart settlement report."
+      },
       "months": {}
     },
     "amazon": {
       "default_resell_rate": 0.7,
-      "return_shipping_per_order": 0,
+      "return_shipping_per_order": 45,
+      "fee_model": {
+        "commission_pct": 0.0,
+        "fixed_fee": 17,
+        "fwd_shipping": 45,
+        "fee_gst_pct": 0.18,
+        "tds_pct": 0.001,
+        "note": "From the SanskaTots plan: 0% referral on books up to Rs 1,000, Rs 17 closing fee, ~Rs 45 Easy Ship. Confirm against your Amazon payments report."
+      },
       "months": {}
     }
   }

@@ -37,12 +37,15 @@
 
 <nav class="tabs" id="tabs">
   <button data-tab="overview" class="active">Overview</button>
+  <button data-tab="all">All Platforms</button>
   <button data-tab="books">Books</button>
   <button data-tab="skus">SKUs</button>
+  <button data-tab="returns">Returns</button>
   <button data-tab="statement">P&amp;L Statement</button>
   <button data-tab="risk">Risk &amp; Break-even</button>
   <button data-tab="compare">Compare Months</button>
   <button data-tab="report">Report</button>
+  <button data-tab="gst">GST Filing</button>
   <button data-tab="data">Data Sources</button>
   <button data-tab="config">Config</button>
 </nav>
@@ -52,8 +55,10 @@
 
 <main>
   <section id="tab-overview" class="tab active"></section>
+  <section id="tab-all" class="tab"></section>
   <section id="tab-books" class="tab"></section>
   <section id="tab-skus" class="tab"></section>
+  <section id="tab-returns" class="tab"></section>
   <section id="tab-statement" class="tab"></section>
   <section id="tab-risk" class="tab"></section>
 
@@ -77,9 +82,32 @@
         <button id="saveReport">Save into Finance/</button>
       </div>
       <label class="wide">Save path (relative to repo root)
-        <input id="reportPath" type="text" placeholder="Finance/Sep_Profit_Loss/SanskaTots_Meesho_PnL_September2026.md">
+        <input id="reportPath" type="text" placeholder="Finance/Profit_Loss/2026-09/Reports/SanskaTots_Meesho_PnL_September2026.md">
       </label>
       <textarea id="reportText" spellcheck="false" placeholder="Generated markdown appears here…"></textarea>
+    </div>
+  </section>
+
+  <section id="tab-gst" class="tab">
+    <div class="card">
+      <h2>GST filing pack</h2>
+      <p class="muted">Exact GSTR-1 and GSTR-3B box values from the marketplace GST reports in
+        <code>Finance/GST Fillings/</code>. Select the tax periods to include.</p>
+      <div id="gstPeriods" class="chips"></div>
+      <div class="row">
+        <button id="runGst" class="primary">Compute</button>
+        <button id="copyGst">Copy</button>
+        <button id="downloadGst">Download</button>
+        <button id="saveGst">Save into Finance/</button>
+      </div>
+      <label class="wide">Save path (relative to repo root)
+        <input id="gstPath" type="text" placeholder="Finance/GST Fillings/GST_Filing_Pack_2026-09.md">
+      </label>
+    </div>
+    <div id="gstOut"></div>
+    <div class="card">
+      <h2>Markdown</h2>
+      <textarea id="gstText" spellcheck="false" placeholder="Compute to generate the filing pack…"></textarea>
     </div>
   </section>
 
@@ -88,7 +116,7 @@
       <h2>Upload exports</h2>
       <div id="drop" class="drop">
         <p>Drop marketplace payment files here, or <label class="link">browse<input id="fileInput" type="file" multiple hidden></label></p>
-        <p class="muted">.xlsx / .xls / .csv — saved to <code>tools/pnl_studio/uploads/</code> and merged with the Finance folder automatically.</p>
+        <p class="muted">.xlsx / .xls / .csv / .txt — saved to <code>tools/pnl_studio/uploads/</code> and merged with the Finance folder automatically. Keep monthly files in <code>Finance/Profit_Loss/&lt;YYYY-MM&gt;/&lt;Platform&gt;/</code>.</p>
       </div>
       <div id="uploadOut"></div>
     </div>

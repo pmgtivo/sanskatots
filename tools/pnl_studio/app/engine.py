@@ -15,7 +15,9 @@ from typing import Any, Dict, List, Optional
 
 import pandas as pd
 
+from . import returns as returns_mod
 from .platforms.base import (
+    CANCELLED,
     DELIVERED,
     EXCHANGE,
     FEE_ADJ,
@@ -129,7 +131,9 @@ def compute(
     excluded = df[~in_month]
 
     fee = cohort[cohort["status"] == FEE_ADJ]
-    real = cohort[cohort["status"] != FEE_ADJ].copy()
+    cancelled = cohort[cohort["status"] == CANCELLED]
+    real = cohort[~cohort["status"].isin([FEE_ADJ, CANCELLED])].copy()
+    estimated = bool(len(real) and real["est"].any())
 
     ad_month = ads[(ads["run_date"] >= start) & (ads["run_date"] < end)] if len(ads) else ads
     ad_total = _f(abs(ad_month["total_cost"].sum())) if len(ad_month) else 0.0
@@ -143,6 +147,7 @@ def compute(
         "return_shipping_per_order": _f(return_shipping_per_order),
         "currency": cfg.get("currency", "Rs"),
         "has_data": bool(len(real)),
+        "settlement_estimated": estimated,
     }
 
     result["cohort"] = {
@@ -151,6 +156,7 @@ def compute(
         "rows_kept": int(len(cohort)),
         "order_lines": int(len(real)),
         "fee_lines": int(len(fee)),
+        "cancelled_lines": int(len(cancelled)),
         "unique_orders": int(cohort["order_id"].nunique()),
         "unmapped_skus": sorted(set(real.loc[real["_book"] == UNMAPPED, "sku"])),
         "zero_cost_skus": sorted(set(real.loc[real["_cost"] == 0, "sku"])),
@@ -258,6 +264,7 @@ def compute(
     ret_ship = _f(real["return_shipping"].sum())
     affiliate = _f(real["affiliate"].sum() + fee["affiliate"].sum())
     claims = _f(real["claims"].sum() + fee["claims"].sum())
+    offers = _f(real["offers"].sum())
     tds = _f(real["tds"].sum())
     commission = _f(real["commission"].sum())
     settlement = _f(real["settlement"].sum() + fee["settlement"].sum())
@@ -267,18 +274,20 @@ def compute(
     net_profit = _f(gross_profit - ad_total)
     units_sold = _f(total_units, 0)
 
+    tag = " (estimated)" if estimated else ""
     result["statement"] = [
         {"label": "Gross sale value (incl. shipping & GST)", "value": gross},
         {"label": "Less: returns & RTO revenue reversal", "value": rev_reversal},
         {"label": "NET REVENUE", "value": _f(gross + rev_reversal), "emphasis": True},
         {"divider": True},
-        {"label": "Marketplace commission", "value": commission},
-        {"label": "Forward shipping charge", "value": fwd_ship},
-        {"label": "Return shipping charge", "value": ret_ship},
+        {"label": ("Marketplace commission & fees" if estimated else "Marketplace commission") + tag, "value": commission},
+        {"label": "Forward shipping charge" + tag, "value": fwd_ship},
+        {"label": "Return shipping charge" + tag, "value": ret_ship},
         {"label": "Affiliate fee", "value": affiliate},
         {"label": "Claims recovered", "value": claims},
-        {"label": "TDS", "value": tds},
-        {"label": "TOTAL SETTLEMENT (marketplace pays you)", "value": settlement, "emphasis": True},
+        {"label": "TDS" + tag, "value": tds},
+        {"label": "TOTAL SETTLEMENT" + (" (modelled)" if estimated else " (marketplace pays you)"),
+         "value": settlement, "emphasis": True},
         {"divider": True},
         {"label": "Less: manufacturing cost of units sold", "value": -cogs_sold},
         {"label": "Less: write-off on returns (%d%% of returned stock)" % round((1 - resell_rate) * 100),
@@ -288,6 +297,9 @@ def compute(
         {"label": "Less: marketplace ads (incl. GST)", "value": -ad_total},
         {"label": "NET PROFIT (%s order cohort)" % result["month_label"], "value": net_profit, "emphasis": True},
     ]
+    if offers:
+        at = next(i for i, ln in enumerate(result["statement"]) if ln.get("label", "").startswith("TDS"))
+        result["statement"].insert(at, {"label": "Bank-offer cashback from platform", "value": offers})
     for line in result["statement"]:
         if "value" in line:
             line["pct_of_gross"] = _pct(line["value"], gross)
@@ -317,11 +329,13 @@ def compute(
         "roas": _f(gross / ad_total) if ad_total else 0.0,
         "return_pct_closed": _pct(n_ret, closed),
         "rto_pct_closed": _pct(n_rto, closed),
+        "fail_pct_closed": _pct(n_ret + n_rto, closed),
     }
 
     # ------------------------------------------------------------ cash position
     paid = _f(real[real["paid"]]["settlement"].sum() + fee[fee["paid"]]["settlement"].sum())
     result["cash"] = {
+        "estimated": estimated,
         "settled": paid,
         "receivable": _f(settlement - paid),
         "total": settlement,
@@ -352,6 +366,12 @@ def compute(
         "total": total_return_cost,
         "pct_of_net_profit": _pct(total_return_cost, net_profit),
     }
+
+    month_cfg = ((cfg.get("platforms") or {}).get(platform) or {}).get("months", {}).get(month, {})
+    result["returns"] = returns_mod.build(real, fee, cancelled, month_cfg, resell_rate, gross_profit, estimated)
+    result["kpis"]["return_loss"] = result["returns"]["summary"]["loss"]
+    result["kpis"]["claims_received"] = result["returns"]["claims"]["received"]
+    result["kpis"]["cancelled"] = int(len(cancelled))
 
     # -------------------------------------------- break-even & sensitivity
     avg_cost = cogs_sold / units_sold if units_sold else 0.0
@@ -428,6 +448,10 @@ def compare(results: List[Dict[str, Any]]) -> Dict[str, Any]:
         ("roas", "ROAS", "x"),
         ("return_pct_closed", "Return % (closed)", "pct"),
         ("rto_pct_closed", "RTO % (closed)", "pct"),
+        ("fail_pct_closed", "Failed % (return + RTO)", "pct"),
+        ("return_loss", "Return loss", "money"),
+        ("claims_received", "Claims received", "money"),
+        ("cancelled", "Cancelled before shipping", "int"),
     ]
     usable = [r for r in results if r.get("kpis")]
     rows = []

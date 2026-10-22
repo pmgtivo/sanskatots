@@ -35,6 +35,15 @@ def render(result: Dict[str, Any]) -> str:
     add("> Order cohort: every order **placed** in %s, regardless of which payment "
         "file it arrived in or when it settled." % label)
     add("")
+    if result.get("settlement_estimated"):
+        fm = result.get("fee_model") or {}
+        add("> **Fees are estimated.** %s's export has no fee or payout data, so commission, shipping and "
+            "TDS are modelled: commission %.1f%% + fixed %s per order, forward shipping %s per order, return "
+            "shipping %s per failed order, GST %.0f%% on fees. Profit is only as accurate as those rates. %s"
+            % (platform_label, fm.get("commission_pct", 0) * 100, _money(fm.get("fixed_fee", 0), cur),
+               _money(fm.get("fwd_shipping", 0), cur), _money(result["return_shipping_per_order"], cur),
+               fm.get("fee_gst_pct", 0) * 100, fm.get("note", "")))
+        add("")
 
     if not result.get("has_data"):
         add("_No order lines found for this month._")
@@ -159,18 +168,22 @@ def render(result: Dict[str, Any]) -> str:
     cash = result["cash"]
     add("## 9. Cash position")
     add("")
-    add(_table(["Item", "Amount"], [
-        ["Settlement already banked", _money(cash["settled"], cur)],
-        ["Settlement still receivable", _money(cash["receivable"], cur)],
-        ["Total earned on %s orders" % label, _money(cash["total"], cur)],
-        ["Cash deducted for ads", _money(cash["ads_deducted"], cur)],
-        ["Manufacturing outlay on units sold", _money(cash["manufacturing_outlay"], cur)],
-    ]))
-    if cash["receivable"] > 0:
+    if cash.get("estimated"):
+        add("_Not available: this platform's export does not say what has been paid out._")
         add("")
-        add("> %s of this month's settlement is still receivable — it is earned, not yet cash in hand."
-            % _money(cash["receivable"], cur))
-    add("")
+    else:
+        add(_table(["Item", "Amount"], [
+            ["Settlement already banked", _money(cash["settled"], cur)],
+            ["Settlement still receivable", _money(cash["receivable"], cur)],
+            ["Total earned on %s orders" % label, _money(cash["total"], cur)],
+            ["Cash deducted for ads", _money(cash["ads_deducted"], cur)],
+            ["Manufacturing outlay on units sold", _money(cash["manufacturing_outlay"], cur)],
+        ]))
+        if cash["receivable"] > 0:
+            add("")
+            add("> %s of this month's settlement is still receivable — it is earned, not yet cash in hand."
+                % _money(cash["receivable"], cur))
+        add("")
 
     be = result["breakeven"]
     sens = result["sensitivity"]
@@ -208,6 +221,63 @@ def render(result: Dict[str, Any]) -> str:
         ["Worst case (every in-transit order fails)", _money(cons["worst_case_net_profit"], cur)],
     ]))
     add("")
+
+    rt = result["returns"]
+    rs, cl = rt["summary"], rt["claims"]
+    add("## 12. Returns & claims")
+    add("")
+    add(_table(["Metric", "Value"], [
+        ["Closed orders (excludes %s still in transit)" % _num(rs["in_transit"]), _num(rs["closed"])],
+        ["Customer returns", "%s (%.2f%%)" % (_num(rs["returns"]), rs["return_pct"])],
+        ["RTO / courier returns", "%s (%.2f%%)" % (_num(rs["rto"]), rs["rto_pct"])],
+        ["Failed orders (return + RTO)", "%s (%.2f%%)" % (_num(rs["failed"]), rs["fail_pct"])],
+        ["Units returned", _num(rs["units_returned"])],
+        ["Value refunded to customers", "%s (%.2f%% of gross sale)" % (_money(rs["refunded"], cur), rs["refund_pct_of_gross"])],
+        ["Return shipping paid", _money(rs["return_shipping"], cur)],
+        ["Stock written off", _money(rs["writeoff"], cur)],
+        ["**Total return loss**", _money(rs["loss"], cur)],
+        ["Claims received (%s)" % cl["basis"], _money(cl["received"], cur)],
+        ["Claim recovery of return loss", "%.1f%%" % cl["recovery_pct_of_loss"]],
+        ["Cancelled before shipping", "%s (%.1f%%)" % (_num(rs["cancelled"]), rs["cancel_pct"])],
+    ]))
+    add("")
+    if cl["filed_amount"]:
+        add("Claims filed: %s for %s; received %s; still outstanding %s."
+            % (_num(cl["filed_count"]), _money(cl["filed_amount"], cur), _money(cl["received"], cur),
+               _money(cl["outstanding"] or 0, cur)))
+        add("")
+    if cl["reasons"]:
+        add(_table(["Claim reason", "Claims", "Amount"],
+                   [[x["reason"], _num(x["count"]), _money(x["amount"], cur)] for x in cl["reasons"]]))
+        add("")
+    cols = ["Closed", "Returns", "RTO", "Failed %", "Return loss", "Claims", "Flag"]
+
+    def _ret_rows(rows):
+        return [[x["name"], _num(x["closed"]), _num(x["returns"]), _num(x["rto"]), "%.1f%%" % x["fail_pct"],
+                 _money(x["loss"], cur), _money(x["claims"], cur), x["flag"]] for x in rows]
+
+    add("**By book**")
+    add("")
+    add(_table(["Book"] + cols, _ret_rows(rt["by_book"])))
+    add("")
+    add("**By SKU**")
+    add("")
+    add(_table(["SKU"] + cols, _ret_rows(rt["by_sku"])))
+    add("")
+    if rt["by_pay_mode"]:
+        add("**By payment mode**")
+        add("")
+        add(_table(["Mode"] + cols, _ret_rows(rt["by_pay_mode"])))
+        add("")
+    if rt["by_state"]:
+        add("**By delivery state (top 15 by failure rate)**")
+        add("")
+        add(_table(["State"] + cols, _ret_rows(rt["by_state"])))
+        add("")
+    if rt["insights"]:
+        for note in rt["insights"]:
+            add("- %s" % note["text"])
+        add("")
 
     add("---")
     add("")

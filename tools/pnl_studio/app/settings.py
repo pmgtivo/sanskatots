@@ -18,4 +18,4 @@ DATA_ROOTS = [
     UPLOAD_DIR,
 ]
 
-ALLOWED_UPLOAD_EXT = {".xlsx", ".xls", ".csv"}
+ALLOWED_UPLOAD_EXT = {".xlsx", ".xls", ".csv", ".txt", ".tsv"}

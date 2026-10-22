@@ -86,7 +86,8 @@ function renderOverview(r) {
       kpi('Net profit', money0(k.net_profit), pct(k.net_margin_on_gross) + ' of gross sale', sign(k.net_profit)),
       kpi('Gross profit', money0(k.gross_profit), 'before ads'),
       kpi('Gross sale', money0(k.gross_sale), num(k.orders) + ' orders'),
-      kpi('Settlement', money0(k.settlement), money0(cash.receivable) + ' still receivable'),
+      kpi('Settlement' + (r.settlement_estimated ? ' (est.)' : ''), money0(k.settlement),
+        r.settlement_estimated ? 'modelled from fee assumptions' : money0(cash.receivable) + ' still receivable'),
       kpi('Units sold', num(k.units_sold), 'delivered + in transit + exchange'),
       kpi('Net profit / unit', money(k.np_per_unit)),
       kpi('ASP / order', money(k.asp_per_order), money(k.asp_per_unit) + ' per unit'),
@@ -121,7 +122,9 @@ function renderOverview(r) {
       { key: 'share_pct', label: 'Share', fmt: pct1 },
     ], ads.campaigns) : el('p', { class: 'muted' }, 'No ad rows for this month.')));
 
-  root.append(card('Cash position',
+  root.append(cash.estimated ? card('Cash position',
+    el('p', { class: 'muted' }, 'Not available: this platform\'s export does not say what has been paid out. ' +
+      'Add its settlement / payments report to see banked vs receivable.')) : card('Cash position',
     el('div', { class: 'kpis' },
       kpi('Banked', money0(cash.settled), cash.settled_lines + ' settled lines'),
       kpi('Receivable', money0(cash.receivable), cash.receivable_lines + ' unsettled lines', cash.receivable > 0 ? 'neg' : ''),
@@ -235,7 +238,11 @@ function renderStatement(r) {
     el('p', { class: 'muted' },
       'Assumptions: ' + Math.round(r.resell_rate * 100) + '% of returned/RTO stock resellable (' +
       r.writeoff_pct + '% written off) · return shipping ' + money(r.return_shipping_per_order) +
-      ' per failed order · units sold = delivered + in transit + exchange.')));
+      ' per failed order · units sold = delivered + in transit + exchange.'),
+    r.fee_model ? el('p', { class: 'muted' },
+      'Fees are modelled, not reported: commission ' + (r.fee_model.commission_pct * 100).toFixed(1) + '% + ' +
+      money(r.fee_model.fixed_fee) + ' fixed, forward shipping ' + money(r.fee_model.fwd_shipping) +
+      ' per order, GST ' + (r.fee_model.fee_gst_pct * 100).toFixed(0) + '% on fees. ' + (r.fee_model.note || '')) : null));
 
   root.append(card('Cohort build',
     table([
@@ -290,6 +297,165 @@ function renderRisk(r) {
       { item: 'Downside risk (' + pct1(c.downside_pct) + ')', value: -c.downside },
       { item: 'Worst case — every in-transit order fails', value: c.worst_case_net_profit },
     ])));
+}
+
+/* ---------------------------------------------------------------- returns */
+const flagCell = (v) => (v ? el('span', { class: 'flag ' + (v === 'HIGH' ? 'HIGH' : v === 'clean' ? 'clean' : 'low') }, v) : '');
+
+function returnCols(first, label) {
+  return [
+    { key: 'name', label: label },
+    { key: 'orders', label: 'Orders', fmt: num },
+    { key: 'closed', label: 'Closed', fmt: num },
+    { key: 'returns', label: 'Returns', fmt: num },
+    { key: 'rto', label: 'RTO', fmt: num },
+    { key: 'fail_pct', label: 'Failed %', fmt: pct1 },
+    { key: 'refunded', label: 'Refunded', fmt: money },
+    { key: 'return_shipping', label: 'Return ship', fmt: money },
+    { key: 'writeoff', label: 'Write-off', fmt: money },
+    { key: 'loss', label: 'Return loss', fmt: money, signed: false },
+    { key: 'claims', label: 'Claims', fmt: money },
+    { key: 'net_loss', label: 'Net loss', fmt: money },
+    { key: 'flag', label: '', fmt: flagCell },
+  ];
+}
+
+function renderReturns(r) {
+  const root = $('#tab-returns');
+  root.replaceChildren();
+  if (!r.has_data) return;
+  const rt = r.returns, s = rt.summary, c = rt.claims;
+
+  root.append(card(r.month_label + ' — returns',
+    el('div', { class: 'kpis' },
+      kpi('Failed orders %', pct(s.fail_pct), s.failed + ' of ' + num(s.closed) + ' closed', s.fail_pct > 15 ? 'neg' : ''),
+      kpi('Customer returns', pct(s.returns ? s.return_pct : 0), num(s.returns) + ' orders · ' + num(s.units_returned) + ' units'),
+      kpi('RTO', pct(s.rto_pct), num(s.rto) + ' orders'),
+      kpi('Refunded to customers', money0(s.refunded), pct(s.refund_pct_of_gross) + ' of gross sale'),
+      kpi('Return loss', money0(s.loss), 'ship ' + money0(s.return_shipping) + ' + write-off ' + money0(s.writeoff), s.loss > 0 ? 'neg' : ''),
+      kpi('Claims received', money0(c.received), c.basis === 'none' ? 'none recorded' : c.basis),
+      kpi('Claim recovery', pct1(c.recovery_pct_of_loss), 'of return loss'),
+      kpi('Net loss after claims', money0(s.net_loss)),
+      kpi('Open orders', num(s.in_transit), 'excluded: outcome unknown'),
+      kpi('Cancelled', num(s.cancelled), pct1(s.cancel_pct) + ' of all orders'))));
+
+  if (rt.insights.length) {
+    root.append(card('What to be aware of',
+      el('ul', { class: 'insights' }, rt.insights.map((n) => el('li', { class: n.level }, n.text)))));
+  }
+
+  const claimBits = [
+    el('p', { class: 'muted' },
+      'Claims are what the platform pays back when a returned parcel arrives wrong, damaged or incomplete. ' +
+      'Recovery % = claims received ÷ return loss. Source: ' + c.basis + '.')];
+  if (c.filed_amount || c.filed_count) {
+    claimBits.push(table([
+      { key: 'item', label: 'Entered manually' }, { key: 'value', label: 'Value' },
+    ], [
+      { item: 'Claims filed', value: num(c.filed_count) },
+      { item: 'Amount claimed', value: money(c.filed_amount) },
+      { item: 'Amount received', value: money(c.received) },
+      { item: 'Still outstanding', value: money(c.outstanding || 0) },
+      { item: 'Received ÷ claimed', value: c.recovery_pct_of_filed === null ? '—' : pct1(c.recovery_pct_of_filed) },
+    ]));
+  }
+  if (c.returns_without_claim !== null) {
+    claimBits.push(el('p', { class: 'muted' },
+      c.claim_lines + ' claim line(s) against ' + s.failed + ' failed orders (' + pct1(c.claim_rate_pct) + '). ' +
+      c.returns_without_claim + ' failed order(s) have no claim.'));
+  }
+  if (c.reasons.length) {
+    claimBits.push(table([
+      { key: 'reason', label: 'Claim reason' },
+      { key: 'count', label: 'Claims', fmt: num },
+      { key: 'amount', label: 'Amount', fmt: money },
+    ], c.reasons));
+  }
+  if (c.basis === 'none') {
+    claimBits.push(el('p', { class: 'muted' },
+      'This platform\'s report carries no claims. Enter claims filed / received for ' + r.month_label +
+      ' under Config → ' + state.platform + ' → month row and they will appear here.'));
+  }
+  root.append(card('Claims & refunds from the platform', ...claimBits));
+
+  root.append(card('Return rate by book',
+    table(returnCols(null, 'Book'), rt.by_book,
+      { note: 'Failed % = (returns + RTO) ÷ closed orders. HIGH = at least 1.4× the platform rate. ' +
+        '"low volume" = under 8 closed orders, too few to trust.' })));
+  root.append(card('Return rate by SKU', table(returnCols(null, 'SKU'), rt.by_sku)));
+  if (rt.has_pay_mode) root.append(card('Prepaid vs COD', table(returnCols(null, 'Payment mode'), rt.by_pay_mode)));
+  if (rt.has_state) root.append(card('By delivery state (top 15)', table(returnCols(null, 'State'), rt.by_state)));
+
+  const trend = el('div', { id: 'returnTrend' });
+  root.append(card('Month-by-month trend', trend));
+  loadReturnTrend(trend).catch(() => {});
+}
+
+async function loadReturnTrend(box) {
+  if (state.months.length < 2) {
+    box.append(el('p', { class: 'muted' }, 'Needs at least two months of data.'));
+    return;
+  }
+  const data = await api('/api/compare?platform=' + state.platform + '&months=' + state.months.map((m) => m.month).join(','));
+  const keep = ['orders', 'return_pct_closed', 'rto_pct_closed', 'fail_pct_closed', 'return_loss', 'claims_received', 'cancelled'];
+  const fmt = { money, int: num, pct, x: (v) => Number(v).toFixed(2) + 'x' };
+  const columns = [{ key: 'label', label: 'Metric' }];
+  data.months.forEach((m, i) => columns.push({ key: 'v' + i, label: m.label, fmt: (v, row) => fmt[row.kind](v) }));
+  const rows = data.rows.filter((x) => keep.includes(x.key)).map((x) => {
+    const row = { label: x.label, kind: x.kind };
+    x.values.forEach((v, i) => { row['v' + i] = v; });
+    return row;
+  });
+  box.append(table(columns, rows));
+}
+
+/* ---------------------------------------------------------------- all platforms */
+async function loadAllPlatforms() {
+  const root = $('#tab-all');
+  root.replaceChildren();
+  if (!state.month) return;
+  const data = await api('/api/summary?month=' + state.month);
+  const t = data.totals;
+  root.append(card(data.month_label + ' — every platform',
+    el('div', { class: 'kpis' },
+      kpi('Net profit', money0(t.net_profit) + (t.estimated ? ' *' : ''), 'all platforms', sign(t.net_profit)),
+      kpi('Gross sale', money0(t.gross_sale), num(t.orders) + ' orders'),
+      kpi('Units sold', num(t.units_sold)),
+      kpi('Failed orders %', pct(t.fail_pct), num(t.failed) + ' of ' + num(t.closed) + ' closed'),
+      kpi('Return loss', money0(t.return_loss), 'claims back ' + money0(t.claims_received)),
+      kpi('Cancelled', num(t.cancelled))),
+    t.estimated ? el('p', { class: 'muted' },
+      '* Includes platforms whose fees are modelled (see the est. tags). Replace the placeholder rates in Config for exact profit.') : null));
+
+  const rows = data.platforms.filter((p) => p.has_data).map((p) => ({
+    platform: p.label + (p.estimated ? ' (est.)' : ''), ...p,
+  }));
+  const cols = [
+    { key: 'platform', label: 'Platform' },
+    { key: 'orders', label: 'Orders', fmt: num },
+    { key: 'units_sold', label: 'Units', fmt: num },
+    { key: 'gross_sale', label: 'Gross sale', fmt: money },
+    { key: 'settlement', label: 'Settlement', fmt: money },
+    { key: 'gross_profit', label: 'Gross profit', fmt: money, signed: true },
+    { key: 'ad_spend', label: 'Ads', fmt: money },
+    { key: 'net_profit', label: 'Net profit', fmt: money, signed: true },
+    { key: 'np_per_unit', label: 'NP/unit', fmt: money, signed: true },
+    { key: 'net_margin', label: 'Margin', fmt: pct1 },
+  ];
+  root.append(card('Profit by platform', table(cols, rows)));
+  root.append(card('Returns by platform', table([
+    { key: 'platform', label: 'Platform' },
+    { key: 'closed', label: 'Closed', fmt: num },
+    { key: 'in_transit', label: 'Open', fmt: num },
+    { key: 'return_pct', label: 'Return %', fmt: pct },
+    { key: 'rto_pct', label: 'RTO %', fmt: pct },
+    { key: 'fail_pct', label: 'Failed %', fmt: pct },
+    { key: 'return_loss', label: 'Return loss', fmt: money },
+    { key: 'claims_received', label: 'Claims received', fmt: money },
+    { key: 'cancelled', label: 'Cancelled', fmt: num },
+  ], rows)));
+  const missing = data.platforms.filter((p) => !p.has_data).map((p) => p.label);
+  if (missing.length) root.append(el('p', { class: 'muted' }, 'No orders found this month for: ' + missing.join(', ') + '.'));
 }
 
 /* ---------------------------------------------------------------- compare */
@@ -349,7 +515,7 @@ function renderData(r) {
   const rows = src.files.map((f) => ({
     name: f.name,
     rel: f.rel,
-    kind: f.settled ? 'Settled' : 'Outstanding',
+    kind: f.kind || (f.settled ? 'Settled' : 'Outstanding'),
     order_rows: f.order_rows,
     ad_rows: f.ad_rows,
     dupes: f.duplicates.length ? f.duplicates.join(', ') : '—',
@@ -400,7 +566,7 @@ function renderConfig() {
 
   for (const [key, pf] of Object.entries(cfg.platforms)) {
     const monthBody = el('tbody');
-    const months = new Set([...Object.keys(pf.months || {}), ...state.months.map((m) => m.month)]);
+    const months = new Set([...Object.keys(pf.months || {}), ...(state.allMonths || []), ...state.months.map((m) => m.month)]);
     for (const m of [...months].sort()) {
       const override = (pf.months || {})[m] || {};
       monthBody.append(el('tr', {},
@@ -411,6 +577,12 @@ function renderConfig() {
           placeholder: Math.round(pf.default_resell_rate * 100),
           'data-month': m, 'data-platform': key, 'data-field': 'resell',
         })),
+        ...['claims_filed_count', 'claims_filed_amount', 'claims_received_amount'].map((f) =>
+          el('td', {}, el('input', {
+            type: 'number', min: '0', step: f === 'claims_filed_count' ? '1' : '0.01',
+            value: override[f] !== undefined ? override[f] : '',
+            'data-month': m, 'data-platform': key, 'data-field': f,
+          }))),
         el('td', {}, el('input', {
           type: 'text', value: override.note || '',
           'data-month': m, 'data-platform': key, 'data-field': 'mnote',
@@ -424,10 +596,22 @@ function renderConfig() {
         el('label', {}, 'Return shipping / failed order ₹',
           el('input', { type: 'number', min: '0', step: '1', class: 'num',
             value: pf.return_shipping_per_order, 'data-platform': key, 'data-field': 'retship' }))),
+      pf.fee_model ? el('div', { class: 'fees' },
+        ...[
+          ['commission_pct', 'Commission %', 100, '0.1'], ['fixed_fee', 'Fixed fee ₹ / order', 1, '0.5'],
+          ['fwd_shipping', 'Fwd shipping ₹ / order', 1, '0.5'], ['fee_gst_pct', 'GST on fees %', 100, '1'],
+          ['tds_pct', 'TDS % (if export has none)', 100, '0.01'],
+        ].map(([f, label, mult, step]) => el('label', {}, label,
+          el('input', { type: 'number', min: '0', step, class: 'num',
+            value: +(pf.fee_model[f] * mult).toFixed(4), 'data-platform': key, 'data-fee': f, 'data-mult': mult }))),
+        el('label', { class: 'note-field' }, 'Fee note',
+          el('input', { type: 'text', value: pf.fee_model.note || '', 'data-platform': key, 'data-fee': 'note' }))) : null,
       el('div', { class: 'scroll' },
         el('table', { class: 'cfgtable' },
           el('thead', {}, el('tr', {},
-            el('th', {}, 'Month'), el('th', {}, 'Resell rate % (blank = default)'), el('th', {}, 'Note'))),
+            el('th', {}, 'Month'), el('th', {}, 'Resell rate % (blank = default)'),
+            el('th', {}, 'Claims filed (count)'), el('th', {}, 'Claims filed ₹'),
+            el('th', {}, 'Claims received ₹'), el('th', {}, 'Note'))),
           monthBody)));
   }
 }
@@ -456,11 +640,21 @@ function collectConfig() {
       const m = input.getAttribute('data-month');
       const noteInput = $('#configOut').querySelector('[data-platform="' + key + '"][data-field="mnote"][data-month="' + m + '"]');
       const entry = {};
+      for (const f of ['claims_filed_count', 'claims_filed_amount', 'claims_received_amount']) {
+        const box = $('#configOut').querySelector('[data-platform="' + key + '"][data-field="' + f + '"][data-month="' + m + '"]');
+        if (box && box.value !== '') entry[f] = Number(box.value);
+      }
       if (input.value !== '') entry.resell_rate = Number(input.value) / 100;
       if (noteInput && noteInput.value.trim()) entry.note = noteInput.value.trim();
       if (Object.keys(entry).length) months[m] = entry;
     }
     pf.months = months;
+    if (pf.fee_model) {
+      for (const box of $('#configOut').querySelectorAll('[data-platform="' + key + '"][data-fee]')) {
+        const f = box.getAttribute('data-fee');
+        pf.fee_model[f] = f === 'note' ? box.value.trim() : Number(box.value || 0) / Number(box.getAttribute('data-mult'));
+      }
+    }
   }
   return cfg;
 }
@@ -471,14 +665,17 @@ function renderAll(r) {
   renderOverview(r);
   renderBooks(r);
   renderSkus(r);
+  renderReturns(r);
   renderStatement(r);
   renderRisk(r);
   renderData(r);
   const warnings = [];
+  if (r.settlement_estimated) warnings.push('ESTIMATED: this platform\'s export has no fees or payouts, so profit uses the fee assumptions in Config.');
   if (r.cohort.unmapped_skus.length) warnings.push('Unmapped SKUs (no book/cost): ' + r.cohort.unmapped_skus.join(', '));
   if (r.cohort.zero_cost_skus.length) warnings.push('SKUs with zero cost: ' + r.cohort.zero_cost_skus.join(', '));
   if (r.sources.errors.length) warnings.push(r.sources.errors.length + ' file(s) failed to parse — see Data Sources.');
   banner(warnings.join(' · '), warnings.length ? 'warn' : 'ok');
+  if ($('#tab-all').classList.contains('active')) loadAllPlatforms().catch((e) => banner(e.message, 'err'));
 }
 
 async function refresh() {
@@ -527,6 +724,11 @@ async function init() {
     el('option', { value: p.key, disabled: p.implemented ? null : 'disabled' },
       p.label + (p.implemented ? '' : ' (coming soon)'))));
   $('#platform').value = state.platform;
+  const seen = new Set();
+  for (const p of platforms.platforms.filter((x) => x.implemented)) {
+    try { (await api('/api/datasets?platform=' + p.key)).months.forEach((m) => seen.add(m.month)); } catch (e) { /* platform without files */ }
+  }
+  state.allMonths = [...seen].sort();
   renderConfig();
   await loadDatasets();
 }
@@ -537,6 +739,8 @@ $('#tabs').addEventListener('click', (e) => {
   if (!btn) return;
   document.querySelectorAll('#tabs button').forEach((b) => b.classList.toggle('active', b === btn));
   document.querySelectorAll('.tab').forEach((t) => t.classList.toggle('active', t.id === 'tab-' + btn.dataset.tab));
+  if (btn.dataset.tab === 'all') loadAllPlatforms().catch((err) => banner(err.message, 'err'));
+  if (btn.dataset.tab === 'gst') loadGstPeriods().catch((err) => banner(err.message, 'err'));
 });
 
 $('#platform').addEventListener('change', async (e) => {
@@ -562,7 +766,7 @@ async function generateReport() {
   const data = await api('/api/report?' + params);
   $('#reportText').value = data.markdown;
   if (!$('#reportPath').value) {
-    $('#reportPath').value = 'Finance/' + state.result.month_label.slice(0, 3) + '_Profit_Loss/' + data.filename;
+    $('#reportPath').value = 'Finance/Profit_Loss/' + state.month + '/Reports/' + data.filename;
   }
   return data;
 }
@@ -589,6 +793,160 @@ $('#saveReport').addEventListener('click', async () => {
     path: $('#reportPath').value || null,
   };
   const send = async () => api('/api/report/save', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+  try {
+    banner('Saved to ' + (await send()).saved, 'ok');
+  } catch (e) {
+    if (!/already exists/.test(e.message)) { banner(e.message, 'err'); return; }
+    if (!confirm(e.message + '\n\nOverwrite it?')) { banner('Save cancelled.', 'warn'); return; }
+    body.overwrite = true;
+    try { banner('Overwrote ' + (await send()).saved, 'ok'); }
+    catch (e2) { banner(e2.message, 'err'); }
+  }
+});
+
+/* ---------------------------------------------------------------- GST */
+const gstState = { periods: [], loaded: false };
+
+function gstSelected() {
+  return [...$('#gstPeriods').querySelectorAll('input:checked')].map((i) => i.value).sort();
+}
+
+async function loadGstPeriods() {
+  if (gstState.loaded) return;
+  const data = await api('/api/gst/periods');
+  gstState.periods = data.periods;
+  gstState.loaded = true;
+  const box = $('#gstPeriods');
+  box.replaceChildren();
+  if (!data.periods.length) {
+    box.append(el('p', { class: 'muted' },
+      'No GST reports found. Drop the marketplace GST exports into Finance/GST Fillings/.'));
+    return;
+  }
+  const latest = data.periods[data.periods.length - 1].period;
+  for (const p of data.periods) {
+    const on = p.period === latest;
+    const chip = el('label', { class: 'chip' + (on ? ' on' : '') },
+      el('input', { type: 'checkbox', value: p.period, checked: on || null }), p.label);
+    chip.querySelector('input').addEventListener('change', (e) => chip.classList.toggle('on', e.target.checked));
+    box.append(chip);
+  }
+  for (const err of data.errors || []) banner('GST source problem: ' + err, 'warn');
+}
+
+function gstAnomalies(list) {
+  if (!list.length) return card('Validation', el('p', { class: 'muted' }, 'No issues found.'));
+  const rows = list.map((a) => ({
+    severity: a.severity === 'error' ? 'BLOCKER' : 'check',
+    code: a.code,
+    detail: a.message,
+  }));
+  return card('Validation — read before filing', table([
+    { key: 'severity', label: 'Severity' },
+    { key: 'code', label: 'Code' },
+    { key: 'detail', label: 'What it means' },
+  ], rows, { note: 'Blockers change the numbers you file. Resolve or consciously accept each one.' }));
+}
+
+function renderGst(payload) {
+  const r = payload.result;
+  const t = r.totals;
+  const pay = r.tables.gstr3b.tax_payable;
+  const out = $('#gstOut');
+  out.replaceChildren();
+
+  out.append(el('div', { class: 'kpis' },
+    kpi('Net outward supplies', money(t.all.taxable), r.label),
+    kpi('Exempt (books)', money(t.exempt.taxable), 'GSTR-3B 3.1(c)'),
+    kpi('Taxable', money(t.taxable.taxable), 'GSTR-3B 3.1(a)'),
+    kpi('GST payable', money(pay.total), pay.total > 0 ? 'Pay in cash' : 'Nil', pay.total > 0 ? 'neg' : 'pos')));
+
+  const g3 = r.tables.gstr3b;
+  out.append(card(g3.title, table([
+    { key: 'row', label: 'Row' },
+    { key: 'description', label: 'Nature of supply' },
+    { key: 'taxable', label: 'Taxable value', fmt: money },
+    { key: 'igst', label: 'IGST', fmt: money },
+    { key: 'cgst', label: 'CGST', fmt: money },
+    { key: 'sgst', label: 'SGST', fmt: money },
+  ], g3.rows, { note: g3.note })));
+
+  const t8 = r.tables.gstr1_table_8;
+  out.append(card(t8.title, table([
+    { key: 'row', label: 'Row' },
+    { key: 'description', label: 'Description' },
+    { key: 'nil_rated', label: 'Nil rated', fmt: money },
+    { key: 'exempted', label: 'Exempted', fmt: money },
+    { key: 'non_gst', label: 'Non-GST', fmt: money },
+    { key: 'total', label: 'Total', fmt: money },
+  ], t8.rows, { note: t8.note })));
+
+  const t12 = r.tables.gstr1_table_12;
+  const hsnCols = [
+    { key: 'hsn', label: 'HSN' },
+    { key: 'description', label: 'Description' },
+    { key: 'uqc', label: 'UQC' },
+    { key: 'quantity', label: 'Qty', fmt: num },
+    { key: 'rate_pct', label: 'Rate %' },
+    { key: 'taxable', label: 'Taxable value', fmt: money },
+    { key: 'igst', label: 'IGST', fmt: money },
+    { key: 'cgst', label: 'CGST', fmt: money },
+    { key: 'sgst', label: 'SGST', fmt: money },
+  ];
+  out.append(card(t12.title,
+    el('h3', {}, 'B2C'), table(hsnCols, t12.b2c || []),
+    (t12.b2b || []).length ? el('h3', {}, 'B2B') : null,
+    (t12.b2b || []).length ? table(hsnCols, t12.b2b) : null,
+    el('div', { class: 'note' }, t12.note)));
+
+  out.append(gstAnomalies(r.anomalies || []));
+
+  const f = r.filing || {};
+  if (f.due && f.due.length) {
+    out.append(card('Due dates', table([
+      { key: 'form', label: 'Form' },
+      { key: 'due', label: 'Due on' },
+      { key: 'rule', label: 'Rule' },
+    ], f.due, { note: f.time_bar })));
+  }
+}
+
+async function runGst() {
+  const periods = gstSelected();
+  if (!periods.length) { banner('Pick at least one tax period.', 'warn'); return; }
+  const qs = '?periods=' + encodeURIComponent(periods.join(','));
+  const payload = await api('/api/gst' + qs);
+  renderGst(payload);
+  const rep = await api('/api/gst/report' + qs);
+  $('#gstText').value = rep.markdown;
+  if (!$('#gstPath').value) $('#gstPath').value = 'Finance/GST Fillings/' + rep.filename;
+  const blockers = (payload.result.anomalies || []).filter((a) => a.severity === 'error').length;
+  banner(blockers ? blockers + ' blocker(s) — review the Validation card before filing.' : 'GST pack ready.',
+    blockers ? 'warn' : 'ok');
+}
+
+$('#runGst').addEventListener('click', () => runGst().catch((e) => banner(e.message, 'err')));
+$('#copyGst').addEventListener('click', async () => {
+  if (!$('#gstText').value) await runGst();
+  await navigator.clipboard.writeText($('#gstText').value);
+  banner('Copied to clipboard.', 'ok');
+});
+$('#downloadGst').addEventListener('click', () => {
+  if (!$('#gstText').value) { banner('Compute first.', 'warn'); return; }
+  const blob = new Blob([$('#gstText').value], { type: 'text/markdown' });
+  const a = el('a', { href: URL.createObjectURL(blob), download: ($('#gstPath').value.split('/').pop() || 'gst.md') });
+  a.click();
+  URL.revokeObjectURL(a.href);
+});
+$('#saveGst').addEventListener('click', async () => {
+  const periods = gstSelected();
+  if (!periods.length) { banner('Pick at least one tax period.', 'warn'); return; }
+  const body = { periods, path: $('#gstPath').value || null };
+  const send = () => api('/api/gst/report/save', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body),

@@ -91,6 +91,7 @@ class MeeshoAdapter(PlatformAdapter):
         )
         # Settlement-only lines (affiliate fees, claims) carry no order status.
         out.loc[raw["Live Order Status"].isna(), "status"] = FEE_ADJ
+        out["reason"] = raw["Claims Reason"] if "Claims Reason" in raw.columns else ""
         out["paid"] = "PREVIOUS" in os.path.basename(path).upper()
         out["snapshot"] = _snapshot_date(path)
         out["source"] = os.path.basename(path)

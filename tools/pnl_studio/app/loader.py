@@ -34,7 +34,7 @@ def _walk(root: str) -> List[str]:
         for name in filenames:
             if name.startswith("~$") or name.startswith("."):
                 continue
-            if os.path.splitext(name)[1].lower() in {".xlsx", ".xls", ".csv"}:
+            if os.path.splitext(name)[1].lower() in {".xlsx", ".xls", ".csv", ".txt", ".tsv"}:
                 found.append(os.path.join(dirpath, name))
     return found
 
@@ -53,7 +53,8 @@ def discover(platform: Optional[str] = None) -> List[Dict]:
     for root in DATA_ROOTS:
         if not os.path.isdir(root):
             continue
-        for path in sorted(_walk(root)):
+        # P&L folders first: the GST folder holds copies of some of the same files.
+        for path in sorted(_walk(root), key=lambda p: ("gst" in p.lower(), p)):
             adapter = platforms.detect(path)
             if adapter is None or (platform and adapter.key != platform):
                 continue
@@ -68,6 +69,7 @@ def discover(platform: Optional[str] = None) -> List[Dict]:
                 "rel": rel,
                 "platform": adapter.key,
                 "settled": "PREVIOUS" in os.path.basename(path).upper(),
+                "kind": adapter.kind(path),
                 "size": os.path.getsize(path),
                 "duplicates": [],
             }
@@ -108,6 +110,7 @@ def load_platform(platform: str) -> Dict:
 
     rows_before = int(len(orders))
     if rows_before:
+        orders = adapter.consolidate(orders)
         orders = _dedupe_orders(orders)
     if len(ads):
         ads = ads.drop_duplicates(

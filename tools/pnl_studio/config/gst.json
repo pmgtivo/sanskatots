@@ -1,0 +1,28 @@
+{
+  "seller": {
+    "legal_name": "Sanska Tots",
+    "trade_name": "SanskaTots",
+    "gstin": "29CEMPR5502N1ZS",
+    "state": "KARNATAKA",
+    "state_code": "29"
+  },
+  "filing": {
+    "frequency": "qrmp",
+    "aato_previous_fy": 0,
+    "report_wrongly_charged_tax": true
+  },
+  "ecommerce_operators": {
+    "amazon": {
+      "label": "Amazon Seller Services Pvt Ltd",
+      "gstin": ""
+    },
+    "meesho": {
+      "label": "Fashnear Technologies Pvt Ltd (Meesho)",
+      "gstin": "29AARCM9332R1CK"
+    },
+    "flipkart": {
+      "label": "Flipkart Internet Pvt Ltd",
+      "gstin": ""
+    }
+  }
+}

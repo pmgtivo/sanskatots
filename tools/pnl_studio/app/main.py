@@ -10,8 +10,12 @@ from fastapi import Body, FastAPI, HTTPException, Query, UploadFile, File
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 
-from . import engine, loader, platforms, report
+from . import engine, fees, loader, platforms, report
 from .config_store import load_config, platform_settings, resell_rate_for, save_config
+from .gst import config_store as gst_config
+from .gst import engine as gst_engine
+from .gst import loader as gst_loader
+from .gst import report as gst_report
 from .settings import ALLOWED_UPLOAD_EXT, REPO_ROOT, STATIC_DIR, UPLOAD_DIR
 
 MONTH_RE = re.compile(r"^\d{4}-(0[1-9]|1[0-2])$")
@@ -43,9 +47,12 @@ def _run(platform: str, month: str, resell_rate: Optional[float], return_ship: O
     if not 0.0 <= rate <= 1.0:
         raise HTTPException(400, "resell_rate must be between 0 and 1")
     ship = return_ship if return_ship is not None else float(pf.get("return_shipping_per_order", 0))
-    result = engine.compute(data["orders"], data["ads"], cfg, platform, month, rate, ship)
+    model = fees.model_for(cfg, platform)
+    orders = fees.apply(data["orders"], model, ship)
+    result = engine.compute(orders, data["ads"], cfg, platform, month, rate, ship)
+    result["fee_model"] = model if result.get("settlement_estimated") else None
     result["sources"] = {
-        "files": [{"name": f["name"], "rel": f["rel"], "settled": f["settled"],
+        "files": [{"name": f["name"], "rel": f["rel"], "settled": f["settled"], "kind": f.get("kind", ""),
                    "order_rows": f.get("order_rows", 0), "ad_rows": f.get("ad_rows", 0),
                    "duplicates": f["duplicates"]} for f in data["files"]],
         "rows_before_dedupe": data["rows_before_dedupe"],
@@ -73,13 +80,48 @@ def api_datasets(platform: str = Query("meesho")) -> Dict[str, Any]:
         "platform": platform,
         "months": [{"month": m, "label": engine.month_label(m),
                     "resell_rate": resell_rate_for(cfg, platform, m)} for m in months],
-        "files": [{"name": f["name"], "rel": f["rel"], "settled": f["settled"],
+        "files": [{"name": f["name"], "rel": f["rel"], "settled": f["settled"], "kind": f.get("kind", ""),
                    "order_rows": f.get("order_rows", 0), "ad_rows": f.get("ad_rows", 0),
                    "duplicates": f["duplicates"]} for f in data["files"]],
         "rows_before_dedupe": data["rows_before_dedupe"],
         "rows_after_dedupe": data["rows_after_dedupe"],
         "errors": data["errors"],
     }
+
+
+@app.get("/api/summary")
+def api_summary(month: str = Query(...)) -> Dict[str, Any]:
+    """One month across every platform that has data: the monthly close view."""
+    month = _check_month(month)
+    sums = ("orders", "units_sold", "gross_sale", "settlement", "gross_profit", "ad_spend",
+            "net_profit", "return_loss", "claims_received", "failed", "closed", "cancelled")
+    totals: Dict[str, Any] = {k: 0 for k in sums}
+    rows: List[Dict[str, Any]] = []
+    for adapter in platforms.active():
+        result = _run(adapter.key, month, None, None)
+        if not result.get("has_data"):
+            rows.append({"platform": adapter.key, "label": adapter.label, "has_data": False})
+            continue
+        k, ret = result["kpis"], result["returns"]["summary"]
+        row = {
+            "platform": adapter.key, "label": adapter.label, "has_data": True,
+            "estimated": result["settlement_estimated"],
+            "orders": k["orders"], "units_sold": k["units_sold"], "gross_sale": k["gross_sale"],
+            "settlement": k["settlement"], "gross_profit": k["gross_profit"],
+            "ad_spend": k["ad_spend"], "net_profit": k["net_profit"], "np_per_unit": k["np_per_unit"],
+            "net_margin": k["net_margin_on_gross"],
+            "return_pct": ret["return_pct"], "rto_pct": ret["rto_pct"], "fail_pct": ret["fail_pct"],
+            "failed": ret["failed"], "closed": ret["closed"], "in_transit": ret["in_transit"],
+            "return_loss": ret["loss"], "claims_received": result["returns"]["claims"]["received"],
+            "cancelled": ret["cancelled"],
+        }
+        rows.append(row)
+        for key in sums:
+            totals[key] += row[key]
+    totals = {k: (round(v, 2) if isinstance(v, float) else v) for k, v in totals.items()}
+    totals["fail_pct"] = round(totals["failed"] / totals["closed"] * 100, 2) if totals["closed"] else 0.0
+    totals["estimated"] = any(r.get("estimated") for r in rows)
+    return {"month": month, "month_label": engine.month_label(month), "platforms": rows, "totals": totals}
 
 
 @app.get("/api/pnl")
@@ -195,8 +237,95 @@ def _resolve_report_path(raw: Optional[str], platform: str, month: str) -> str:
         if not candidate.endswith(".md"):
             raise HTTPException(400, "report path must end with .md")
         return candidate
-    folder = "%s_Profit_Loss" % engine.month_label(month)[:3]
-    return os.path.join(REPO_ROOT, "Finance", folder, _report_name(platform, month))
+    folder = os.path.join(REPO_ROOT, "Finance", "Profit_Loss", month, "Reports")
+    return os.path.join(folder, _report_name(platform, month))
+
+
+# ---------------------------------------------------------------------------
+# GST module
+# ---------------------------------------------------------------------------
+
+def _gst_run(periods: List[str]) -> Dict[str, Any]:
+    cfg = gst_config.load_config()
+    data = gst_loader.load_all()
+    wanted = [_check_month(p.strip()) for p in periods if p.strip()]
+    if not wanted:
+        raise HTTPException(400, "no tax period given")
+    result = gst_engine.compute(data["lines"], wanted, cfg, data.get("documents"))
+    provenance = {k: data[k] for k in ("files", "errors", "rows_before_dedupe",
+                                       "rows_after_dedupe", "rows_dropped")}
+    return {"result": result, "provenance": provenance}
+
+
+@app.get("/api/gst/periods")
+def api_gst_periods() -> Dict[str, Any]:
+    data = gst_loader.load_all()
+    periods = gst_loader.available_periods(data["lines"])
+    return {
+        "periods": [{"period": p, "label": gst_engine.period_label(p)} for p in periods],
+        "files": data["files"],
+        "errors": data["errors"],
+        "rows_before_dedupe": data["rows_before_dedupe"],
+        "rows_after_dedupe": data["rows_after_dedupe"],
+        "rows_dropped": data["rows_dropped"],
+    }
+
+
+@app.get("/api/gst")
+def api_gst(periods: str = Query(...)) -> Dict[str, Any]:
+    return _gst_run(periods.split(","))
+
+
+@app.get("/api/gst/report")
+def api_gst_report(periods: str = Query(...)) -> Dict[str, Any]:
+    payload = _gst_run(periods.split(","))
+    wanted = payload["result"]["periods"]
+    name = wanted[0] if len(wanted) == 1 else "%s_to_%s" % (wanted[0], wanted[-1])
+    return {
+        "markdown": gst_report.render(payload["result"], payload["provenance"]),
+        "filename": "GST_Filing_Pack_%s.md" % name,
+    }
+
+
+@app.post("/api/gst/report/save")
+def api_gst_report_save(payload: Dict[str, Any] = Body(...)) -> Dict[str, Any]:
+    periods = payload.get("periods") or []
+    if isinstance(periods, str):
+        periods = periods.split(",")
+    run = _gst_run(periods)
+    wanted = run["result"]["periods"]
+    name = wanted[0] if len(wanted) == 1 else "%s_to_%s" % (wanted[0], wanted[-1])
+    default = os.path.join("Finance", "GST Fillings", "GST_Filing_Pack_%s.md" % name)
+    target = _resolve_gst_path(payload.get("path"), default)
+    rel = os.path.relpath(target, REPO_ROOT)
+    if os.path.exists(target) and not payload.get("overwrite"):
+        raise HTTPException(409, "%s already exists — confirm to overwrite it" % rel)
+    os.makedirs(os.path.dirname(target), exist_ok=True)
+    with open(target, "w", encoding="utf-8") as fh:
+        fh.write(gst_report.render(run["result"], run["provenance"]))
+    return {"saved": rel}
+
+
+@app.get("/api/gst/config")
+def api_gst_config() -> Dict[str, Any]:
+    return gst_config.load_config()
+
+
+@app.put("/api/gst/config")
+def api_gst_config_save(payload: Dict[str, Any] = Body(...)) -> Dict[str, Any]:
+    try:
+        return gst_config.save_config(payload)
+    except ValueError as exc:
+        raise HTTPException(400, str(exc))
+
+
+def _resolve_gst_path(raw: Optional[str], default: str) -> str:
+    candidate = os.path.abspath(os.path.join(REPO_ROOT, raw or default))
+    if os.path.commonpath([candidate, REPO_ROOT]) != REPO_ROOT:
+        raise HTTPException(400, "report path must stay inside the repository")
+    if not candidate.endswith(".md"):
+        raise HTTPException(400, "report path must end with .md")
+    return candidate
 
 
 @app.get("/")
