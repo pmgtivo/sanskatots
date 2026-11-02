@@ -80,14 +80,14 @@ function renderOverview(r) {
     return;
   }
   const k = r.kpis, f = r.funnel_summary, ads = r.ads, cash = r.cash;
+  const bank = r.bank || { available: false };
 
   root.append(card(r.month_label + ' — headline',
     el('div', { class: 'kpis' },
       kpi('Net profit', money0(k.net_profit), pct(k.net_margin_on_gross) + ' of gross sale', sign(k.net_profit)),
       kpi('Gross profit', money0(k.gross_profit), 'before ads'),
       kpi('Gross sale', money0(k.gross_sale), num(k.orders) + ' orders'),
-      kpi('Settlement' + (r.settlement_estimated ? ' (est.)' : ''), money0(k.settlement),
-        r.settlement_estimated ? 'modelled from fee assumptions' : money0(cash.receivable) + ' still receivable'),
+      kpi('Settlement', money0(k.settlement), money0(cash.receivable) + ' still receivable'),
       kpi('Units sold', num(k.units_sold), 'delivered + in transit + exchange'),
       kpi('Net profit / unit', money(k.np_per_unit)),
       kpi('ASP / order', money(k.asp_per_order), money(k.asp_per_unit) + ' per unit'),
@@ -122,15 +122,30 @@ function renderOverview(r) {
       { key: 'share_pct', label: 'Share', fmt: pct1 },
     ], ads.campaigns) : el('p', { class: 'muted' }, 'No ad rows for this month.')));
 
-  root.append(cash.estimated ? card('Cash position',
-    el('p', { class: 'muted' }, 'Not available: this platform\'s export does not say what has been paid out. ' +
-      'Add its settlement / payments report to see banked vs receivable.')) : card('Cash position',
+  root.append(card('Cash position',
     el('div', { class: 'kpis' },
-      kpi('Banked', money0(cash.settled), cash.settled_lines + ' settled lines'),
+      kpi('Banked (this cohort)', money0(cash.settled), cash.settled_lines + ' settled lines'),
       kpi('Receivable', money0(cash.receivable), cash.receivable_lines + ' unsettled lines', cash.receivable > 0 ? 'neg' : ''),
       kpi('Total earned', money0(cash.total)),
       kpi('Ads deducted', money0(cash.ads_deducted)),
-      kpi('Manufacturing outlay', money0(cash.manufacturing_outlay), 'timing differs from settlement'))));
+      kpi('Manufacturing outlay', money0(cash.manufacturing_outlay), 'timing differs from settlement'),
+      bank.available ? kpi('Bank settled in ' + r.month_label, money0(bank.banked),
+        bank.payouts + ' payouts · any order month') : null)));
+
+  if (bank.available) {
+    root.append(card('Payouts that reached the bank in ' + r.month_label,
+      el('p', { class: 'muted' },
+        'Cash in the bank this month is ' + money(bank.banked) + '. The ' + r.month_label + ' order cohort has ' +
+        money(bank.cohort_settled) + ' settled; the ' + money(bank.timing_gap) + ' difference is timing — ' +
+        'payouts also settle earlier months\' orders, and late orders are paid next month. Ad charges that the ' +
+        'platform nets off its payouts are already inside these amounts.'),
+      table([
+        { key: 'date', label: 'Date' },
+        { key: 'ref', label: 'Reference' },
+        { key: 'kind', label: 'Kind' },
+        { key: 'amount', label: 'Amount', fmt: money, signed: true },
+      ], bank.rows, bank.truncated ? { note: bank.truncated + ' more payout(s) not shown.' } : {})));
+  }
 }
 
 function renderBooks(r) {
@@ -237,12 +252,9 @@ function renderStatement(r) {
     ], rows),
     el('p', { class: 'muted' },
       'Assumptions: ' + Math.round(r.resell_rate * 100) + '% of returned/RTO stock resellable (' +
-      r.writeoff_pct + '% written off) · return shipping ' + money(r.return_shipping_per_order) +
-      ' per failed order · units sold = delivered + in transit + exchange.'),
-    r.fee_model ? el('p', { class: 'muted' },
-      'Fees are modelled, not reported: commission ' + (r.fee_model.commission_pct * 100).toFixed(1) + '% + ' +
-      money(r.fee_model.fixed_fee) + ' fixed, forward shipping ' + money(r.fee_model.fwd_shipping) +
-      ' per order, GST ' + (r.fee_model.fee_gst_pct * 100).toFixed(0) + '% on fees. ' + (r.fee_model.note || '')) : null));
+      r.writeoff_pct + '% written off) · fees, TDS and return handling are the platform\'s own figures · ' +
+      'units sold = delivered + in transit + exchange. The return-shipping input only drives the what-if ' +
+      'sensitivity on the Risk tab (' + money(r.return_shipping_per_order) + ' per failed order).')));
 
   root.append(card('Cohort build',
     table([
@@ -306,9 +318,11 @@ function returnCols(first, label) {
   return [
     { key: 'name', label: label },
     { key: 'orders', label: 'Orders', fmt: num },
+    { key: 'units_sold', label: 'Units sold', fmt: num },
     { key: 'closed', label: 'Closed', fmt: num },
     { key: 'returns', label: 'Returns', fmt: num },
     { key: 'rto', label: 'RTO', fmt: num },
+    { key: 'units_returned', label: 'Units back', fmt: num },
     { key: 'fail_pct', label: 'Failed %', fmt: pct1 },
     { key: 'refunded', label: 'Refunded', fmt: money },
     { key: 'return_shipping', label: 'Return ship', fmt: money },
@@ -414,24 +428,27 @@ async function loadAllPlatforms() {
   const root = $('#tab-all');
   root.replaceChildren();
   if (!state.month) return;
-  const data = await api('/api/summary?month=' + state.month);
+  const [data, prod] = await Promise.all([
+    api('/api/summary?month=' + state.month),
+    api('/api/products?month=' + state.month),
+  ]);
   const t = data.totals;
   root.append(card(data.month_label + ' — every platform',
     el('div', { class: 'kpis' },
-      kpi('Net profit', money0(t.net_profit) + (t.estimated ? ' *' : ''), 'all platforms', sign(t.net_profit)),
+      kpi('Net profit', money0(t.net_profit), 'all platforms', sign(t.net_profit)),
       kpi('Gross sale', money0(t.gross_sale), num(t.orders) + ' orders'),
       kpi('Units sold', num(t.units_sold)),
+      kpi('Bank settled', money0(t.banked), 'payouts received in the month'),
+      kpi('Still receivable', money0(t.receivable), 'earned, not yet paid', t.receivable > 0 ? 'neg' : ''),
+      kpi('Units returned', num(t.units_returned), 'returns + RTO', t.units_returned > 0 ? 'neg' : ''),
       kpi('Failed orders %', pct(t.fail_pct), num(t.failed) + ' of ' + num(t.closed) + ' closed'),
+      kpi('Refunded to customers', money0(t.refunded)),
       kpi('Return loss', money0(t.return_loss), 'claims back ' + money0(t.claims_received)),
-      kpi('Cancelled', num(t.cancelled))),
-    t.estimated ? el('p', { class: 'muted' },
-      '* Includes platforms whose fees are modelled (see the est. tags). Replace the placeholder rates in Config for exact profit.') : null));
+      kpi('Cancelled', num(t.cancelled)))));
 
-  const rows = data.platforms.filter((p) => p.has_data).map((p) => ({
-    platform: p.label + (p.estimated ? ' (est.)' : ''), ...p,
-  }));
+  const rows = data.platforms.filter((p) => p.has_data);
   const cols = [
-    { key: 'platform', label: 'Platform' },
+    { key: 'label', label: 'Platform' },
     { key: 'orders', label: 'Orders', fmt: num },
     { key: 'units_sold', label: 'Units', fmt: num },
     { key: 'gross_sale', label: 'Gross sale', fmt: money },
@@ -443,17 +460,61 @@ async function loadAllPlatforms() {
     { key: 'net_margin', label: 'Margin', fmt: pct1 },
   ];
   root.append(card('Profit by platform', table(cols, rows)));
+  root.append(card('Bank settlement by platform', table([
+    { key: 'label', label: 'Platform' },
+    { key: 'banked', label: 'Bank settled in month', fmt: (v, row) => (row.has_bank ? money(v) : '—') },
+    { key: 'settlement', label: 'Cohort settlement', fmt: money },
+    { key: 'receivable', label: 'Still receivable', fmt: money, signed: false },
+  ], rows, { note: 'Bank settled = payouts that landed in the month for any order month. Cohort settlement = ' +
+    'everything earned on orders placed this month (profit basis). They differ by payout timing.' })));
   root.append(card('Returns by platform', table([
-    { key: 'platform', label: 'Platform' },
+    { key: 'label', label: 'Platform' },
     { key: 'closed', label: 'Closed', fmt: num },
     { key: 'in_transit', label: 'Open', fmt: num },
+    { key: 'units_returned', label: 'Units back', fmt: num },
     { key: 'return_pct', label: 'Return %', fmt: pct },
     { key: 'rto_pct', label: 'RTO %', fmt: pct },
     { key: 'fail_pct', label: 'Failed %', fmt: pct },
+    { key: 'refunded', label: 'Refunded', fmt: money },
+    { key: 'return_fees', label: 'Return fees', fmt: money },
+    { key: 'writeoff', label: 'Write-off', fmt: money },
     { key: 'return_loss', label: 'Return loss', fmt: money },
     { key: 'claims_received', label: 'Claims received', fmt: money },
     { key: 'cancelled', label: 'Cancelled', fmt: num },
   ], rows)));
+
+  const productCols = (label) => [
+    { key: 'name', label },
+    { key: 'units_sold', label: 'Units sold', fmt: num },
+    { key: 'units_returned', label: 'Units returned', fmt: num },
+    { key: 'returns', label: 'Returns', fmt: num },
+    { key: 'rto', label: 'RTO', fmt: num },
+    { key: 'fail_pct', label: 'Failed %', fmt: pct1 },
+    { key: 'refunded', label: 'Refunded', fmt: money },
+    { key: 'return_shipping', label: 'Return fees', fmt: money },
+    { key: 'writeoff', label: 'Write-off', fmt: money },
+    { key: 'loss', label: 'Return loss', fmt: money },
+    { key: 'claims', label: 'Claims', fmt: money },
+    { key: 'gross_profit', label: 'Gross profit', fmt: money, signed: true },
+  ];
+  const headline = [];
+  if (prod.most_returned) headline.push('Most units returned: ' + prod.most_returned + '.');
+  if (prod.highest_rate) headline.push('Highest failure rate (8+ closed orders): ' + prod.highest_rate + '.');
+  root.append(card('Returns by product — all platforms',
+    headline.length ? el('p', { class: 'muted' }, headline.join(' ')) : null,
+    table(productCols('Product'), prod.by_book,
+      { note: 'Units returned = customer returns + RTO. Failed % = (returns + RTO) ÷ closed orders; open orders are excluded.' })));
+  const split = [];
+  for (const b of prod.by_book) for (const p of b.platforms) {
+    if (p.units_returned || p.units_sold) split.push({ ...p, name: b.name, platform_label: p.label });
+  }
+  root.append(card('Product × platform', table([
+    { key: 'name', label: 'Product' },
+    { key: 'platform_label', label: 'Platform' },
+    ...productCols('').slice(1, 10),
+  ], split)));
+  root.append(card('Returns by SKU — all platforms', table(productCols('SKU'), prod.by_sku)));
+
   const missing = data.platforms.filter((p) => !p.has_data).map((p) => p.label);
   if (missing.length) root.append(el('p', { class: 'muted' }, 'No orders found this month for: ' + missing.join(', ') + '.'));
 }
@@ -593,19 +654,9 @@ function renderConfig() {
         el('label', {}, 'Default resell rate %',
           el('input', { type: 'number', min: '0', max: '100', step: '1', class: 'num',
             value: Math.round(pf.default_resell_rate * 100), 'data-platform': key, 'data-field': 'defresell' })),
-        el('label', {}, 'Return shipping / failed order ₹',
+        el('label', {}, 'Return shipping / failed order ₹ (what-if only)',
           el('input', { type: 'number', min: '0', step: '1', class: 'num',
             value: pf.return_shipping_per_order, 'data-platform': key, 'data-field': 'retship' }))),
-      pf.fee_model ? el('div', { class: 'fees' },
-        ...[
-          ['commission_pct', 'Commission %', 100, '0.1'], ['fixed_fee', 'Fixed fee ₹ / order', 1, '0.5'],
-          ['fwd_shipping', 'Fwd shipping ₹ / order', 1, '0.5'], ['fee_gst_pct', 'GST on fees %', 100, '1'],
-          ['tds_pct', 'TDS % (if export has none)', 100, '0.01'],
-        ].map(([f, label, mult, step]) => el('label', {}, label,
-          el('input', { type: 'number', min: '0', step, class: 'num',
-            value: +(pf.fee_model[f] * mult).toFixed(4), 'data-platform': key, 'data-fee': f, 'data-mult': mult }))),
-        el('label', { class: 'note-field' }, 'Fee note',
-          el('input', { type: 'text', value: pf.fee_model.note || '', 'data-platform': key, 'data-fee': 'note' }))) : null,
       el('div', { class: 'scroll' },
         el('table', { class: 'cfgtable' },
           el('thead', {}, el('tr', {},
@@ -649,12 +700,6 @@ function collectConfig() {
       if (Object.keys(entry).length) months[m] = entry;
     }
     pf.months = months;
-    if (pf.fee_model) {
-      for (const box of $('#configOut').querySelectorAll('[data-platform="' + key + '"][data-fee]')) {
-        const f = box.getAttribute('data-fee');
-        pf.fee_model[f] = f === 'note' ? box.value.trim() : Number(box.value || 0) / Number(box.getAttribute('data-mult'));
-      }
-    }
   }
   return cfg;
 }
@@ -670,7 +715,11 @@ function renderAll(r) {
   renderRisk(r);
   renderData(r);
   const warnings = [];
-  if (r.settlement_estimated) warnings.push('ESTIMATED: this platform\'s export has no fees or payouts, so profit uses the fee assumptions in Config.');
+  const cov = r.coverage;
+  if (cov && cov.days_uncovered >= 3) {
+    warnings.push('Partial month: orders in this platform\'s reports run ' + cov.first_order + ' – ' + cov.last_order +
+      '; the last ' + cov.days_uncovered + ' days are not in any report yet.');
+  }
   if (r.cohort.unmapped_skus.length) warnings.push('Unmapped SKUs (no book/cost): ' + r.cohort.unmapped_skus.join(', '));
   if (r.cohort.zero_cost_skus.length) warnings.push('SKUs with zero cost: ' + r.cohort.zero_cost_skus.join(', '));
   if (r.sources.errors.length) warnings.push(r.sources.errors.length + ' file(s) failed to parse — see Data Sources.');

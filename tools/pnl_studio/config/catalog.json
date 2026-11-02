@@ -40,28 +40,12 @@
     },
     "flipkart": {
       "default_resell_rate": 0.7,
-      "return_shipping_per_order": 60,
-      "fee_model": {
-        "commission_pct": 0.06,
-        "fixed_fee": 10,
-        "fwd_shipping": 60,
-        "fee_gst_pct": 0.18,
-        "tds_pct": 0.001,
-        "note": "PLACEHOLDER - the Sales Report carries no fees. Replace with the rates in your Flipkart settlement report."
-      },
+      "return_shipping_per_order": 70,
       "months": {}
     },
     "amazon": {
       "default_resell_rate": 0.7,
-      "return_shipping_per_order": 45,
-      "fee_model": {
-        "commission_pct": 0.0,
-        "fixed_fee": 17,
-        "fwd_shipping": 45,
-        "fee_gst_pct": 0.18,
-        "tds_pct": 0.001,
-        "note": "From the SanskaTots plan: 0% referral on books up to Rs 1,000, Rs 17 closing fee, ~Rs 45 Easy Ship. Confirm against your Amazon payments report."
-      },
+      "return_shipping_per_order": 65,
       "months": {}
     }
   }

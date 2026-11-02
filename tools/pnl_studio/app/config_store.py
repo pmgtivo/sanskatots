@@ -82,8 +82,6 @@ def validate_config(cfg: Dict[str, Any]) -> Dict[str, Any]:
                 if field in mo:
                     mo[field] = _money(mo[field], "%s.%s" % (m, field))
         pf["months"] = months
-        if "fee_model" in pf:
-            pf["fee_model"] = _fee_model(pf["fee_model"], key)
     return cfg
 
 
@@ -98,20 +96,6 @@ def _money(value: Any, label: str) -> float:
     if number < 0:
         raise ValueError("%s must not be negative" % label)
     return number
-
-
-def _fee_model(model: Any, platform: str) -> Dict[str, Any]:
-    if not isinstance(model, dict):
-        raise ValueError("config.platforms['%s'].fee_model must be an object" % platform)
-    clean: Dict[str, Any] = {}
-    for field in ("commission_pct", "fee_gst_pct", "tds_pct"):
-        clean[field] = _rate(model.get(field, 0))
-    for field in ("fixed_fee", "fwd_shipping"):
-        clean[field] = _money(model.get(field, 0), "%s.fee_model.%s" % (platform, field))
-    note = str(model.get("note", "")).strip()
-    if note:
-        clean["note"] = note
-    return clean
 
 
 def _rate(value: Any) -> float:

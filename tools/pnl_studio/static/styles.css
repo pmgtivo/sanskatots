@@ -158,7 +158,6 @@ code { background: var(--panel-2); padding: 1px 5px; border-radius: 4px; font-si
 .insights li.warn { border-left-color: var(--warn); }
 .insights li.good { border-left-color: var(--good); }
 .insights li.info { border-left-color: var(--accent); }
-.est-tag { display: inline-block; margin-left: 6px; padding: 0 7px; border-radius: 999px; font-size: 10px; font-weight: 700; background: rgba(255, 184, 77, .16); color: var(--warn); vertical-align: middle; }
 .cfgtable input[type="number"] { text-align: right; }
 .fees { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; margin: 10px 0; }
 .fees label { display: flex; flex-direction: column; gap: 4px; font-size: 11px; text-transform: uppercase; letter-spacing: .6px; color: var(--muted); }

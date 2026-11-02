@@ -35,19 +35,16 @@ def render(result: Dict[str, Any]) -> str:
     add("> Order cohort: every order **placed** in %s, regardless of which payment "
         "file it arrived in or when it settled." % label)
     add("")
-    if result.get("settlement_estimated"):
-        fm = result.get("fee_model") or {}
-        add("> **Fees are estimated.** %s's export has no fee or payout data, so commission, shipping and "
-            "TDS are modelled: commission %.1f%% + fixed %s per order, forward shipping %s per order, return "
-            "shipping %s per failed order, GST %.0f%% on fees. Profit is only as accurate as those rates. %s"
-            % (platform_label, fm.get("commission_pct", 0) * 100, _money(fm.get("fixed_fee", 0), cur),
-               _money(fm.get("fwd_shipping", 0), cur), _money(result["return_shipping_per_order"], cur),
-               fm.get("fee_gst_pct", 0) * 100, fm.get("note", "")))
-        add("")
-
     if not result.get("has_data"):
         add("_No order lines found for this month._")
         return "\n".join(out) + "\n"
+
+    cov = result.get("coverage") or {}
+    if cov.get("days_uncovered", 0) >= 3:
+        add("> **Partial month.** Orders in this platform's reports run %s to %s; the last %d day(s) of the "
+            "month are not in any report yet, so this cohort is incomplete until the next report is added."
+            % (cov["first_order"], cov["last_order"], cov["days_uncovered"]))
+        add("")
 
     k = result["kpis"]
     cohort = result["cohort"]
@@ -131,10 +128,13 @@ def render(result: Dict[str, Any]) -> str:
 
     add("## 6. Returns by book")
     add("")
-    add(_table(["Book", "Returns", "RTO", "Return %", "Return shipping", "Stock write-off",
-                "Total return cost", "Cost per failure"],
-               [[r["book"], _num(r["returns"]), _num(r["rto"]),
+    by_book = {r["name"]: r for r in result["returns"]["by_book"]}
+    add(_table(["Book", "Units sold", "Units returned", "Returns", "RTO", "Return %", "Refunded",
+                "Return fees", "Stock write-off", "Total return cost", "Cost per failure"],
+               [[r["book"], _num(by_book[r["book"]]["units_sold"]), _num(by_book[r["book"]]["units_returned"]),
+                 _num(r["returns"]), _num(r["rto"]),
                  "%.2f%%" % next(b["return_pct"] for b in result["books"] if b["book"] == r["book"]),
+                 _money(by_book[r["book"]]["refunded"], cur),
                  _money(r["return_shipping"], cur), _money(r["writeoff"], cur),
                  _money(r["total_cost"], cur), _money(r["cost_per_return"], cur)]
                 for r in result["return_costs"]]))
@@ -168,23 +168,32 @@ def render(result: Dict[str, Any]) -> str:
     cash = result["cash"]
     add("## 9. Cash position")
     add("")
-    if cash.get("estimated"):
-        add("_Not available: this platform's export does not say what has been paid out._")
+    add(_table(["Item", "Amount"], [
+        ["Settlement already banked", _money(cash["settled"], cur)],
+        ["Settlement still receivable", _money(cash["receivable"], cur)],
+        ["Total earned on %s orders" % label, _money(cash["total"], cur)],
+        ["Cash deducted for ads", _money(cash["ads_deducted"], cur)],
+        ["Manufacturing outlay on units sold", _money(cash["manufacturing_outlay"], cur)],
+    ]))
+    if cash["receivable"] > 0:
         add("")
-    else:
-        add(_table(["Item", "Amount"], [
-            ["Settlement already banked", _money(cash["settled"], cur)],
-            ["Settlement still receivable", _money(cash["receivable"], cur)],
-            ["Total earned on %s orders" % label, _money(cash["total"], cur)],
-            ["Cash deducted for ads", _money(cash["ads_deducted"], cur)],
-            ["Manufacturing outlay on units sold", _money(cash["manufacturing_outlay"], cur)],
-        ]))
-        if cash["receivable"] > 0:
+        add("> %s of this month's settlement is still receivable — it is earned, not yet cash in hand."
+            % _money(cash["receivable"], cur))
+    add("")
+    bank = result.get("bank") or {}
+    if bank.get("available"):
+        add("**Bank settled in %s: %s** across %d payout(s), whichever month the orders were placed. "
+            "It differs from the cohort's settled amount (%s) by %s: payouts also settle earlier months' orders, "
+            "and this month's late orders are paid next month."
+            % (label, _money(bank["banked"], cur), bank["payouts"], _money(bank["cohort_settled"], cur),
+               _money(bank["timing_gap"], cur)))
+        add("")
+        add(_table(["Date", "Reference", "Kind", "Amount"],
+                   [[r["date"], r["ref"], r["kind"], _money(r["amount"], cur)] for r in bank["rows"]], 3))
+        if bank["truncated"]:
             add("")
-            add("> %s of this month's settlement is still receivable — it is earned, not yet cash in hand."
-                % _money(cash["receivable"], cur))
+            add("_%d more payout(s) not listed._" % bank["truncated"])
         add("")
-
     be = result["breakeven"]
     sens = result["sensitivity"]
     add("## 10. Break-even & sensitivity")

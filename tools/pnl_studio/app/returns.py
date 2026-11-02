@@ -25,7 +25,7 @@ from typing import Any, Dict, List, Optional
 
 import pandas as pd
 
-from .platforms.base import DELIVERED, IN_TRANSIT, LOST_STATUSES, RETURN, RTO
+from .platforms.base import DELIVERED, IN_TRANSIT, LOST_STATUSES, RETURN, RTO, SOLD_STATUSES
 
 MIN_CLOSED_FOR_FLAG = 8        # a rate on fewer closed orders than this is noise
 FLAG_MULTIPLE = 1.4            # "high" = this many times the platform average
@@ -35,6 +35,7 @@ CLAIM_REASONS = (
     ("damaged", "Damaged / used product returned"),
     ("used", "Damaged / used product returned"),
     ("missing", "Missing items in returned parcel"),
+    ("protection fund", "Seller Protection Fund payout"),
 )
 
 
@@ -63,6 +64,9 @@ def _slice(g: pd.DataFrame, fee: pd.DataFrame, resell_rate: float) -> Dict[str, 
     loss = _f(ship_cost + writeoff)
     gross = _f(g["gross_sale"].sum())
     refunded = _f(-lost["return_revenue"].sum())
+    units_sold = _f(g.loc[st.isin(SOLD_STATUSES), "quantity"].sum(), 0)
+    units_failed = _f(lost["quantity"].sum(), 0)
+    units_closed = _f(g.loc[st != IN_TRANSIT, "quantity"].sum(), 0)
     return {
         "orders": orders,
         "closed": closed,
@@ -73,7 +77,10 @@ def _slice(g: pd.DataFrame, fee: pd.DataFrame, resell_rate: float) -> Dict[str, 
         "return_pct": _pct(n_ret, closed),
         "rto_pct": _pct(n_rto, closed),
         "fail_pct": _pct(n_ret + n_rto, closed),
-        "units_returned": _f(lost["quantity"].sum(), 0),
+        "units_sold": units_sold,
+        "units_returned": units_failed,
+        "units_closed": units_closed,
+        "unit_fail_pct": _pct(units_failed, units_closed),
         "gross_sale": gross,
         "refunded": refunded,
         "refund_pct_of_gross": _pct(refunded, gross),
@@ -158,8 +165,7 @@ def _claims(real: pd.DataFrame, fee: pd.DataFrame, summary: Dict[str, Any],
 
 
 def build(real: pd.DataFrame, fee: pd.DataFrame, cancelled: pd.DataFrame,
-          cfg_month: Dict[str, Any], resell_rate: float, gross_profit: float,
-          est: bool) -> Dict[str, Any]:
+          cfg_month: Dict[str, Any], resell_rate: float, gross_profit: float) -> Dict[str, Any]:
     summary = _slice(real, fee, resell_rate)
     base = summary["fail_pct"]
     claims = _claims(real, fee, summary, cfg_month or {})
@@ -187,7 +193,6 @@ def build(real: pd.DataFrame, fee: pd.DataFrame, cancelled: pd.DataFrame,
         "by_pay_mode": modes,
         "has_state": bool(states),
         "has_pay_mode": bool(modes),
-        "estimated": est,
     }
     out["insights"] = _insights(out)
     return out

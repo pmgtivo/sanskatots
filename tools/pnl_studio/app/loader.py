@@ -15,7 +15,7 @@ from typing import Dict, List, Optional, Tuple
 import pandas as pd
 
 from . import platforms
-from .platforms.base import empty_ads, empty_orders
+from .platforms.base import empty_ads, empty_bank, empty_orders
 from .settings import DATA_ROOTS, REPO_ROOT
 
 # Meesho exports carry no default cell style; openpyxl warns once per workbook.
@@ -23,8 +23,8 @@ warnings.filterwarnings("ignore", message="Workbook contains no default style")
 
 _SKIP_DIRS = {".git", "node_modules", "__pycache__", ".venv", "venv"}
 
-# path -> (mtime, size, orders, ads)
-_PARSE_CACHE: Dict[str, Tuple[float, int, pd.DataFrame, pd.DataFrame]] = {}
+# path -> (mtime, size, orders, ads, bank)
+_PARSE_CACHE: Dict[str, Tuple[float, int, pd.DataFrame, pd.DataFrame, pd.DataFrame]] = {}
 
 
 def _walk(root: str) -> List[str]:
@@ -68,7 +68,9 @@ def discover(platform: Optional[str] = None) -> List[Dict]:
                 "name": os.path.basename(path),
                 "rel": rel,
                 "platform": adapter.key,
-                "settled": "PREVIOUS" in os.path.basename(path).upper(),
+                # Meesho labels outstanding vs settled in the filename; the other
+                # platforms' reports only list money that has already moved or is posted.
+                "settled": adapter.key != "meesho" or "PREVIOUS" in os.path.basename(path).upper(),
                 "kind": adapter.kind(path),
                 "size": os.path.getsize(path),
                 "duplicates": [],
@@ -76,26 +78,27 @@ def discover(platform: Optional[str] = None) -> List[Dict]:
     return list(seen.values())
 
 
-def _parse(path: str, adapter) -> Tuple[pd.DataFrame, pd.DataFrame]:
+def _parse(path: str, adapter) -> Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     stat = os.stat(path)
     cached = _PARSE_CACHE.get(path)
     if cached and cached[0] == stat.st_mtime and cached[1] == stat.st_size:
-        return cached[2], cached[3]
+        return cached[2], cached[3], cached[4]
     orders = adapter.load_orders(path)
     ads = adapter.load_ads(path)
-    _PARSE_CACHE[path] = (stat.st_mtime, stat.st_size, orders, ads)
-    return orders, ads
+    bank = adapter.load_bank(path)
+    _PARSE_CACHE[path] = (stat.st_mtime, stat.st_size, orders, ads, bank)
+    return orders, ads, bank
 
 
 def load_platform(platform: str) -> Dict:
     """Parse every discovered file for a platform into two de-duplicated frames."""
     adapter = platforms.get(platform)
     files = discover(platform)
-    order_frames, ad_frames = [], []
+    order_frames, ad_frames, bank_frames = [], [], []
     errors = []
     for rec in files:
         try:
-            orders, ads = _parse(rec["path"], adapter)
+            orders, ads, bank = _parse(rec["path"], adapter)
         except Exception as exc:  # a corrupt/unexpected workbook must not kill the dashboard
             errors.append({"file": rec["name"], "error": str(exc)})
             continue
@@ -104,9 +107,12 @@ def load_platform(platform: str) -> Dict:
         order_frames.append(orders)
         if len(ads):
             ad_frames.append(ads)
+        if len(bank):
+            bank_frames.append(bank)
 
     orders = pd.concat(order_frames, ignore_index=True) if order_frames else empty_orders()
     ads = pd.concat(ad_frames, ignore_index=True) if ad_frames else empty_ads()
+    bank = pd.concat(bank_frames, ignore_index=True) if bank_frames else empty_bank()
 
     rows_before = int(len(orders))
     if rows_before:
@@ -114,12 +120,15 @@ def load_platform(platform: str) -> Dict:
         orders = _dedupe_orders(orders)
     if len(ads):
         ads = ads.drop_duplicates(
-            subset=["campaign", "run_date", "ad_cost", "gst", "credits", "total_cost"]
+            subset=["campaign", "run_date", "ad_cost", "gst", "credits", "total_cost", "ref"]
         ).reset_index(drop=True)
+    if len(bank):
+        bank = bank.drop_duplicates(subset=["date", "amount", "ref", "kind"]).reset_index(drop=True)
 
     return {
         "orders": orders,
         "ads": ads,
+        "bank": bank,
         "files": files,
         "errors": errors,
         "rows_before_dedupe": rows_before,

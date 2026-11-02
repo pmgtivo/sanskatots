@@ -5,17 +5,18 @@ Browser-based profit & loss for marketplace sales. Replaces the per-month
 month, re-runs instantly when you change an assumption, and exports the same
 markdown report format.
 
-Meesho, Flipkart and Amazon are all implemented. Meesho's payment files carry
-real fees and payouts. Flipkart's and Amazon's order reports do not, so their
-fees are **modelled** from rates in the Config tab and flagged *estimated*
-everywhere they appear.
+Meesho, Flipkart and Amazon are all implemented, and all three are read from
+their **money** reports (Meesho payment workbooks, Flipkart Settlement Report,
+Amazon Unified Transaction report), so fees, TDS, ads, refunds and payouts are
+the platforms' own figures. Each platform also shows what actually reached the
+bank, and Returns is broken down per product.
 
 ## Monthly close
 
 ```
 Finance/Profit_Loss/<YYYY-MM>/
-    Amazon/     All Orders report (.txt)  +  GST MTR B2C (.csv, supplies refunds)
-    Flipkart/   monthly Sales Report (.xlsx)
+    Amazon/     Custom Unified Transaction report (.csv)
+    Flipkart/   Settlement Report (.xlsx)
     Meesho/     payment workbooks (PREVIOUS / OUTSTANDING)
     Reports/    markdown P&L saved from the Report tab
 Finance/Profit_Loss/_legacy_scripts/    the old per-month scripts
@@ -27,8 +28,9 @@ Finance/Profit_Loss/_legacy_scripts/    the old per-month scripts
 3. Open the **All Platforms** tab for the month, then **Returns** per platform.
 4. **Report → Save** writes the markdown into that month's `Reports/`.
 
-Amazon refunds only exist in the GST MTR, so keep the MTR in the same month
-folder (or leave it under `GST Fillings/`; identical copies are collapsed).
+The old Flipkart Sales Report, Amazon All Orders and GST MTR files are no longer
+read by the P&L (they carry no fees or payouts). They stay in use by the GST
+Filing tab.
 
 ## Start it
 
@@ -99,7 +101,9 @@ In the **Config** tab (persisted to `config/catalog.json`):
 - SKU → book mapping and per-unit manufacturing cost
 - Default resell rate per platform, plus a per-month override
   (July 70%, August 50%, September 70% are pre-loaded)
-- Return shipping cost per failed order (₹157 for Meesho)
+- Return shipping cost per failed order (₹157 for Meesho). For Flipkart and Amazon
+  the real return fees are in the reports, so this only feeds the what-if
+  sensitivity on the Risk tab.
 
 The header slider overrides the resell rate for the current view without saving,
 so you can see the sensitivity immediately.
@@ -118,31 +122,55 @@ Saving a report refuses to overwrite an existing file unless you confirm.
 
 ## Flipkart and Amazon P&L
 
-| Platform | Files read | What they give | What they do not |
-| --- | --- | --- | --- |
-| Flipkart | monthly Sales Report `.xlsx` | sales, returns, cancellations, state, COD/prepaid, bank-offer cashback, TDS | commission, shipping, payouts, claims, return reasons |
-| Amazon | All Orders `.txt` + GST MTR `.csv` | orders, cancellations, price, promo discount, state, refunds (from the MTR) | fees, payouts, claims, return reasons |
+Both platforms are read from their **money** reports, so fees, TDS, ads, refunds
+and payouts are the platform's own figures; nothing is modelled.
 
-* **Events become orders.** Flipkart's report is an event ledger. An order item
-  can be sold, returned, the return revoked and returned again, so only the net
-  of its events decides the outcome (`Taxable Value` carries the sign; `Final
-  Invoice Amount` does not).
-* **Open orders.** Neither report says an order was delivered. Anything placed
-  within 14 days of the data's last date counts as still open and is left out of
+| Platform | File read | Where to get it | What it gives |
+| --- | --- | --- | --- |
+| Flipkart | Settlement Report `.xlsx` | Seller Hub → Payments → Settlement Report | per order item: sale, Flipkart-funded offer, refund, every marketplace fee, reverse-shipping fee, GST, TDS/TCS, Seller Protection Fund payout, bank settlement, return type; wallet ad top-ups; NEFT payouts |
+| Amazon | Custom Unified Transaction `.csv` | Seller Central → Payments → Reports Repository | sale, promo rebates, selling and other fees, Easy Ship weight fees, return handling fee on refunds, advertising charges, bank transfers, Released/Deferred status |
+
+* **Rows become orders.** Both reports are ledgers of postings. They are folded
+  back into one line per Flipkart `Order item ID` / Amazon `Order Id` + `SKU`
+  across every file found, so a sale in one month and its refund in a later
+  one are one order.
+* **Returns.** Flipkart `Customer Return` → Return (a reverse-shipping fee plus
+  GST is billed), `Logistics Return` → RTO (no fee). Amazon: a refund of at least
+  half the sale is a Return and the return handling fee on the refund is the
+  return cost; a smaller refund is a partial refund and the order stays sold.
+* **Open orders.** Amazon `Deferred` sales are open (still inside the hold
+  window). Flipkart orders placed within 14 days of the last payout are labelled
+  open because their return window has not closed. Open orders are left out of
   the return rate, whose denominator is closed orders only.
-* **Cancellations** never shipped. They are reported separately and excluded from
-  orders, revenue and the return rate.
-* **Flipkart cashback** (the Cash Back Report) is money the platform pays the
-  seller for bank-funded offers, so it is added to settlement.
+* **Claims.** Flipkart's Seller Protection Fund payouts are the claims.
+* **Ads.** Flipkart ad spend is the wallet top-ups netted off the payout (what
+  actually left your money); Amazon's is `Cost of Advertising`.
+* **Cohort month.** Flipkart orders are dated by order date. Amazon's report
+  has no order date, so an order is dated by its sale posting.
+* **Cancellations** are not in either report (neither platform bills a
+  cancel-before-ship), so Cancelled is 0 for them.
 * **Amazon times** are UTC in the export and are converted to Indian time before
   the month is decided.
-* **Estimated fees.** Config → each platform holds commission %, fixed fee per
-  order, forward shipping per order, GST on fees and a TDS fallback; the
-  per-failed-order return shipping sits beside them. Commission and the fixed fee
-  are refunded on a return, forward shipping is not. The Amazon figures come from
-  the SanskaTots plan (0% referral on books, Rs 17 closing fee, ~Rs 45 Easy
-  Ship). **The Flipkart figures are placeholders.** Replace both with the rates
-  in your platform settlement report, then profit is exact.
+* **Partial months.** Flipkart only lists settled orders, so the newest orders
+  are missing until the next settlement report arrives. The tool shows the date
+  range it has seen and warns when the last days of the month are absent.
+
+### Bank settled
+
+Each platform's Cash section now shows what **reached the bank** in the
+calendar month (Amazon `Transfer` rows, Flipkart NEFT payouts, Meesho payment
+dates) next to what the month's order cohort has earned. The two differ by
+payout timing and the tool says by how much. For Flipkart the payout total is
+checked against the report's own `Net Bank Settlement`; any gap (fines,
+recoveries) shows as a separate line.
+
+### Returns per product
+
+**All Platforms** has *Returns by product*, *Product × platform* and *Returns by
+SKU*: units sold, units returned (returns + RTO), return/RTO %, refunded value,
+return fees, stock write-off, return loss, claims and gross profit, summed across
+Meesho, Flipkart and Amazon. The per-platform **Returns** tab has the same
+columns by book and SKU.
 
 ## Returns tab
 
@@ -285,10 +313,9 @@ e-commerce operator GSTINs. Due dates follow the QRMP state group
 1. Map its export onto the canonical columns in `app/platforms/base.py`
    (`ORDER_COLUMNS`, `AD_COLUMNS`).
 2. Subclass `PlatformAdapter`: `matches()`, `load_orders()`, optionally
-   `load_ads()`, `kind()` and `consolidate()` (for event ledgers), and register
-   it in `app/platforms/__init__.py`.
-3. Add a `platforms` entry, with a `fee_model` if the export has no fees, in
-   `config/catalog.json`.
+   `load_ads()`, `load_bank()` (payouts), `kind()` and `consolidate()` (for
+   ledgers), and register it in `app/platforms/__init__.py`.
+3. Add a `platforms` entry in `config/catalog.json`.
 
 The engine, dashboard, report and month comparison are platform agnostic and
 need no changes.
@@ -302,8 +329,8 @@ app/
   engine.py      all P&L maths (platform agnostic)
   report.py      markdown report renderer
   config_store.py
-  fees.py        modelled settlement for platforms whose exports carry no fees
   returns.py     return rates, return loss, claims, by book / SKU / state / COD
+  products.py    sales, returns and return cost per product across platforms
   platforms/     base.py (canonical schema) + meesho.py, flipkart.py, amazon.py
   gst/           rules.py (statute), loader.py, engine.py, report.py, cli.py,
                  sources/ (amazon.py, meesho.py, flipkart.py)

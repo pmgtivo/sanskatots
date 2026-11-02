@@ -110,6 +110,33 @@ def _group_pnl(g: pd.DataFrame, fg: pd.DataFrame, resell_rate: float) -> Dict[st
     }
 
 
+def _bank_section(bank: Optional[pd.DataFrame], start: pd.Timestamp, end: pd.Timestamp,
+                  cohort_paid: float) -> Dict[str, Any]:
+    """Cash that reached the bank during the calendar month, whichever month the orders were placed.
+
+    The P&L is built per order cohort, so this will not equal the cohort's settled amount:
+    a September order paid in October is banked in October but belongs to September's P&L.
+    """
+    if bank is None or not len(bank):
+        return {"available": False}
+    in_month = bank[(bank["date"] >= start) & (bank["date"] < end)].sort_values("date")
+    banked = _f(in_month["amount"].sum())
+    return {
+        "available": True,
+        "banked": banked,
+        "payouts": int(len(in_month)),
+        "cohort_settled": cohort_paid,
+        "timing_gap": _f(banked - cohort_paid),
+        "rows": [{
+            "date": r["date"].strftime("%d %b %Y"),
+            "amount": _f(r["amount"]),
+            "ref": r["ref"],
+            "kind": r["kind"],
+        } for _, r in in_month.head(60).iterrows()],
+        "truncated": max(len(in_month) - 60, 0),
+    }
+
+
 def compute(
     orders: pd.DataFrame,
     ads: pd.DataFrame,
@@ -118,6 +145,7 @@ def compute(
     month: str,
     resell_rate: float,
     return_shipping_per_order: float,
+    bank: Optional[pd.DataFrame] = None,
 ) -> Dict[str, Any]:
     sku_cfg = cfg.get("skus", {})
     start, end = month_bounds(month)
@@ -133,7 +161,6 @@ def compute(
     fee = cohort[cohort["status"] == FEE_ADJ]
     cancelled = cohort[cohort["status"] == CANCELLED]
     real = cohort[~cohort["status"].isin([FEE_ADJ, CANCELLED])].copy()
-    estimated = bool(len(real) and real["est"].any())
 
     ad_month = ads[(ads["run_date"] >= start) & (ads["run_date"] < end)] if len(ads) else ads
     ad_total = _f(abs(ad_month["total_cost"].sum())) if len(ad_month) else 0.0
@@ -147,7 +174,6 @@ def compute(
         "return_shipping_per_order": _f(return_shipping_per_order),
         "currency": cfg.get("currency", "Rs"),
         "has_data": bool(len(real)),
-        "settlement_estimated": estimated,
     }
 
     result["cohort"] = {
@@ -165,6 +191,13 @@ def compute(
     if not len(real):
         return result
 
+    last_placed = real["order_date"].max()
+    days_after = (end - last_placed.normalize()).days - 1
+    result["coverage"] = {
+        "first_order": real["order_date"].min().strftime("%d %b"),
+        "last_order": last_placed.strftime("%d %b"),
+        "days_uncovered": max(int(days_after), 0),
+    }
     # ------------------------------------------------------------------ funnel
     funnel = []
     for status, g in real.groupby("status"):
@@ -265,29 +298,31 @@ def compute(
     affiliate = _f(real["affiliate"].sum() + fee["affiliate"].sum())
     claims = _f(real["claims"].sum() + fee["claims"].sum())
     offers = _f(real["offers"].sum())
+    other = _f(real["other"].sum() + fee["other"].sum())
     tds = _f(real["tds"].sum())
     commission = _f(real["commission"].sum())
     settlement = _f(real["settlement"].sum() + fee["settlement"].sum())
+    listed = (gross + rev_reversal + commission + fwd_ship + ret_ship + affiliate + claims + offers
+              + other + tds)
+    unlisted = _f(settlement - listed)
     cogs_sold = _f(-sum(r["cogs"] for r in books))
     cogs_writeoff = _f(-sum(r["writeoff"] for r in books))
     gross_profit = _f(settlement - cogs_sold - cogs_writeoff)
     net_profit = _f(gross_profit - ad_total)
     units_sold = _f(total_units, 0)
 
-    tag = " (estimated)" if estimated else ""
     result["statement"] = [
         {"label": "Gross sale value (incl. shipping & GST)", "value": gross},
         {"label": "Less: returns & RTO revenue reversal", "value": rev_reversal},
         {"label": "NET REVENUE", "value": _f(gross + rev_reversal), "emphasis": True},
         {"divider": True},
-        {"label": ("Marketplace commission & fees" if estimated else "Marketplace commission") + tag, "value": commission},
-        {"label": "Forward shipping charge" + tag, "value": fwd_ship},
-        {"label": "Return shipping charge" + tag, "value": ret_ship},
+        {"label": "Marketplace commission / selling fees", "value": commission},
+        {"label": "Forward shipping & handling fees", "value": fwd_ship},
+        {"label": "Return shipping / return handling fees", "value": ret_ship},
         {"label": "Affiliate fee", "value": affiliate},
         {"label": "Claims recovered", "value": claims},
-        {"label": "TDS" + tag, "value": tds},
-        {"label": "TOTAL SETTLEMENT" + (" (modelled)" if estimated else " (marketplace pays you)"),
-         "value": settlement, "emphasis": True},
+        {"label": "TDS / TCS", "value": tds},
+        {"label": "TOTAL SETTLEMENT (marketplace pays you)", "value": settlement, "emphasis": True},
         {"divider": True},
         {"label": "Less: manufacturing cost of units sold", "value": -cogs_sold},
         {"label": "Less: write-off on returns (%d%% of returned stock)" % round((1 - resell_rate) * 100),
@@ -297,9 +332,15 @@ def compute(
         {"label": "Less: marketplace ads (incl. GST)", "value": -ad_total},
         {"label": "NET PROFIT (%s order cohort)" % result["month_label"], "value": net_profit, "emphasis": True},
     ]
+    before_total = next(i for i, ln in enumerate(result["statement"]) if ln.get("label", "").startswith("TOTAL SETTLEMENT"))
+    extra = []
     if offers:
-        at = next(i for i, ln in enumerate(result["statement"]) if ln.get("label", "").startswith("TDS"))
-        result["statement"].insert(at, {"label": "Bank-offer cashback from platform", "value": offers})
+        extra.append({"label": "Platform-funded offers / cashback", "value": offers})
+    if other:
+        extra.append({"label": "Other platform charges & adjustments", "value": other})
+    if abs(unlisted) > 0.5:
+        extra.append({"label": "Other settlement items not itemised above", "value": unlisted})
+    result["statement"][before_total:before_total] = extra
     for line in result["statement"]:
         if "value" in line:
             line["pct_of_gross"] = _pct(line["value"], gross)
@@ -335,7 +376,6 @@ def compute(
     # ------------------------------------------------------------ cash position
     paid = _f(real[real["paid"]]["settlement"].sum() + fee[fee["paid"]]["settlement"].sum())
     result["cash"] = {
-        "estimated": estimated,
         "settled": paid,
         "receivable": _f(settlement - paid),
         "total": settlement,
@@ -344,6 +384,7 @@ def compute(
         "ads_deducted": ad_total,
         "manufacturing_outlay": cogs_sold,
     }
+    result["bank"] = _bank_section(bank, start, end, paid)
 
     # ----------------------------------------------------- return cost per book
     return_costs = []
@@ -368,7 +409,7 @@ def compute(
     }
 
     month_cfg = ((cfg.get("platforms") or {}).get(platform) or {}).get("months", {}).get(month, {})
-    result["returns"] = returns_mod.build(real, fee, cancelled, month_cfg, resell_rate, gross_profit, estimated)
+    result["returns"] = returns_mod.build(real, fee, cancelled, month_cfg, resell_rate, gross_profit)
     result["kpis"]["return_loss"] = result["returns"]["summary"]["loss"]
     result["kpis"]["claims_received"] = result["returns"]["claims"]["received"]
     result["kpis"]["cancelled"] = int(len(cancelled))

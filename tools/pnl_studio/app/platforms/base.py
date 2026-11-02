@@ -46,21 +46,24 @@ ORDER_COLUMNS = [
     "snapshot",       # as-of date of the export, used to supersede stale estimates
     "source",         # source file name
     # -- optional, filled by adapters whose exports are event ledgers --------
-    "offers",         # bank-offer cashback the platform reimburses to the seller
-    "est",            # True = settlement is MODELLED from config fees, not reported
+    "offers",         # platform-funded offer / cashback reimbursed to the seller
     "event",          # raw event on this row ("" once consolidated)
     "event_id",       # document id of the event, used to drop repeated exports
     "event_date",
     "state",          # customer's delivery state
     "pay_mode",       # Prepaid | COD
     "reason",         # claim / return reason text when the platform gives one
+    "other",          # platform charges / adjustments not tied to a sale (subscription, cancellation charge)
 ]
 
-AD_COLUMNS = ["campaign", "run_date", "ad_cost", "gst", "credits", "total_cost", "source"]
+AD_COLUMNS = ["campaign", "run_date", "ad_cost", "gst", "credits", "total_cost", "source", "ref"]
+
+#: Money the marketplace actually moved to the bank, one row per payout.
+BANK_COLUMNS = ["date", "amount", "ref", "kind", "source"]
 
 ORDER_NUMERIC = [
     "quantity", "gross_sale", "return_revenue", "fwd_shipping", "return_shipping",
-    "affiliate", "claims", "tds", "commission", "settlement", "offers",
+    "affiliate", "claims", "tds", "commission", "settlement", "offers", "other",
 ]
 ORDER_TEXT = ["event", "event_id", "state", "pay_mode", "reason"]
 
@@ -80,6 +83,10 @@ def empty_ads() -> pd.DataFrame:
     return pd.DataFrame(columns=AD_COLUMNS)
 
 
+def empty_bank() -> pd.DataFrame:
+    return pd.DataFrame(columns=BANK_COLUMNS)
+
+
 def finalise_orders(df: pd.DataFrame) -> pd.DataFrame:
     """Coerce a partially-filled frame into the canonical order schema."""
     for col in ORDER_COLUMNS:
@@ -92,7 +99,6 @@ def finalise_orders(df: pd.DataFrame) -> pd.DataFrame:
     df["event_date"] = pd.to_datetime(df["event_date"], errors="coerce")
     for col in ORDER_TEXT:
         df[col] = df[col].fillna("").astype(str).replace({"nan": "", "None": ""}).str.strip()
-    df["est"] = df["est"].replace({"": False}).fillna(False).astype(bool)
     df["order_id"] = df["order_id"].astype(str)
     df["sku"] = df["sku"].astype(str).str.strip().replace({"": "(unassigned)", "nan": "(unassigned)"})
     df["status"] = df["status"].astype(str)
@@ -108,7 +114,19 @@ def finalise_ads(df: pd.DataFrame) -> pd.DataFrame:
         df[col] = pd.to_numeric(df[col], errors="coerce").fillna(0.0)
     df["run_date"] = pd.to_datetime(df["run_date"], errors="coerce")
     df["campaign"] = df["campaign"].astype(str)
+    df["ref"] = df["ref"].fillna("").astype(str)
     return df[AD_COLUMNS]
+
+
+def finalise_bank(df: pd.DataFrame) -> pd.DataFrame:
+    for col in BANK_COLUMNS:
+        if col not in df.columns:
+            df[col] = 0.0 if col == "amount" else ""
+    df["amount"] = pd.to_numeric(df["amount"], errors="coerce").fillna(0.0)
+    df["date"] = pd.to_datetime(df["date"], errors="coerce")
+    for col in ("ref", "kind", "source"):
+        df[col] = df[col].fillna("").astype(str)
+    return df[BANK_COLUMNS]
 
 
 class PlatformAdapter:
@@ -126,6 +144,10 @@ class PlatformAdapter:
 
     def load_ads(self, path: str) -> pd.DataFrame:
         return empty_ads()
+
+    def load_bank(self, path: str) -> pd.DataFrame:
+        """Payouts that reached the bank. Adapters whose files carry them override this."""
+        return empty_bank()
 
     def kind(self, path: str) -> str:
         """Short human label for a file, shown in the Data Sources tab."""

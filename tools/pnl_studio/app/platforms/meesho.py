@@ -17,7 +17,9 @@ from .base import (
     RTO,
     PlatformAdapter,
     empty_ads,
+    empty_bank,
     finalise_ads,
+    finalise_bank,
     finalise_orders,
 )
 
@@ -114,3 +116,26 @@ class MeeshoAdapter(PlatformAdapter):
         out["total_cost"] = raw["Total Ads Cost"]
         out["source"] = os.path.basename(path)
         return finalise_ads(out)
+
+    def load_bank(self, path: str) -> pd.DataFrame:
+        """Payouts by payment date. Only settled (PREVIOUS) workbooks have one; ads deducted
+        from the wallet are not part of these lines."""
+        if "PREVIOUS" not in os.path.basename(path).upper():
+            return empty_bank()
+        raw = pd.read_excel(path, sheet_name=ORDER_SHEET, header=HEADER_ROW)
+        if "Payment Date" not in raw.columns:
+            return empty_bank()
+        raw = raw[raw["Sub Order No"].astype(str).str.contains("_", na=False)].copy()
+        raw["_paid_on"] = pd.to_datetime(raw["Payment Date"], errors="coerce")
+        raw["_amount"] = pd.to_numeric(raw["Final Settlement Amount"], errors="coerce").fillna(0.0)
+        raw = raw[raw["_paid_on"].notna()]
+        if raw.empty:
+            return empty_bank()
+        by_day = raw.groupby("_paid_on", as_index=False)["_amount"].sum()
+        return finalise_bank(pd.DataFrame({
+            "date": by_day["_paid_on"],
+            "amount": by_day["_amount"],
+            "ref": by_day["_paid_on"].dt.strftime("%Y-%m-%d"),
+            "kind": "Meesho payout (order payments)",
+            "source": os.path.basename(path),
+        }))

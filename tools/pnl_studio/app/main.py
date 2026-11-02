@@ -10,7 +10,7 @@ from fastapi import Body, FastAPI, HTTPException, Query, UploadFile, File
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 
-from . import engine, fees, loader, platforms, report
+from . import engine, loader, platforms, products, report
 from .config_store import load_config, platform_settings, resell_rate_for, save_config
 from .gst import config_store as gst_config
 from .gst import engine as gst_engine
@@ -47,10 +47,7 @@ def _run(platform: str, month: str, resell_rate: Optional[float], return_ship: O
     if not 0.0 <= rate <= 1.0:
         raise HTTPException(400, "resell_rate must be between 0 and 1")
     ship = return_ship if return_ship is not None else float(pf.get("return_shipping_per_order", 0))
-    model = fees.model_for(cfg, platform)
-    orders = fees.apply(data["orders"], model, ship)
-    result = engine.compute(orders, data["ads"], cfg, platform, month, rate, ship)
-    result["fee_model"] = model if result.get("settlement_estimated") else None
+    result = engine.compute(data["orders"], data["ads"], cfg, platform, month, rate, ship, data["bank"])
     result["sources"] = {
         "files": [{"name": f["name"], "rel": f["rel"], "settled": f["settled"], "kind": f.get("kind", ""),
                    "order_rows": f.get("order_rows", 0), "ad_rows": f.get("ad_rows", 0),
@@ -94,7 +91,8 @@ def api_summary(month: str = Query(...)) -> Dict[str, Any]:
     """One month across every platform that has data: the monthly close view."""
     month = _check_month(month)
     sums = ("orders", "units_sold", "gross_sale", "settlement", "gross_profit", "ad_spend",
-            "net_profit", "return_loss", "claims_received", "failed", "closed", "cancelled")
+            "net_profit", "return_loss", "claims_received", "failed", "closed", "cancelled",
+            "banked", "receivable", "units_returned", "refunded", "return_fees", "writeoff")
     totals: Dict[str, Any] = {k: 0 for k in sums}
     rows: List[Dict[str, Any]] = []
     for adapter in platforms.active():
@@ -103,9 +101,9 @@ def api_summary(month: str = Query(...)) -> Dict[str, Any]:
             rows.append({"platform": adapter.key, "label": adapter.label, "has_data": False})
             continue
         k, ret = result["kpis"], result["returns"]["summary"]
+        bank = result["bank"]
         row = {
             "platform": adapter.key, "label": adapter.label, "has_data": True,
-            "estimated": result["settlement_estimated"],
             "orders": k["orders"], "units_sold": k["units_sold"], "gross_sale": k["gross_sale"],
             "settlement": k["settlement"], "gross_profit": k["gross_profit"],
             "ad_spend": k["ad_spend"], "net_profit": k["net_profit"], "np_per_unit": k["np_per_unit"],
@@ -114,14 +112,25 @@ def api_summary(month: str = Query(...)) -> Dict[str, Any]:
             "failed": ret["failed"], "closed": ret["closed"], "in_transit": ret["in_transit"],
             "return_loss": ret["loss"], "claims_received": result["returns"]["claims"]["received"],
             "cancelled": ret["cancelled"],
+            "banked": bank.get("banked", 0.0), "has_bank": bank["available"],
+            "receivable": result["cash"]["receivable"],
+            "units_returned": ret["units_returned"], "refunded": ret["refunded"],
+            "return_fees": ret["return_shipping"], "writeoff": ret["writeoff"],
         }
         rows.append(row)
         for key in sums:
             totals[key] += row[key]
     totals = {k: (round(v, 2) if isinstance(v, float) else v) for k, v in totals.items()}
     totals["fail_pct"] = round(totals["failed"] / totals["closed"] * 100, 2) if totals["closed"] else 0.0
-    totals["estimated"] = any(r.get("estimated") for r in rows)
     return {"month": month, "month_label": engine.month_label(month), "platforms": rows, "totals": totals}
+
+
+@app.get("/api/products")
+def api_products(month: str = Query(...)) -> Dict[str, Any]:
+    """Sales, returns and return cost per product across every platform for one month."""
+    month = _check_month(month)
+    results = [_run(a.key, month, None, None) for a in platforms.active()]
+    return products.build(month, engine.month_label(month), results)
 
 
 @app.get("/api/pnl")
