@@ -106,7 +106,11 @@ In the **Config** tab (persisted to `config/catalog.json`):
   sensitivity on the Risk tab.
 
 The header slider overrides the resell rate for the current view without saving,
-so you can see the sensitivity immediately.
+so you can see the sensitivity immediately. Move it and press Recalculate: every
+tab that shows write-off, return loss or net profit follows it, including **All
+Platforms**, where a moved slider applies to all three platforms (untouched, each
+platform keeps its own configured rate). Compare Months and the Returns trend
+always use each month's configured rate.
 
 ## Reconciliation with the old scripts
 

@@ -428,12 +428,20 @@ async function loadAllPlatforms() {
   const root = $('#tab-all');
   root.replaceChildren();
   if (!state.month) return;
+  // The slider applies to every platform only once it has been moved; otherwise each
+  // platform keeps its own configured resell rate.
+  const rateParam = state.resellDirty ? '&resell_rate=' + (Number($('#resell').value) / 100) : '';
   const [data, prod] = await Promise.all([
-    api('/api/summary?month=' + state.month),
-    api('/api/products?month=' + state.month),
+    api('/api/summary?month=' + state.month + rateParam),
+    api('/api/products?month=' + state.month + rateParam),
   ]);
   const t = data.totals;
+  const rates = [...new Set(data.platforms.filter((p) => p.has_data).map((p) => Math.round(p.resell_rate * 100)))];
   root.append(card(data.month_label + ' — every platform',
+    el('p', { class: 'muted' },
+      'Resellable stock assumed: ' + rates.join('% / ') + '% (' +
+      (state.resellDirty ? 'slider override, applied to every platform' : 'each platform\'s configured rate') +
+      '). Write-off, return loss and net profit move with it.'),
     el('div', { class: 'kpis' },
       kpi('Net profit', money0(t.net_profit), 'all platforms', sign(t.net_profit)),
       kpi('Gross sale', money0(t.gross_sale), num(t.orders) + ' orders'),
@@ -764,6 +772,7 @@ function syncMonthDefaults() {
   $('#resell').value = Math.round(rate * 100);
   $('#resellOut').value = Math.round(rate * 100) + '%';
   $('#retship').value = pf.return_shipping_per_order || 0;
+  state.resellDirty = false;
 }
 
 async function init() {
@@ -801,7 +810,7 @@ $('#month').addEventListener('change', async (e) => {
   syncMonthDefaults();
   await refresh();
 });
-$('#resell').addEventListener('input', (e) => { $('#resellOut').value = e.target.value + '%'; });
+$('#resell').addEventListener('input', (e) => { $('#resellOut').value = e.target.value + '%'; state.resellDirty = true; });
 $('#refresh').addEventListener('click', refresh);
 $('#runCompare').addEventListener('click', () => runCompare().catch((e) => banner(e.message, 'err')));
 

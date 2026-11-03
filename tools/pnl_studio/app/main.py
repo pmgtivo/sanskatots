@@ -87,8 +87,11 @@ def api_datasets(platform: str = Query("meesho")) -> Dict[str, Any]:
 
 
 @app.get("/api/summary")
-def api_summary(month: str = Query(...)) -> Dict[str, Any]:
-    """One month across every platform that has data: the monthly close view."""
+def api_summary(month: str = Query(...), resell_rate: Optional[float] = Query(None)) -> Dict[str, Any]:
+    """One month across every platform that has data: the monthly close view.
+
+    `resell_rate`, when given, replaces each platform's configured rate for this view only.
+    """
     month = _check_month(month)
     sums = ("orders", "units_sold", "gross_sale", "settlement", "gross_profit", "ad_spend",
             "net_profit", "return_loss", "claims_received", "failed", "closed", "cancelled",
@@ -96,7 +99,7 @@ def api_summary(month: str = Query(...)) -> Dict[str, Any]:
     totals: Dict[str, Any] = {k: 0 for k in sums}
     rows: List[Dict[str, Any]] = []
     for adapter in platforms.active():
-        result = _run(adapter.key, month, None, None)
+        result = _run(adapter.key, month, resell_rate, None)
         if not result.get("has_data"):
             rows.append({"platform": adapter.key, "label": adapter.label, "has_data": False})
             continue
@@ -116,6 +119,7 @@ def api_summary(month: str = Query(...)) -> Dict[str, Any]:
             "receivable": result["cash"]["receivable"],
             "units_returned": ret["units_returned"], "refunded": ret["refunded"],
             "return_fees": ret["return_shipping"], "writeoff": ret["writeoff"],
+            "resell_rate": result["resell_rate"],
         }
         rows.append(row)
         for key in sums:
@@ -126,10 +130,10 @@ def api_summary(month: str = Query(...)) -> Dict[str, Any]:
 
 
 @app.get("/api/products")
-def api_products(month: str = Query(...)) -> Dict[str, Any]:
+def api_products(month: str = Query(...), resell_rate: Optional[float] = Query(None)) -> Dict[str, Any]:
     """Sales, returns and return cost per product across every platform for one month."""
     month = _check_month(month)
-    results = [_run(a.key, month, None, None) for a in platforms.active()]
+    results = [_run(a.key, month, resell_rate, None) for a in platforms.active()]
     return products.build(month, engine.month_label(month), results)
 
 
