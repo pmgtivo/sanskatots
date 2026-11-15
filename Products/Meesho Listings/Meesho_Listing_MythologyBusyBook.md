@@ -15,7 +15,7 @@ Mythology Busy Book for Kids | 70+ Velcro Stickers | Ramayana Krishna Hanuman | 
 
 **A/B test alternates (also under 100 chars):**
 ```
-Indian Mythology Busy Book for Kids | Hindu Gods Velcro Activity | Age 2+ | SanskaTots™
+Indian Mythology Busy Binder for Kids | Hindu Gods Ramayana Krishna Dashavatar Reusable Velcro stickers| Hindu Activity Busy Book | Age 2+
 ```
 ```
 Mythology Busy Book | Ramayana Krishna Dashavatar Velcro Activity for Kids | Age 2+ | SanskaTots™

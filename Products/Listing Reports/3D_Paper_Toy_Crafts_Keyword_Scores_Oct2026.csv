@@ -1,0 +1,282 @@
+cluster,search_term,rank,top_brand_1,top_brand_2,top_brand_3,top1_click_share,top1_conv_share,top_category_1,top_category_2,demand_tier,competition,recommended_placement
+Activity book (age),activity book for 5 year old,25568,PW,Pegasus,Wonder House,32.67,13.12,Books,Toys,A (≤30k),Locked (>25%),Books-lane only; locked by publishers
+Activity book (age),activity book for 3+ year old,27552,Pegasus,PW,,18.23,9.19,Books,Toys,A (≤30k),Moderate (10–25%),Books-lane only; locked by publishers
+Activity book (age),activity book,46308,Wonder House,Pegasus,PW,12.82,7.33,Books,Toys,B (30–100k),Moderate (10–25%),Books-lane only; locked by publishers
+Activity book (age),activity book for 4 year old,53715,Pegasus,PW,TWO BROTHERS PUBLICATIONS PVT. LTD.,32.93,15.71,Books,Toys,B (30–100k),Locked (>25%),Books-lane only; locked by publishers
+Activity book (age),activity book for 7 + year old,66290,PW,Pegasus,TWO BROTHERS PUBLICATIONS PVT. LTD.,28.32,8.13,Books,Toys,B (30–100k),Locked (>25%),Books-lane only; locked by publishers
+Activity book (age),activity book for 2 year old,72396,QLECT,Wonder House,SHNMN,15.38,10.71,Books,Toys,B (30–100k),Moderate (10–25%),Books-lane only; locked by publishers
+Activity book (age),activity book for 3 year old,72566,PW,Pegasus,Pegasus,14.43,4.5,Books,Toys,B (30–100k),Moderate (10–25%),Books-lane only; locked by publishers
+Activity book (age),activity book for 7 year old,80614,PW,Pegasus,Wonder House,28.04,15.24,Books,Toys,B (30–100k),Locked (>25%),Books-lane only; locked by publishers
+Activity book (age),activity book for 2+ year old,81364,SHNMN,Wonder House,Pegasus,13.31,3.54,Books,Toys,B (30–100k),Moderate (10–25%),Books-lane only; locked by publishers
+Activity book (age),kids activity book 3-4 years,90770,PW,Pegasus,Wonder House,15.55,5.79,Books,Toys,B (30–100k),Moderate (10–25%),Books-lane only; locked by publishers
+Activity book (age),activity book for kids,102968,Maple Press,PW,Wonder House,11.88,8.13,Books,Toys,C (100–200k),Moderate (10–25%),Books-lane only; locked by publishers
+Activity book (age),kids activity book 5-6 years,125449,PW,Pegasus,Wonder House,27.77,7.41,Books,Toys,C (100–200k),Locked (>25%),Books-lane only; locked by publishers
+Activity book (age),kids activity book,133114,PW,Pegasus,Wonder House,10.69,2.5,Books,Toys,C (100–200k),Moderate (10–25%),Books-lane only; locked by publishers
+Activity book (age),activity books,207701,PW,Pegasus,Wonder House,13.78,7.84,Books,Toys,D (>200k),Moderate (10–25%),Books-lane only; locked by publishers
+Activity book (age),activity book for 6 year old,229019,PW,Wonder House,Pegasus,26.94,10.81,Books,Toys,D (>200k),Locked (>25%),Books-lane only; locked by publishers
+Crown / dress-up,crown for girls,27178,CURATED CART,Shining Diva Fashion,Riyenio,10.28,13.81,Jewelry,Toys,A (≤30k),Moderate (10–25%),Bullets / description only
+Crown / dress-up,crown,34018,CURATED CART,Shining Diva Fashion,SYGA,8.92,5.74,Jewelry,Toys,B (30–100k),Open (<10%),Bullets / description only
+Crown / dress-up,tiara,41670,CURATED CART,Shining Diva Fashion,ORYXTREND,14.98,29.11,Jewelry,Beauty,B (30–100k),Moderate (10–25%),Bullets / description only
+Crown / dress-up,tiara for girls,58683,CURATED CART,Shining Diva Fashion,Riyenio,6.99,7.11,Jewelry,Beauty,B (30–100k),Open (<10%),Bullets / description only
+DIY / craft kit (generic),diy kit for kids,26267,Imagimake,Smartivity,Funskool,4.58,1.31,Home,Toys,A (≤30k),Open (<10%),Title / Item Highlights
+DIY / craft kit (generic),diy kit,27398,Imagimake,Funskool,EVENS MORE,5.98,3.01,Home,Toys,A (≤30k),Open (<10%),Title / Item Highlights
+DIY / craft kit (generic),craft kit,51629,INDIKONB,Imagimake,Skillmatics,11.93,5.06,Home,Toys,B (30–100k),Moderate (10–25%),Title / Item Highlights
+DIY / craft kit (generic),art and craft,56884,Imagimake,Brijsun Innovations,Funskool,7.02,2.78,Home,Toys,B (30–100k),Open (<10%),Title / Item Highlights
+DIY / craft kit (generic),art & craft kits,65904,Imagimake,Kitchen Bloom,Style Keepers,8.63,3.39,Home,Toys,B (30–100k),Open (<10%),Title / Item Highlights
+DIY / craft kit (generic),diy kits,69555,Gouda Games,Kalakaram,Imagimake,7.55,0.0,Home,Toys,B (30–100k),Open (<10%),Title / Item Highlights
+DIY / craft kit (generic),craft set for kids 6-12,77525,Imagimake,Asian Hobby Crafts,FINEMOE,9.8,0.86,Home,Toys,B (30–100k),Open (<10%),Title / Item Highlights
+DIY / craft kit (generic),crafting kit,125818,Imagimake,Craftinger,curve creation,6.67,5.56,Home,Toys,C (100–200k),Open (<10%),Backend / bullets
+DIY / craft kit (generic),art and craft kit,142022,Imagimake,INDIKONB,Funskool,12.63,3.13,Home,Toys,C (100–200k),Moderate (10–25%),Backend / bullets
+DIY / craft kit (generic),craft kits,165622,Imagimake,Brijsun Innovations,EVENS MORE,7.33,4.76,Home,Toys,C (100–200k),Open (<10%),Backend / bullets
+DIY / craft kit (generic),art and craft kit for kids,171182,Imagimake,Funskool,Toy Imagine,11.27,6.25,Toys,Office Products,C (100–200k),Moderate (10–25%),Backend / bullets
+DIY / craft kit (generic),kids craft activity kit,186514,Imagimake,Skillmatics,INDIKONB,9.87,0.0,Home,Toys,C (100–200k),Open (<10%),Backend / bullets
+DIY / craft kit (generic),kids art and craft kit,193763,Kitchen Bloom,Imagimake,Skillmatics,11.89,9.09,Home,Toys,C (100–200k),Moderate (10–25%),Backend / bullets
+DIY / craft kit (generic),diy kits for kids,219718,Imagimake,Funskool,Skillmatics,5.85,0.0,Home,Toys,D (>200k),Open (<10%),Backend / bullets
+DIY / craft kit (generic),kids activity kit,230844,PW,Wonder House,FIRSTCRY INTELLISKILLS,5.88,6.25,Books,Home,D (>200k),Open (<10%),Backend / bullets
+DIY / craft kit (generic),activity kit,232070,Imagimake,Skillmatics,Toy Imagine,8.73,0.0,Toys,Home,D (>200k),Open (<10%),Backend / bullets
+DIY / craft kit (generic),arts and crafts toys,241073,Imagimake,Skillmatics,Cable World,11.44,10.0,Toys,Home,D (>200k),Moderate (10–25%),Backend / bullets
+DIY / craft kit (generic),art and craft sets for kids,256663,Imagimake,Skillmatics,Kitchen Bloom,5.33,1.82,Home,Toys,D (>200k),Open (<10%),Backend / bullets
+DIY / craft kit (generic),craft kit for kids,297421,Imagimake,Funskool,INDIKONB,10.99,3.85,Home,Toys,D (>200k),Moderate (10–25%),Backend / bullets
+DIY / craft kit (generic),kids diy activity kit,312438,Imagimake,Smartivity,FIRSTCRY INTELLISKILLS,5.02,0.0,Home,Toys,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),gift for 5 year old girl,35438,Imagimake,Toy Imagine,Wembley,6.7,2.57,Toys,Sports,B (30–100k),Open (<10%),Title / Item Highlights
+Gift by age (4-8),gift for 5 + year old girl,37802,Imagimake,Toy Imagine,Wembley,5.52,2.56,Toys,Home,B (30–100k),Open (<10%),Title / Item Highlights
+Gift by age (4-8),gift for girls age 5-6 years,41081,Skillmatics,Imagimake,Storio,6.92,4.59,Toys,Home,B (30–100k),Open (<10%),Title / Item Highlights
+Gift by age (4-8),gift for 4 years old girl,41724,Skillmatics,Wembley,Storio,5.22,1.98,Toys,Luggage,B (30–100k),Open (<10%),Title / Item Highlights
+Gift by age (4-8),gift for 4 years old boy,45418,Wembley,MiniExplorer,Skillmatics,6.36,2.67,Toys,Sports,B (30–100k),Open (<10%),Title / Item Highlights
+Gift by age (4-8),gifts for 5 year old girls,48566,Imagimake,Wembley,Toy Imagine,5.84,3.17,Toys,Home,B (30–100k),Open (<10%),Title / Item Highlights
+Gift by age (4-8),5 years boy birthday gift,49839,Wembley,Mirana,Storio,5.83,3.68,Toys,Sports,B (30–100k),Open (<10%),Title / Item Highlights
+Gift by age (4-8),gift for 5 + year old boy,50598,Smartivity,Wembley,Skillmatics,6.1,3.16,Toys,Sports,B (30–100k),Open (<10%),Title / Item Highlights
+Gift by age (4-8),gift for 6 year old girl,50693,Imagimake,Toy Imagine,Skillmatics,6.85,4.9,Toys,Home,B (30–100k),Open (<10%),Title / Item Highlights
+Gift by age (4-8),gift for boys 5-7 years,53342,Storio,Smartivity,GRAPHENE,6.93,3.28,Toys,Sports,B (30–100k),Open (<10%),Title / Item Highlights
+Gift by age (4-8),gift for 6 years old boy,53443,Smartivity,Skillmatics,Storio,4.95,2.62,Toys,Sports,B (30–100k),Open (<10%),Title / Item Highlights
+Gift by age (4-8),gift for 7 year old boy,56073,Smartivity,Skillmatics,Toy Imagine,5.08,2.13,Toys,Sports,B (30–100k),Open (<10%),Title / Item Highlights
+Gift by age (4-8),5 year old girl birthday gift,58529,Wembley,Skillmatics,Imagimake,6.3,6.56,Toys,Home,B (30–100k),Open (<10%),Title / Item Highlights
+Gift by age (4-8),gift for 5 year old boy,58683,Smartivity,Wembley,Skillmatics,6.52,3.68,Toys,Sports,B (30–100k),Open (<10%),Title / Item Highlights
+Gift by age (4-8),6 years girl birthday gift,65769,Toy Imagine,Imagimake,Smartivity,6.14,1.98,Toys,Home,B (30–100k),Open (<10%),Title / Item Highlights
+Gift by age (4-8),6 year old boy birthday gift,68722,Smartivity,Wembley,Kidsmate,7.22,7.14,Toys,Sports,B (30–100k),Open (<10%),Title / Item Highlights
+Gift by age (4-8),7 year old boy birthday gift,78250,Smartivity,Skillmatics,GRAPHENE,6.03,4.44,Toys,Sports,B (30–100k),Open (<10%),Title / Item Highlights
+Gift by age (4-8),5 years girl birthday gift,78510,Storio,Wembley,Imagimake,4.96,1.08,Toys,Luggage,B (30–100k),Open (<10%),Title / Item Highlights
+Gift by age (4-8),gift for girls age 3-4 years,81727,Lifelong,Toy Imagine,Storio,8.66,5.26,Toys,Baby,B (30–100k),Open (<10%),Title / Item Highlights
+Gift by age (4-8),gift for 7 year old girl,81727,Imagimake,Skillmatics,Toy Imagine,4.71,4.69,Toys,Home,B (30–100k),Open (<10%),Title / Item Highlights
+Gift by age (4-8),4 year old boy gift,85865,Wembley,Skillmatics,Lifelong,7.24,2.88,Toys,Sports,B (30–100k),Open (<10%),Title / Item Highlights
+Gift by age (4-8),4 year old girl gift,89519,Wembley,Skillmatics,Storio,4.66,0.0,Toys,Sports,B (30–100k),Open (<10%),Title / Item Highlights
+Gift by age (4-8),gift for 6+ year old girl,95064,Imagimake,Smartivity,Skillmatics,6.73,3.7,Toys,Home,B (30–100k),Open (<10%),Title / Item Highlights
+Gift by age (4-8),gift for 7 + year old girl,96086,Imagimake,Skillmatics,Wembley,5.92,6.86,Toys,Home,B (30–100k),Open (<10%),Title / Item Highlights
+Gift by age (4-8),gifts for girls 5 years,101722,Imagimake,Lifelong,kapimo,7.94,2.27,Toys,Sports,C (100–200k),Open (<10%),Backend / bullets
+Gift by age (4-8),7 year girl birthday gift,105223,Imagimake,Storio,Wembley,5.77,4.41,Toys,Home,C (100–200k),Open (<10%),Backend / bullets
+Gift by age (4-8),birthday gift for 5 year old girl,105850,Imagimake,Skillmatics,Wembley,6.79,3.23,Toys,Home,C (100–200k),Open (<10%),Backend / bullets
+Gift by age (4-8),gift for kids boys 7-8 years,112858,Smartivity,Storio,Mirana,5.15,2.17,Toys,Sports,C (100–200k),Open (<10%),Backend / bullets
+Gift by age (4-8),gifts for 4 year old boy,115117,Wembley,Skillmatics,Ema & Emilio,9.03,2.15,Toys,Sports,C (100–200k),Open (<10%),Backend / bullets
+Gift by age (4-8),gifts for kids 5+ years,115861,Storio,Wembley,Skillmatics,5.83,3.64,Toys,Books,C (100–200k),Open (<10%),Backend / bullets
+Gift by age (4-8),gifts for girls age 6-8 years,122735,Imagimake,Skillmatics,ADISA,6.78,3.85,Toys,Home,C (100–200k),Open (<10%),Backend / bullets
+Gift by age (4-8),birthday gift for girls kids 6 to 7 years,124939,Skillmatics,Imagimake,Toy Imagine,7.35,3.13,Toys,Home,C (100–200k),Open (<10%),Backend / bullets
+Gift by age (4-8),unique gift for 5 year girl,126393,Toy Imagine,Imagimake,Skillmatics,5.51,4.55,Toys,Home,C (100–200k),Open (<10%),Backend / bullets
+Gift by age (4-8),kids gift for 2 - 5 years,126589,Storio,Wonder House,Wembley,4.77,0.0,Toys,Books,C (100–200k),Open (<10%),Backend / bullets
+Gift by age (4-8),kids gift for girls 7-8 years,126759,Skillmatics,Storio,Toy Imagine,7.16,0.0,Toys,Home,C (100–200k),Open (<10%),Backend / bullets
+Gift by age (4-8),7 years girl birthday gift,134122,Toy Imagine,Imagimake,Storio,7.13,3.64,Toys,Home,C (100–200k),Open (<10%),Backend / bullets
+Gift by age (4-8),gifts for girls 5+ years,135116,Toy Imagine,Skillmatics,Imagimake,6.71,5.0,Toys,Home,C (100–200k),Open (<10%),Backend / bullets
+Gift by age (4-8),gift for 6 year old boy,137216,Smartivity,Skillmatics,Storio,4.55,2.63,Toys,Sports,C (100–200k),Open (<10%),Backend / bullets
+Gift by age (4-8),girls gifts 6-7 years,137853,Imagimake,Skillmatics,Wembley,7.83,5.56,Toys,Home,C (100–200k),Open (<10%),Backend / bullets
+Gift by age (4-8),gift for boys 3-4 years old,138501,Lifelong,Storio,MiniExplorer,8.2,9.26,Toys,Sports,C (100–200k),Open (<10%),Backend / bullets
+Gift by age (4-8),gifts for 6 year old boy,139610,Smartivity,Skillmatics,Wembley,4.63,0.0,Toys,Sports,C (100–200k),Open (<10%),Backend / bullets
+Gift by age (4-8),birthday gift for girls age 5-6 years,143589,Toy Imagine,Skillmatics,Wembley,6.64,4.62,Toys,Home,C (100–200k),Open (<10%),Backend / bullets
+Gift by age (4-8),birthday gift for 5 year old boy,145381,Skillmatics,Wembley,Toy Imagine,4.32,1.37,Toys,Sports,C (100–200k),Open (<10%),Backend / bullets
+Gift by age (4-8),gift for 5 years old boy,147637,Wembley,Skillmatics,Smartivity,3.68,0.0,Toys,Sports,C (100–200k),Open (<10%),Backend / bullets
+Gift by age (4-8),gifts for 5 year old boy,149626,Smartivity,Skillmatics,Wembley,4.45,2.9,Toys,Sports,C (100–200k),Open (<10%),Backend / bullets
+Gift by age (4-8),birthday gift for 4 year old boy,151719,Mirana,MiniExplorer,Skillmatics,7.22,4.55,Toys,Sports,C (100–200k),Open (<10%),Backend / bullets
+Gift by age (4-8),girl gift 7-8 years,153340,Toy Imagine,Imagimake,Storio,6.93,2.33,Toys,Home,C (100–200k),Open (<10%),Backend / bullets
+Gift by age (4-8),gifts for boys 5 years,153340,Storio,Wembley,Kidsmate,8.21,6.35,Toys,Sports,C (100–200k),Open (<10%),Backend / bullets
+Gift by age (4-8),6 years boy birthday gift,157020,Smartivity,Wembley,GRAPHENE,7.87,3.85,Toys,Sports,C (100–200k),Open (<10%),Backend / bullets
+Gift by age (4-8),gifts for 6 year old girl,158419,Imagimake,Skillmatics,Toy Imagine,7.94,5.19,Toys,Home,C (100–200k),Open (<10%),Backend / bullets
+Gift by age (4-8),gift for 4 year old boy,161058,Wembley,Storio,Lifelong,7.5,1.41,Toys,Sports,C (100–200k),Open (<10%),Backend / bullets
+Gift by age (4-8),gifts for boys 5+ years,161058,Smartivity,Storio,Skillmatics,7.88,7.69,Toys,Sports,C (100–200k),Open (<10%),Backend / bullets
+Gift by age (4-8),5 year boy birthday gift,173850,Wembley,GRAPHENE,Storio,7.71,1.96,Toys,Sports,C (100–200k),Open (<10%),Backend / bullets
+Gift by age (4-8),kids gift for boys 7-8 years,175544,Smartivity,Mirana,Storio,6.95,7.89,Toys,Sports,C (100–200k),Open (<10%),Backend / bullets
+Gift by age (4-8),gifts for 7 year old girls,179491,Skillmatics,Imagimake,Storio,5.82,2.56,Toys,Home,C (100–200k),Open (<10%),Backend / bullets
+Gift by age (4-8),gifts for kids 5 years,185712,Wembley,Storio,Skillmatics,6.03,3.45,Toys,Books,C (100–200k),Open (<10%),Backend / bullets
+Gift by age (4-8),15 year old boy gifts,190230,CEZO,Parker,Smartivity,6.86,18.18,Toys,Office Products,C (100–200k),Open (<10%),Backend / bullets
+Gift by age (4-8),birthday gift for 4 year old girl,194656,Wembley,Imagimake,Storio,5.85,4.17,Toys,Luggage,C (100–200k),Open (<10%),Backend / bullets
+Gift by age (4-8),birthday gift for kids 3-4 years,195104,Wembley,Lifelong,MiniExplorer,6.81,7.69,Toys,Sports,C (100–200k),Open (<10%),Backend / bullets
+Gift by age (4-8),gifts for 4 year girl,197331,Skillmatics,Storio,Imagimake,5.46,10.0,Toys,Home,C (100–200k),Open (<10%),Backend / bullets
+Gift by age (4-8),5 year girl birthday gift,200970,Imagimake,Wembley,Storio,7.26,3.7,Toys,Luggage,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),gifts for 5 + year old boy,203286,Smartivity,Skillmatics,Lifelong,8.09,1.96,Toys,Sports,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),birthday gift for 7 year old girl,204268,Imagimake,Toy Imagine,Wembley,6.16,0.0,Toys,Home,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),6 year old girl gift,205750,Imagimake,Toy Imagine,Smartivity,7.94,5.97,Toys,Home,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),7 years boys birthday gift,207167,Smartivity,Storio,GRAPHENE,7.25,3.45,Toys,Sports,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),gifts for 6 + year old girl,208759,Skillmatics,Imagimake,Toy Imagine,7.81,2.0,Toys,Home,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),birthday gift for 6 years girl,208759,Imagimake,Toy Imagine,Skillmatics,5.79,0.0,Toys,Home,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),birthday gift for girls age 4-5 years,213827,Skillmatics,Wembley,Imagimake,6.46,2.44,Toys,Luggage,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),baby girl birthday gift for 5-6 years,219718,Storio,Toy Imagine,Skillmatics,6.91,0.0,Toys,Home,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),gifts for boys age 5-6 years,220826,Storio,Smartivity,Mirana,7.75,0.0,Toys,Sports,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),birthday gift for 5+ year old girl,221921,Imagimake,Toy Imagine,Wembley,7.26,2.33,Toys,Home,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),birthday gift for 6 year old boy,224244,Smartivity,Skillmatics,Storio,5.71,0.0,Toys,Sports,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),gift for 5 year old,227823,Smartivity,Skillmatics,Wembley,4.7,5.77,Toys,Books,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),gift for 6 years old girl,229609,Imagimake,Toy Imagine,Skillmatics,5.85,4.35,Toys,Home,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),gift for 4 year old girl,229609,Skillmatics,Storio,Wembley,5.01,5.56,Toys,Sports,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),gifts for boys age 7-8 years,230844,Smartivity,Storio,GRAPHENE,6.44,7.69,Toys,Books,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),gift for 5 years old girl,232070,Imagimake,Toy Imagine,Skillmatics,4.79,7.5,Toys,Luggage,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),gifts for girls age 3-4 years,232671,Storio,Imagimake,Lifelong,7.91,0.0,Toys,Baby,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),5 years boy birthday gift ideas,233308,Toy Imagine,Storio,Mirana,5.38,11.11,Toys,Sports,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),birthday gift for 7 year old boy,236547,Smartivity,Skillmatics,GRAPHENE,7.18,0.0,Toys,Sports,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),birthday gift for kids 5+ years,238479,Storio,Smartivity,Mirana,5.22,0.0,Toys,Camera,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),birthday gift for 5 + year old boy,239144,Wembley,Smartivity,Lifelong,7.56,0.0,Toys,Sports,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),4 years boy birthday gift,242422,MiniExplorer,Lifelong,Storio,7.96,0.0,Toys,Sports,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),gifts for 4 + year girl,249380,Skillmatics,Wembley,Imagimake,6.99,2.22,Toys,Home,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),birthday gift 4 year old girl,253723,Wembley,DELICATE,Imagimake,8.98,0.0,Toys,Home,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),4 year girl birthday gift,264537,Wembley,Storio,Skillmatics,5.83,0.0,Toys,Luggage,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),6 year girl birthday gift,266999,Toy Imagine,Skillmatics,Imagimake,5.56,0.0,Toys,Home,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),gifts for 5 year old girl,269468,Imagimake,Skillmatics,Toy Imagine,6.93,5.0,Toys,Home,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),gift for 5 year+ old boy,272044,Smartivity,Wembley,Skillmatics,9.33,0.0,Toys,Sports,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),birthday gift for children 7-8 years,279124,Smartivity,GRAPHENE,DELICATE,9.25,0.0,Toys,Home,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),gifts for 7 year old boy,281865,Smartivity,Skillmatics,Toy Imagine,6.23,7.41,Toys,Sports,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),16 year old boy gift ideas,285573,WALIZZA LIFESTYLE,Lorenz,One94Store,12.63,37.5,Toys,Luggage,D (>200k),Moderate (10–25%),Backend / bullets
+Gift by age (4-8),gift for 5 year boy,286542,Smartivity,Storio,Wembley,5.28,2.27,Toys,Sports,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),kids birthday gift for girls 7-8 years,287451,Toy Imagine,Skillmatics,Smartivity,6.01,0.0,Toys,Home,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),kids birthday gift for 2 - 5 years,288337,Lifelong,Jam & Honey,Mirana,6.03,0.0,Toys,Sports,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),7 year old girl birthday gift ideas,290341,Skillmatics,Storio,Imagimake,7.5,8.7,Toys,Home,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),girl gift 5-6 years,303690,Imagimake,blue tree,Satmarhz,7.87,0.0,Toys,Home,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),gift for 5 years girl,305794,Imagimake,Skillmatics,Toy Imagine,5.66,0.0,Toys,Home,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),6 to 7 years girls gift,314751,Smartivity,Toy Imagine,Imagimake,5.45,0.0,Toys,Luggage,D (>200k),Open (<10%),Backend / bullets
+Gift by age (4-8),6 year boy birthday gift,317050,Smartivity,Storio,Wembley,7.45,13.64,Toys,Sports,D (>200k),Open (<10%),Backend / bullets
+House / car making kit,diy house making kit,184470,Little Birdie,PATPAT,LAALIYA,27.49,28.57,Toys,Home,C (100–200k),Locked (>25%),Backend / bullets
+House / car making kit,house making kit for kids,187733,Little Birdie,kraft kala,LAALIYA,39.73,36.67,Toys,Home,C (100–200k),Locked (>25%),Backend / bullets
+House / car making kit,diy car making kit,267798,Smartivity,roboCraze,Clapstore,15.08,7.69,Toys,Biss,D (>200k),Moderate (10–25%),Backend / bullets
+Paper craft / origami,origami kit,106501,FINEMOE,Wonder House,PepPlay,32.17,24.76,Office Products,Books,C (100–200k),Locked (>25%),Bullets / description only
+Paper craft / origami,paper craft kit,305794,FINEMOE,OFIXO,PepPlay,24.53,21.05,Office Products,Home,D (>200k),Moderate (10–25%),Bullets / description only
+Puppets,finger puppets for kids,78970,SHINETOY ENTERTAIN KIDS,HOUSE OF QUIRK,Wembley,35.69,37.97,Toys,Office Products,B (30–100k),Locked (>25%),Backend / bullets
+Puppets,hand puppets for kids,133303,Chamantricks,FunBlast,SHINETOY ENTERTAIN KIDS,15.12,8.7,Toys,Home,C (100–200k),Moderate (10–25%),Backend / bullets
+Puppets,puppet toys for kids,143589,SHINETOY ENTERTAIN KIDS,FunBlast,HOUSE OF QUIRK,15.84,23.53,Toys,Home,C (100–200k),Moderate (10–25%),Backend / bullets
+Puppets,puppet,240459,FunBlast,Fashion Bizz,CHI-CHIMPU TOYS,10.53,11.11,Toys,Home,D (>200k),Moderate (10–25%),Backend / bullets
+Puppets,puppet books for kids,269468,Skillmatics,OM BOOKS INTERNATIONAL,Warne,22.11,11.54,Books,Toys,D (>200k),Moderate (10–25%),Backend / bullets
+Puppets,puppets for story telling,276456,FunBlast,SHINETOY ENTERTAIN KIDS,Chamantricks,14.24,27.27,Toys,Home,D (>200k),Moderate (10–25%),Backend / bullets
+Puppets,hand puppet,288337,FunBlast,CHI-CHIMPU TOYS,JoyCrate,13.12,9.52,Toys,Home,D (>200k),Moderate (10–25%),Backend / bullets
+Return gift,return gifts for birthday party,1623,SNAPTRON,Toy Imagine,SILLYME,5.23,1.91,Toys,Home,A (≤30k),Open (<10%),Highlights / backend (price-fit caution)
+Return gift,return gift for kids age 6-10,6498,SNAPTRON,SILLYME,Butterfly EduFields,5.72,1.88,Toys,Home,A (≤30k),Open (<10%),Highlights / backend (price-fit caution)
+Return gift,birthday return gift for kids,6626,SNAPTRON,JIADA,Toy Imagine,10.84,1.69,Toys,Office Products,A (≤30k),Moderate (10–25%),Highlights / backend (price-fit caution)
+Return gift,return gift,12382,SNAPTRON,JIADA,Toy Imagine,6.95,3.92,Toys,Home,A (≤30k),Open (<10%),Highlights / backend (price-fit caution)
+Return gift,return gifts,12823,SNAPTRON,R Ayurveda Copper,Toy Imagine,3.76,1.89,Toys,Home,A (≤30k),Open (<10%),Highlights / backend (price-fit caution)
+Return gift,return gift for kids age 10-12,14885,Butterfly EduFields,SNAPTRON,SILLYME,9.28,3.5,Toys,Office Products,A (≤30k),Open (<10%),Highlights / backend (price-fit caution)
+Return gift,return gifts for kids,27301,SNAPTRON,Asera,JIADA,9.15,3.55,Toys,Office Products,A (≤30k),Open (<10%),Highlights / backend (price-fit caution)
+Return gift,return gift for kids,28951,SNAPTRON,JIADA,Asera,10.89,6.12,Toys,Office Products,A (≤30k),Moderate (10–25%),Highlights / backend (price-fit caution)
+Return gift,birthday return gift for kids 6-12,29936,SNAPTRON,SILLYME,Butterfly EduFields,7.84,3.67,Toys,Office Products,A (≤30k),Open (<10%),Highlights / backend (price-fit caution)
+Return gift,return gifts for kids birthday,37664,JIADA,Wonder House,Toy Imagine,9.98,7.87,Toys,Office Products,B (30–100k),Open (<10%),Highlights / backend (price-fit caution)
+Return gift,kids return gifts,38001,Asera,SNAPTRON,Toy Imagine,7.4,5.3,Toys,Office Products,B (30–100k),Open (<10%),Highlights / backend (price-fit caution)
+Return gift,return gifts for kids birthday party,39178,SNAPTRON,Toy Imagine,Birthday Popper,5.24,3.33,Toys,Office Products,B (30–100k),Open (<10%),Highlights / backend (price-fit caution)
+Return gift,return gift for kids age 3-5,42376,SNAPTRON,JIADA,Asera,13.02,1.14,Toys,Books,B (30–100k),Moderate (10–25%),Highlights / backend (price-fit caution)
+Return gift,return gifts for girls,49030,Shining Diva Fashion,Samyak,TuCo,10.91,5.41,Toys,Jewelry,B (30–100k),Moderate (10–25%),Highlights / backend (price-fit caution)
+Return gift,kids birthday return gifts,54022,JIADA,SNAPTRON,Toy Imagine,12.93,5.0,Toys,Office Products,B (30–100k),Moderate (10–25%),Highlights / backend (price-fit caution)
+Return gift,birthday return gifts,54393,SNAPTRON,JIADA,Asera,8.48,4.48,Toys,Office Products,B (30–100k),Open (<10%),Highlights / backend (price-fit caution)
+Return gift,birthday return gift,56364,JIADA,SNAPTRON,Asera,11.35,6.0,Toys,Office Products,B (30–100k),Moderate (10–25%),Highlights / backend (price-fit caution)
+Return gift,kids return gift,65282,JIADA,Toy Imagine,SNAPTRON,9.06,2.22,Toys,Office Products,B (30–100k),Open (<10%),Highlights / backend (price-fit caution)
+Return gift,return gift for girls,87133,Shining Diva Fashion,Samyak,Toy Imagine,11.38,3.92,Toys,Beauty,B (30–100k),Moderate (10–25%),Highlights / backend (price-fit caution)
+Return gift,return gifts under 100 rupees,89158,R Ayurveda Copper,,R.K EXPORTS,9.28,7.14,Home,Kitchen,B (30–100k),Open (<10%),Highlights / backend (price-fit caution)
+Return gift,doms kit for return gift,103625,Doms,Wonder House,JIADA,14.61,10.53,Office Products,Toys,C (100–200k),Moderate (10–25%),Backend / bullets
+Return gift,birthday return gifts for kids 3-4 years,104350,JIADA,SNAPTRON,Birthday Popper,15.21,2.94,Toys,Books,C (100–200k),Moderate (10–25%),Backend / bullets
+Return gift,navratri return gifts for kids,104596,SILLYME,Samyak,Wonder House,9.27,4.44,Toys,Beauty,C (100–200k),Open (<10%),Backend / bullets
+Return gift,return gift for birthday,107755,JIADA,SNAPTRON,Toy Imagine,10.06,3.03,Toys,Office Products,C (100–200k),Moderate (10–25%),Backend / bullets
+Return gift,return gift for kids birthday,118108,SNAPTRON,JIADA,Toy Imagine,9.56,0.0,Toys,Office Products,C (100–200k),Open (<10%),Backend / bullets
+Return gift,30 return gifts for kids,121292,SNAPTRON,JIADA,Butterfly EduFields,9.83,0.0,Toys,Office Products,C (100–200k),Open (<10%),Backend / bullets
+Return gift,thank you cards for return gifts,122098,CLICKEDIN,Party Propz,ZYOZIQUE,13.49,11.94,Office Products,Toys,C (100–200k),Moderate (10–25%),Backend / bullets
+Return gift,birthday return gifts for kids,125111,SNAPTRON,JIADA,Toy Imagine,9.57,0.0,Toys,Office Products,C (100–200k),Open (<10%),Backend / bullets
+Return gift,return gift under 100,133303,R Ayurveda Copper,Design Decor Gallery,,6.93,18.75,Home,Kitchen,C (100–200k),Open (<10%),Backend / bullets
+Return gift,kids birthday return gifts for school,135116,JIADA,SNAPTRON,Toy Imagine,13.26,8.33,Toys,Office Products,C (100–200k),Moderate (10–25%),Backend / bullets
+Return gift,erasers for kids return gift,136819,Flair,Doms,FunBlast,10.84,7.69,Office Products,Toys,C (100–200k),Moderate (10–25%),Backend / bullets
+Return gift,return gifts for kids 3-5 years,138717,SNAPTRON,SILLYME,Toy Imagine,8.87,7.41,Toys,Books,C (100–200k),Open (<10%),Backend / bullets
+Return gift,doms return gifts for kids,141364,Doms,Tales,Toy Imagine,20.94,17.65,Office Products,Toys,C (100–200k),Moderate (10–25%),Backend / bullets
+Return gift,birthday return gift ideas for 50 rs,145638,JIADA,SNAPTRON,PARTEET,12.8,0.0,Toys,Office Products,C (100–200k),Moderate (10–25%),Backend / bullets
+Return gift,20 rs return gift ideas,148124,SNAPTRON,Toy Imagine,PARTEET,9.51,0.0,Toys,Office Products,C (100–200k),Open (<10%),Backend / bullets
+Return gift,birthday return gifts for kids 5-6 years,151218,SNAPTRON,Birthday Popper,JIADA,11.15,7.14,Toys,Books,C (100–200k),Moderate (10–25%),Backend / bullets
+Return gift,return gift for kids age 6-12 years,151969,SNAPTRON,SILLYME,Butterfly EduFields,7.59,0.0,Toys,Home,C (100–200k),Open (<10%),Backend / bullets
+Return gift,return gifts for birthday party 6-10,160449,SNAPTRON,SILLYME,Imagimake,5.56,0.0,Toys,Home,C (100–200k),Open (<10%),Backend / bullets
+Return gift,thank you tags for return gift,167229,CLICKEDIN,Party Propz,Nyota,17.2,9.33,Office Products,Toys,C (100–200k),Moderate (10–25%),Backend / bullets
+Return gift,navratri return gifts for girls,167907,Samyak,,SILLYME,8.03,4.0,Beauty,Toys,C (100–200k),Open (<10%),Backend / bullets
+Return gift,piggy bank for kids return gift,169232,,SILLYME,YAYAsquad,25.51,15.79,Home,Toys,C (100–200k),Locked (>25%),Backend / bullets
+Return gift,kids return gifts for birthday party,180888,SNAPTRON,SILLYME,Birthday Popper,6.52,0.0,Toys,Office Products,C (100–200k),Open (<10%),Backend / bullets
+Return gift,chocolate return gifts for birthday,188170,Chocozone,Chocolate Venue,Pure Temptation,30.77,0.0,Grocery,Toys,C (100–200k),Locked (>25%),Backend / bullets
+Return gift,return gift covers,197331,Birch & Co.,INNOVATE360,Kuber Industries,7.13,0.0,Health & Personal Care,Home,C (100–200k),Open (<10%),Backend / bullets
+Return gift,return gifts for birthday,198709,SNAPTRON,JIADA,SILLYME,7.89,6.67,Toys,Office Products,C (100–200k),Open (<10%),Backend / bullets
+Return gift,pouch for return gifts for kids,204268,Gifting Square,FINEMOE,VRB Dec,22.66,18.52,Luggage,Health & Personal Care,D (>200k),Moderate (10–25%),Backend / bullets
+Return gift,return gift for boys,207701,SNAPTRON,Cable World,Toy Imagine,9.27,3.85,Toys,Baby,D (>200k),Open (<10%),Backend / bullets
+Return gift,return gift kids,213345,Toy Imagine,JIADA,SNAPTRON,12.37,5.56,Toys,Office Products,D (>200k),Moderate (10–25%),Backend / bullets
+Return gift,small return gifts for kids,213827,SNAPTRON,PARTEET,JIADA,8.27,3.33,Toys,Office Products,D (>200k),Open (<10%),Backend / bullets
+Return gift,mugs for kids return gift set of 12,217581,Tiptoe,CLAY CRAFT,Eha,14.21,0.0,Kitchen,Toys,D (>200k),Moderate (10–25%),Backend / bullets
+Return gift,return gifts for girls for kanya pooja,219195,Samyak,SILLYME,Returngifts,15.12,11.54,Beauty,Toys,D (>200k),Moderate (10–25%),Backend / bullets
+Return gift,return gift for kanya pujan for girls,220826,,Samyak,SILLYME,9.89,0.0,Beauty,Toys,D (>200k),Open (<10%),Backend / bullets
+Return gift,return gift ideas for kids,222522,SNAPTRON,SILLYME,Butterfly EduFields,6.2,0.0,Toys,Home,D (>200k),Open (<10%),Backend / bullets
+Return gift,return gifts for boys,222522,SNAPTRON,Toy Imagine,Cable World,8.63,3.45,Toys,Baby,D (>200k),Open (<10%),Backend / bullets
+Return gift,50 rs return gift for kids,226614,Toy Imagine,SNAPTRON,Birthday Popper,9.07,0.0,Toys,Office Products,D (>200k),Open (<10%),Backend / bullets
+Return gift,birthday return gifts under 100,229609,Choicecases,Wonder House,Shuffle,6.69,,Toys,Office Products,D (>200k),Open (<10%),Backend / bullets
+Return gift,return gift for birthday party,230844,SNAPTRON,SILLYME,Birthday Popper,5.32,6.25,Toys,Home,D (>200k),Open (<10%),Backend / bullets
+Return gift,pen set for return gift,243841,Flair,HAUSER,Sow and Grow,15.13,14.29,Office Products,Toys,D (>200k),Moderate (10–25%),Backend / bullets
+Return gift,crayons colour set for return gift,250779,,Bouncy & Bright,Wonder House,24.16,0.0,Office Products,Toys,D (>200k),Moderate (10–25%),Backend / bullets
+Return gift,set of 12 return gifts for kids,251502,SNAPTRON,Royals,JIADA,7.67,0.0,Toys,Health & Personal Care,D (>200k),Open (<10%),Backend / bullets
+Return gift,return gift ideas,252966,SNAPTRON,Asera,R Ayurveda Copper,3.7,0.0,Toys,Home,D (>200k),Open (<10%),Backend / bullets
+Return gift,return gift under 30,258185,Wonder House,Toy Imagine,SNAPTRON,12.3,0.0,Toys,Books,D (>200k),Moderate (10–25%),Backend / bullets
+Return gift,girls return gifts,274652,Shining Diva Fashion,Samyak,Imagimake,11.45,0.0,Toys,Jewelry,D (>200k),Moderate (10–25%),Backend / bullets
+Return gift,return gift items,277306,R Ayurveda Copper,Design Decor Gallery,Birthday Popper,4.42,0.0,Home,Kitchen,D (>200k),Open (<10%),Backend / bullets
+Return gift,jungle theme return gifts for kids,278202,Party Propz,MONKEYTAIL,Birthday Popper,21.84,17.65,Toys,Health & Personal Care,D (>200k),Moderate (10–25%),Backend / bullets
+Return gift,return gifts kids,279124,SNAPTRON,Toy Imagine,JIADA,8.56,5.56,Toys,Office Products,D (>200k),Open (<10%),Backend / bullets
+Return gift,return gift under 20,280001,PARTEET,Toy Imagine,Sow and Grow,9.62,0.0,Toys,Office Products,D (>200k),Open (<10%),Backend / bullets
+Return gift,return gifts under 200,280934,DESIGN MAGNIFIQUE,R Ayurveda Copper,GANESH,10.34,20.0,Home,Kitchen,D (>200k),Moderate (10–25%),Backend / bullets
+Return gift,return gift set for kids,284675,SNAPTRON,JIADA,Asera,11.54,5.0,Toys,Office Products,D (>200k),Moderate (10–25%),Backend / bullets
+Return gift,return gifts for birthday party 10 years,285573,Butterfly EduFields,SNAPTRON,SILLYME,5.96,11.11,Toys,Kitchen,D (>200k),Open (<10%),Backend / bullets
+Return gift,return gift pouches for kids birthday,292359,Gifting Square,NEOBABY,VRB Dec,20.14,17.39,Health & Personal Care,Luggage,D (>200k),Moderate (10–25%),Backend / bullets
+Return gift,bay return gift for kids,294425,JIADA,SNAPTRON,SILLYME,21.01,14.29,Toys,Home,D (>200k),Moderate (10–25%),Backend / bullets
+Return gift,return gift for girls age 6-10,294425,SILLYME,Imagimake,SNAPTRON,6.88,0.0,Toys,Home,D (>200k),Open (<10%),Backend / bullets
+Return gift,water bottle return gift for kids,302618,Tiptoe,MILTON,,16.42,0.0,Kitchen,Toys,D (>200k),Moderate (10–25%),Backend / bullets
+Return gift,pack of 12 return gifts,303690,JIADA,SNAPTRON,Toy Imagine,8.24,7.69,Toys,Kitchen,D (>200k),Open (<10%),Backend / bullets
+Return gift,return gift under 50,304740,Asera,Toy Imagine,SNAPTRON,7.14,0.0,Toys,Home,D (>200k),Open (<10%),Backend / bullets
+Return gift,pouches for return gift for kids,305794,Gifting Square,FINEMOE,NEOBABY,17.36,0.0,Luggage,Health & Personal Care,D (>200k),Moderate (10–25%),Backend / bullets
+Return gift,return gifts for engagement guests,309070,SSKR,R Ayurveda Copper,Design Decor Gallery,15.65,0.0,Home,Kitchen,D (>200k),Moderate (10–25%),Backend / bullets
+Return gift,return gifts for kids age 6-10,313612,SILLYME,SNAPTRON,Imagimake,5.81,6.67,Toys,Home,D (>200k),Open (<10%),Backend / bullets
+Scissors / cutting,kids scissors,103993,Maped,Scotch,Skillmatics,28.73,26.39,Office Products,Home Improvement,C (100–200k),Locked (>25%),Bullets / description only
+Scissors / cutting,craft scissors set for kids,158419,,YBN,Skillmatics,12.67,6.25,Home Improvement,Office Products,C (100–200k),Moderate (10–25%),Bullets / description only
+Scissors / cutting,scissors for kids craft safe,196456,Maped,Skillmatics,Scotch,30.5,29.41,Office Products,Home Improvement,C (100–200k),Locked (>25%),Bullets / description only
+Scissors / cutting,scissor for kids,239821,Maped,Scotch,Skillmatics,23.62,35.29,Office Products,Home Improvement,D (>200k),Moderate (10–25%),Bullets / description only
+Scissors / cutting,kids scissors 3 to 5 years activity,248679,Maped,Skillmatics,Scotch,30.3,18.97,Office Products,Toys,D (>200k),Locked (>25%),Bullets / description only
+Scissors / cutting,snip snip art & craft activity kit,280934,Skillmatics,Chalk and Chuckles,SUPERPLAY,58.28,45.31,Toys,Home,D (>200k),Locked (>25%),Bullets / description only
+Scissors / cutting,scissors for kids,309070,Maped,Skillmatics,Scotch,25.19,7.14,Office Products,Home Improvement,D (>200k),Locked (>25%),Bullets / description only
+Screen-free / fine motor,fine motor skill toys for kids,197792,Skillmatics,MUMMA MALL,Clapstore,5.71,2.86,Toys,Books,C (100–200k),Open (<10%),Bullets / description only
+Screen-free / fine motor,screen free toys for kids for 3 year old,235914,Skillmatics,Toy Imagine,MUMMA MALL,8.31,6.25,Toys,Books,D (>200k),Open (<10%),Bullets / description only
+Screen-free / fine motor,screen free toys for kids for 2 year old,273796,Storio,Skillmatics,,6.04,5.26,Toys,Home,D (>200k),Open (<10%),Bullets / description only
+Stickers,3d sticker book,92804,,FAMOUS QUALITY,TruGyft,25.16,30.91,Home,Books,B (30–100k),Locked (>25%),Backend / bullets
+Stickers,sticker books for 2 year old,158966,PW,Maple Press,Wonder House,41.56,13.95,Books,Toys,C (100–200k),Locked (>25%),Backend / bullets
+Stickers,sticker books for 3 year old,198234,PW,Pegasus,Maple Press,28.88,9.09,Books,Toys,C (100–200k),Locked (>25%),Backend / bullets
+Stickers,sticker activity book,200525,FAMOUS QUALITY,PW,Maple Press,20.53,8.93,Books,Home,D (>200k),Moderate (10–25%),Backend / bullets
+Stickers,sticker books for 3+ year old,201900,PW,Pegasus,Maple Press,28.71,16.67,Books,Toys,D (>200k),Locked (>25%),Backend / bullets
+Stickers,sticker book for boys,203783,Dreamland,Maple Press,Wonder House,23.34,8.51,Books,Home,D (>200k),Moderate (10–25%),Backend / bullets
+Stickers,kids sticker book,237189,Maple Press,PW,Wonder House,21.33,8.06,Books,Toys,D (>200k),Moderate (10–25%),Backend / bullets
+Stickers,reusable sticker book,245191,Wonder House,PW,Chocozone,17.31,6.9,Books,Home,D (>200k),Moderate (10–25%),Backend / bullets
+Toys by age,toys for 4 year boy,1492,Storio,Wembley,Mirana,5.16,3.45,Toys,Sports,A (≤30k),Open (<10%),Bullets / description only
+Toys by age,toys for 4+ year boy,3808,GRAPHENE,Storio,Mirana,8.71,5.47,Toys,Baby,A (≤30k),Open (<10%),Bullets / description only
+Toys by age,toys for 4 year girl,24102,Storio,Wembley,Skillmatics,5.59,2.29,Toys,Baby,A (≤30k),Open (<10%),Bullets / description only
+Toys by age,toys for 3+ year boy,31088,Mirana,Storio,Wembley,6.61,4.94,Toys,Sports,B (30–100k),Open (<10%),Bullets / description only
+Toys by age,toys for 6 year old boy,31604,Smartivity,GRAPHENE,Mirana,5.32,2.74,Toys,Sports,B (30–100k),Open (<10%),Bullets / description only
+Toys by age,toys for 5 + year old boy,33557,Smartivity,Storio,Skillmatics,5.74,2.55,Toys,Sports,B (30–100k),Open (<10%),Bullets / description only
+Toys by age,toys for 4+ year girl,36313,Storio,Toy Imagine,Imagimake,4.52,0.91,Toys,Baby,B (30–100k),Open (<10%),Bullets / description only
+Toys by age,toys for 3 year boy,43936,Storio,Mirana,Wembley,4.57,1.02,Toys,Baby,B (30–100k),Open (<10%),Bullets / description only
+Toys by age,toys for 5 + year old girl,48566,Storio,Skillmatics,Wembley,4.31,1.0,Toys,Home,B (30–100k),Open (<10%),Bullets / description only
+Toys by age,toys for 6 year old girl,48633,Storio,Imagimake,Skillmatics,4.97,1.03,Toys,Home,B (30–100k),Open (<10%),Bullets / description only
+Toys by age,toys for 5 year old boy,49577,Smartivity,Wembley,Skillmatics,5.63,1.99,Toys,Sports,B (30–100k),Open (<10%),Bullets / description only
+Toys by age,toys for 3 year old boy,89607,Storio,Wembley,GRAPHENE,5.49,3.88,Toys,Sports,B (30–100k),Open (<10%),Bullets / description only
+Toys by age,toys for 5 year old girl,91212,Skillmatics,Wembley,Imagimake,4.86,0.79,Toys,Home,B (30–100k),Open (<10%),Bullets / description only
+Toys by age,toys for 4 year old girl,104097,Wembley,Skillmatics,Imagimake,9.59,1.35,Toys,Baby,C (100–200k),Open (<10%),Bullets / description only
+Toys by age,toys for 4 year old,112153,Skillmatics,Storio,Wembley,4.2,1.0,Toys,Books,C (100–200k),Open (<10%),Bullets / description only
+Toys by age,toys for 5 year old,113314,Skillmatics,Smartivity,Toy Imagine,4.38,1.06,Toys,Books,C (100–200k),Open (<10%),Bullets / description only
+Toys by age,toys for 3 + year boy,124412,Mirana,Storio,Skillmatics,5.56,0.0,Toys,Sports,C (100–200k),Open (<10%),Bullets / description only
+Toys by age,toys for 6+ year old boy,148383,Smartivity,Skillmatics,GRAPHENE,6.17,3.57,Toys,Sports,C (100–200k),Open (<10%),Bullets / description only
+Toys by age,toys for 5 year boy,161388,Storio,MiniExplorer,GRAPHENE,5.39,2.94,Toys,Sports,C (100–200k),Open (<10%),Bullets / description only
+Toys by age,toys for 3 year old girl,175884,Storio,Wembley,Skillmatics,4.22,7.02,Toys,Baby,C (100–200k),Open (<10%),Bullets / description only
+Toys by age,toys for 6 year boy,190230,Smartivity,Storio,GRAPHENE,6.41,8.82,Toys,Sports,C (100–200k),Open (<10%),Bullets / description only
+Toys by age,toys for 4 year,191080,Storio,Skillmatics,Wembley,4.83,0.0,Toys,Books,C (100–200k),Open (<10%),Bullets / description only
+Toys by age,toys for 5 years old boy,212304,Wembley,GRAPHENE,Storio,6.67,0.0,Toys,Sports,D (>200k),Open (<10%),Bullets / description only
+Toys by age,toys for 4 + year girl,213345,Storio,Toy Imagine,Skillmatics,5.41,0.0,Toys,Home,D (>200k),Open (<10%),Bullets / description only
+Toys by age,toys for 3 year girl,220266,Storio,Wembley,Skillmatics,5.6,6.06,Toys,Baby,D (>200k),Open (<10%),Bullets / description only
+Toys by age,toys for 5 year+ old girl,220266,Storio,Skillmatics,Wembley,5.87,4.44,Toys,Home,D (>200k),Open (<10%),Bullets / description only
+Toys by age,toys for 4 year girl baby,243841,Storio,Wembley,LUXIVA,8.31,4.0,Toys,Baby,D (>200k),Open (<10%),Bullets / description only
+Toys by age,toys for 5 years old girl,248679,Wembley,Storio,Skillmatics,5.45,3.85,Toys,Shoes,D (>200k),Open (<10%),Bullets / description only
+Toys by age,toys for 4 year old boy,257412,Skillmatics,Storio,Wembley,5.97,4.0,Toys,Sports,D (>200k),Open (<10%),Bullets / description only
+Toys by age,toys for 4 years girl,263763,Storio,Wembley,Skillmatics,4.52,5.56,Toys,Baby,D (>200k),Open (<10%),Bullets / description only
+Toys by age,toys for 3+ year old girl,268663,Skillmatics,Wembley,TEC TAVAKKAL,5.59,9.52,Toys,Sports,D (>200k),Open (<10%),Bullets / description only
+Toys by age,toys for 4 years old girl,276456,Wembley,Imagimake,Storio,11.53,3.45,Toys,Baby,D (>200k),Moderate (10–25%),Bullets / description only
+Toys by age,toys for 6+ year old girl,299499,Imagimake,Skillmatics,Storio,4.8,0.0,Toys,Home,D (>200k),Open (<10%),Bullets / description only

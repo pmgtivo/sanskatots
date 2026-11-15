@@ -1,0 +1,99 @@
+cluster,term,best_rank,seen_in,rank_Oct,rank_Feb,top1_click_Oct,top1_click_Feb,top1_conv_Oct,top1_conv_Feb,demand_tier,competition,top_brand,top_category,recommended_placement
+Activity book (age),activity book for 5 year old,18005,Both,25568,18005,32.67,24.57,13.12,17.13,A (<=30k),Moderate (10-25%),Pegasus,Books,Avoid in title (this is not an activity book); description only
+Activity book (age),activity book for 3+ year old,22599,Both,27552,22599,18.23,17.42,9.19,9.46,A (<=30k),Moderate (10-25%),Dreamland Publications,Books,Avoid in title (this is not an activity book); description only
+Activity book (age),activity book for 2 year old,41789,Both,72396,41789,15.38,17.52,10.71,3.42,B (30-100k),Moderate (10-25%),PW,Books,Avoid in title (this is not an activity book); description only
+Activity book (age),activity book for 2+ year old,51113,Both,81364,51113,13.31,15.59,3.54,7.45,B (30-100k),Moderate (10-25%),PW,Books,Avoid in title (this is not an activity book); description only
+Activity book (age),activity book for 4 year old,52952,Both,53715,52952,32.93,34.85,15.71,21.24,B (30-100k),Locked (>25%),Pegasus,Books,Avoid in title (this is not an activity book); description only
+Activity book (age),activity book for 3 year old,63638,Both,72566,63638,14.43,19.42,4.5,5.26,B (30-100k),Moderate (10-25%),PW,Books,Avoid in title (this is not an activity book); description only
+Atlas / world map (core),world map,9932,Both,14772,9932,20.82,23.36,14.02,15.82,A (<=30k),Moderate (10-25%),VCP,Books,"Title (atlas, world, map) + A+ ; top clicks are wall charts/Oxford exam atlases, so title must say 'for Kids'"
+Atlas / world map (core),atlas book,14081,Both,22061,14081,37.04,38.37,37.25,26.48,A (<=30k),Locked (>25%),Pegasus,Books,"Title (atlas, world, map) + A+ ; top clicks are wall charts/Oxford exam atlases, so title must say 'for Kids'"
+Atlas / world map (core),atlas,29360,Both,41344,29360,34.03,28.36,41.99,34.5,A (<=30k),Locked (>25%),Oxford University Press,Books,"Title (atlas, world, map) + A+ ; top clicks are wall charts/Oxford exam atlases, so title must say 'for Kids'"
+Atlas / world map (core),map,42196,Both,59327,42196,14.2,16.6,14.43,15.38,B (30-100k),Moderate (10-25%),VCP,Books,Description / backend
+Atlas / world map (core),maps,96481,Both,148124,96481,20.77,22.2,19.44,17.5,B (30-100k),Moderate (10-25%),VCP,Books,Description / backend
+Atlas / world map (core),world map for kids,123444,Both,158419,123444,27.41,28.77,19.67,22.22,C (100-200k),Locked (>25%),Imagimake,Toys,"Title (atlas, world, map) + A+ ; top clicks are wall charts/Oxford exam atlases, so title must say 'for Kids'"
+Atlas / world map (core),map book,131698,Both,186111,131698,24.16,14.39,37.5,0.0,C (100-200k),Moderate (10-25%),GO WOO,Books,Description / backend
+Atlas / world map (core),map for kids,190687,Both,244518,190687,20.83,29.89,10.0,33.33,C (100-200k),Locked (>25%),Imagimake,Toys,Description / backend
+Atlas / world map (core),world political map,193366,Feb,,193366,,32.49,,31.03,C (100-200k),Locked (>25%),GO WOO,Books,Description / backend
+Atlas / world map (core),world atlas,196269,Both,255902,196269,49.38,46.15,50.0,52.17,C (100-200k),Locked (>25%),Pegasus,Books,"Title (atlas, world, map) + A+ ; top clicks are wall charts/Oxford exam atlases, so title must say 'for Kids'"
+Books for age,books for 1 + year old baby,11024,Both,15552,11024,15.27,21.08,11.33,19.36,A (<=30k),Moderate (10-25%),Wonder House,Books,Bullets/description 'for 2-5 year old'; Wonder House locks most terms
+Books for age,books for 2 + year old,12216,Both,24147,12216,11.45,13.01,9.73,11.28,A (<=30k),Moderate (10-25%),Wonder House,Books,Bullets/description 'for 2-5 year old'; Wonder House locks most terms
+Books for age,story books for 3+ year old,12394,Both,20880,12394,13.45,11.91,11.11,8.89,A (<=30k),Moderate (10-25%),Maple Press,Books,Bullets/description 'for 2-5 year old'; Wonder House locks most terms
+Books for age,books for 2 year old,22208,Both,42496,22208,9.92,13.2,6.34,9.94,A (<=30k),Moderate (10-25%),Wonder House,Books,Bullets/description 'for 2-5 year old'; Wonder House locks most terms
+Books for age,books for 3 year old,25289,Both,29509,25289,7.96,9.25,6.13,6.47,A (<=30k),Open (<10%),Wonder House,Books,Bullets/description 'for 2-5 year old'; Wonder House locks most terms
+Books for age,books for kids,29661,Both,29661,33700,12.42,15.81,7.5,12.9,A (<=30k),Moderate (10-25%),Wonder House,Books,Bullets/description 'for 2-5 year old'; Wonder House locks most terms
+Books for age,books for 4 year old,92171,Both,105223,92171,13.5,22.88,4.84,11.7,B (30-100k),Moderate (10-25%),Pegasus,Books,Bullets/description 'for 2-5 year old'; Wonder House locks most terms
+Books for age,book for kids,102517,Both,102517,113044,12.07,11.48,8.25,18.18,C (100-200k),Moderate (10-25%),Wonder House,Books,Bullets/description 'for 2-5 year old'; Wonder House locks most terms
+Books for age,book for 3 year old,106465,Both,142450,106465,12.67,12.18,10.99,4.48,C (100-200k),Moderate (10-25%),Wonder House,Books,Bullets/description 'for 2-5 year old'; Wonder House locks most terms
+Books for age,book for 2 year old,128361,Both,158139,128361,10.75,11.88,12.0,9.26,C (100-200k),Moderate (10-25%),Wonder House,Books,Bullets/description 'for 2-5 year old'; Wonder House locks most terms
+Books for age,book for 3+ year old,139032,Both,223086,139032,13.24,13.66,6.82,13.64,C (100-200k),Moderate (10-25%),Wonder House,Books,Bullets/description 'for 2-5 year old'; Wonder House locks most terms
+Books for age,books for kids 2 + years old,192703,Feb,,192703,,14.75,,5.88,C (100-200k),Moderate (10-25%),Wonder House,Books,Bullets/description 'for 2-5 year old'; Wonder House locks most terms
+Educational / learning toys,educational toys for 3 year old,12699,Both,24839,12699,5.83,6.19,3.08,4.9,A (<=30k),Open (<10%),Wembley,Toys,Toys lane words; skip in Books lane except backend
+Educational / learning toys,educational toys for 5+ year old,22397,Both,34439,22397,7.74,8.61,5.76,5.62,A (<=30k),Open (<10%),Smartivity,Toys,Toys lane words; skip in Books lane except backend
+Educational / learning toys,learning toys for 3 year old,37325,Both,67483,37325,6.93,8.57,5.51,5.51,B (30-100k),Open (<10%),Wembley,Toys,Toys lane words; skip in Books lane except backend
+Educational / learning toys,kids learning toys for 2 - 5 years,41361,Both,63289,41361,7.7,9.08,4.38,4.79,B (30-100k),Open (<10%),Wonder House,Toys,Toys lane words; skip in Books lane except backend
+Educational / learning toys,educational toys,42098,Both,62868,42098,5.29,6.01,3.8,0.0,B (30-100k),Open (<10%),,Toys,Toys lane words; skip in Books lane except backend
+Educational / learning toys,learning toys for 3 + year old,55760,Both,85262,55760,6.69,5.7,3.33,3.51,B (30-100k),Open (<10%),Wonder House,Toys,Toys lane words; skip in Books lane except backend
+Educational / learning toys,educational toys for 2 year old boy,57381,Both,108918,57381,8.4,6.92,5.33,3.3,B (30-100k),Open (<10%),Wembley,Toys,Toys lane words; skip in Books lane except backend
+Educational / learning toys,kids educational toys for 2 - 5 years,71129,Both,96311,71129,7.16,8.21,10.34,13.24,B (30-100k),Open (<10%),Wonder House,Toys,Toys lane words; skip in Books lane except backend
+Educational / learning toys,educational toys for 5 year old,73771,Both,110679,73771,6.99,9.19,10.0,1.89,B (30-100k),Open (<10%),Smartivity,Toys,Toys lane words; skip in Books lane except backend
+Educational / learning toys,educational toys for 2+ year old boy,95152,Both,176571,95152,7.2,9.11,2.63,16.67,B (30-100k),Open (<10%),Wembley,Toys,Toys lane words; skip in Books lane except backend
+Educational / learning toys,learning toys for kids 2+ years,108776,Oct,108776,,7.88,,7.32,,C (100-200k),Open (<10%),Wonder House,Toys,Toys lane words; skip in Books lane except backend
+Educational / learning toys,kids learning toys,115378,Both,116016,115378,8.7,7.04,3.39,2.63,C (100-200k),Open (<10%),Wonder House,Toys,Toys lane words; skip in Books lane except backend
+Educational / learning toys,kids educational toys,136645,Both,172196,136645,7.84,7.85,3.23,16.67,C (100-200k),Open (<10%),Wembley,Toys,Toys lane words; skip in Books lane except backend
+Educational / learning toys,learning toy for 2 years old boy,137308,Feb,,137308,,6.11,,6.06,C (100-200k),Open (<10%),Wembley,Toys,Toys lane words; skip in Books lane except backend
+Educational / learning toys,learning toys,141364,Both,141364,149871,7.04,7.8,11.32,9.38,C (100-200k),Open (<10%),Storio,Toys,Toys lane words; skip in Books lane except backend
+Educational / learning toys,educational toys for 4+ year old,157604,Oct,157604,,6.2,,2.78,,C (100-200k),Open (<10%),Smartivity,Toys,Toys lane words; skip in Books lane except backend
+Educational / learning toys,learning toys for 2+ year old,175474,Feb,,175474,,7.52,,0.0,C (100-200k),Open (<10%),Wembley,Toys,Toys lane words; skip in Books lane except backend
+Flags & flash cards,country flag flash cards for kids,88627,Both,204268,88627,25.12,30.62,12.9,29.11,B (30-100k),Locked (>25%),Busy Bubb,Toys,Title word 'Flags' + bullets; tiny volume but exact product match
+Flags & flash cards,flags flash cards for kids,140769,Feb,,140769,,30.29,,27.59,C (100-200k),Locked (>25%),Busy Bubb,Toys,Title word 'Flags' + bullets; tiny volume but exact product match
+Flags & flash cards,flags of the world,189346,Feb,,189346,,43.11,,36.36,C (100-200k),Locked (>25%),Wonder House,Books,Title word 'Flags' + bullets; tiny volume but exact product match
+GK / learning books,kids books,17674,Both,17674,22169,14.3,11.14,10.96,12.16,A (<=30k),Moderate (10-25%),Wonder House,Books,"Description + backend (general knowledge, early learning)"
+GK / learning books,encyclopedia,21907,Both,30155,21907,18.51,16.43,13.29,5.88,A (<=30k),Moderate (10-25%),Wonder House,Books,"Description + backend (general knowledge, early learning)"
+GK / learning books,kids book,24967,Both,24967,29967,14.97,12.1,10.13,21.48,A (<=30k),Moderate (10-25%),Wonder House,Books,"Description + backend (general knowledge, early learning)"
+GK / learning books,flash cards,25893,Both,32632,25893,19.13,13.17,11.99,8.83,A (<=30k),Moderate (10-25%),FIRSTCRY INTELLISKILLS,Toys,"Description + backend (general knowledge, early learning)"
+GK / learning books,flash card,59003,Both,77600,59003,13.01,15.52,4.35,8.66,B (30-100k),Moderate (10-25%),FIRSTCRY INTELLISKILLS,Toys,"Description + backend (general knowledge, early learning)"
+GK / learning books,my first book for kids,63936,Feb,,63936,,34.81,,29.6,B (30-100k),Locked (>25%),Wonder House,Books,"Description + backend (general knowledge, early learning)"
+GK / learning books,flashcards,64153,Both,78647,64153,23.33,21.22,9.4,18.81,B (30-100k),Moderate (10-25%),Amazon Basics,Office Products,"Description + backend (general knowledge, early learning)"
+GK / learning books,general knowledge books for kids,64669,Both,120197,64669,15.94,20.69,11.11,10.58,B (30-100k),Moderate (10-25%),Maple Press,Books,"Description + backend (general knowledge, early learning)"
+GK / learning books,encyclopedia for kids 10 years,65357,Feb,,65357,,24.61,,18.02,B (30-100k),Moderate (10-25%),Wonder House,Books,"Description + backend (general knowledge, early learning)"
+GK / learning books,kids learning book,66990,Both,106246,66990,23.42,20.96,20.22,17.89,B (30-100k),Moderate (10-25%),Wonder House,Books,"Description + backend (general knowledge, early learning)"
+GK / learning books,my first library,75525,Feb,,75525,,46.95,,46.27,B (30-100k),Locked (>25%),Wonder House,Books,"Description + backend (general knowledge, early learning)"
+GK / learning books,learning books for 2 year old,81275,Both,252241,81275,20.0,19.4,17.65,20.51,B (30-100k),Moderate (10-25%),Wonder House,Books,"Description + backend (general knowledge, early learning)"
+GK / learning books,encyclopedia for kids 5+ years,101573,Both,175544,101573,34.11,31.84,12.86,20.63,C (100-200k),Locked (>25%),Wonder House,Books,"Description + backend (general knowledge, early learning)"
+GK / learning books,learning books for 2+ year old,102341,Feb,,102341,,11.51,,9.43,C (100-200k),Moderate (10-25%),Wonder House,Books,"Description + backend (general knowledge, early learning)"
+GK / learning books,my first 1000 words books for kids,132981,Both,167541,132981,50.5,50.99,54.79,60.56,C (100-200k),Locked (>25%),Wonder House,Books,"Description + backend (general knowledge, early learning)"
+GK / learning books,kids encyclopedia,191399,Feb,,191399,,29.29,,12.5,C (100-200k),Locked (>25%),Wonder House,Books,"Description + backend (general knowledge, early learning)"
+GK / learning books,my first book,202376,Oct,202376,,30.0,,17.02,,D (>200k),Locked (>25%),Wonder House,Books,"Description + backend (general knowledge, early learning)"
+GK / learning books,encyclopedia for kids,204336,Feb,,204336,,30.92,,4.17,D (>200k),Locked (>25%),Wonder House,Books,"Description + backend (general knowledge, early learning)"
+Gift (age / occasion),birthday gift for kids,3851,Both,23082,3851,4.12,5.43,2.56,5.19,A (<=30k),Open (<10%),Smartivity,Toys,Item Highlights + description
+Gift (age / occasion),gift for kids,6754,Both,6754,18775,3.42,7.34,2.5,2.44,A (<=30k),Open (<10%),Toy Imagine,Toys,Item Highlights + description
+Gift (age / occasion),gifts for kids,19743,Both,19743,26653,3.81,5.76,1.78,6.78,A (<=30k),Open (<10%),Toy Imagine,Toys,Item Highlights + description
+Gift (age / occasion),gift for 2 years old boy,28327,Both,43119,28327,10.07,9.21,4.21,1.72,A (<=30k),Open (<10%),Mirana,Toys,Item Highlights + description
+Gift (age / occasion),gift for 3 year old boy,29466,Both,39016,29466,8.53,6.45,5.86,3.81,A (<=30k),Open (<10%),Wembley,Toys,Item Highlights + description
+Gift (age / occasion),gift for 5 year old girl,34251,Both,35438,34251,6.7,7.68,2.57,6.15,B (30-100k),Open (<10%),Imagimake,Toys,Item Highlights + description
+Gift (age / occasion),gift for 4 years old girl,34421,Both,41724,34421,5.22,7.03,1.98,6.22,B (30-100k),Open (<10%),Wembley,Toys,Item Highlights + description
+Gift (age / occasion),gift for 4 years old boy,35011,Both,45418,35011,6.36,7.46,2.67,3.24,B (30-100k),Open (<10%),Wembley,Toys,Item Highlights + description
+Gift (age / occasion),gift for 2 year old girl,50919,Both,54360,50919,7.0,7.16,3.8,2.75,B (30-100k),Open (<10%),Wembley,Toys,Item Highlights + description
+Gift (age / occasion),gift for 3 year old girl,51259,Both,123569,51259,7.12,8.15,5.81,6.57,B (30-100k),Open (<10%),Skillmatics,Toys,Item Highlights + description
+Gift (age / occasion),birthday gifts for kids,52031,Both,52031,56461,4.58,5.57,4.0,4.0,B (30-100k),Open (<10%),Wembley,Toys,Item Highlights + description
+Gift (age / occasion),gift for 5 year old boy,55582,Both,58683,55582,6.52,8.93,3.68,6.73,B (30-100k),Open (<10%),Smartivity,Toys,Item Highlights + description
+Gift (age / occasion),gifts for 2 year old girl,82636,Both,90935,82636,7.47,8.19,4.17,3.08,B (30-100k),Open (<10%),Wembley,Toys,Skip or backend
+Gift (age / occasion),gifts for 2 years old boy,101164,Oct,101164,,7.89,,3.61,,C (100-200k),Open (<10%),Kidsmate,Toys,Skip or backend
+Gift (age / occasion),gifts for 4 year old boy,106264,Both,115117,106264,9.03,8.43,2.15,6.25,C (100-200k),Open (<10%),Wembley,Toys,Skip or backend
+Gift (age / occasion),gift for 5 years old boy,122318,Both,147637,122318,3.68,4.07,0.0,0.0,C (100-200k),Open (<10%),Wembley,Toys,Skip or backend
+Gift (age / occasion),gifts for 5 year old boy,127738,Both,149626,127738,4.45,8.04,2.9,5.26,C (100-200k),Open (<10%),Wembley,Toys,Skip or backend
+Gift (age / occasion),gift for 4 year old boy,153750,Both,161058,153750,7.5,14.0,1.41,3.45,C (100-200k),Moderate (10-25%),Umadiya,Toys,Skip or backend
+Gift (age / occasion),gift for 2 years old girl,173251,Both,210802,173251,6.11,8.06,7.14,12.9,C (100-200k),Open (<10%),Amitasha,Toys,Skip or backend
+Gift (age / occasion),gifts for 2 year old boy,179472,Feb,,179472,,9.7,,0.0,C (100-200k),Open (<10%),Wembley,Toys,Skip or backend
+Gift (age / occasion),gift for 3 years old girl,187733,Oct,187733,,4.51,,0.0,,C (100-200k),Open (<10%),Wembley,Toys,Skip or backend
+Globe (adjacent Toys),globe,8715,Both,13329,8715,9.92,10.96,4.04,4.63,A (<=30k),Moderate (10-25%),zest 4 toyz,Toys,Do not target in title; Toys lane. Backend only if room
+Globe (adjacent Toys),globe for study,9415,Both,15333,9415,16.02,12.67,9.72,11.56,A (<=30k),Moderate (10-25%),zest 4 toyz,Toys,Do not target in title; Toys lane. Backend only if room
+Globe (adjacent Toys),globe for kids,11761,Both,21701,11761,18.47,19.0,7.66,7.08,A (<=30k),Moderate (10-25%),zest 4 toyz,Toys,Do not target in title; Toys lane. Backend only if room
+Map puzzles (adjacent Toys),world map puzzles for kids,45738,Both,54625,45738,25.6,32.66,20.3,18.3,B (30-100k),Locked (>25%),Imagimake,Toys,Do not target; Toys lane (Imagimake owns 20-33% clicks)
+Map puzzles (adjacent Toys),map puzzle,154378,Oct,154378,,26.29,,14.29,,C (100-200k),Locked (>25%),Imagimake,Toys,Do not target; Toys lane (Imagimake owns 20-33% clicks)
+Map puzzles (adjacent Toys),map puzzle for kids 7 to 10 years,163355,Both,258971,163355,23.73,20.36,25.81,13.51,C (100-200k),Moderate (10-25%),Imagimake,Toys,Do not target; Toys lane (Imagimake owns 20-33% clicks)
+Map puzzles (adjacent Toys),world map puzzle,182429,Both,186947,182429,19.55,21.09,27.5,16.67,C (100-200k),Moderate (10-25%),Imagimake,Toys,Do not target; Toys lane (Imagimake owns 20-33% clicks)
+Montessori,montessori toys for 2 year old,26517,Both,46083,26517,8.36,8.19,3.75,1.18,A (<=30k),Open (<10%),Turtle Bee,Toys,Backend / description (only if copy supports it)
+Montessori,montessori toys for 2+ year old,36901,Both,61876,36901,5.98,6.91,2.56,3.39,B (30-100k),Open (<10%),SHINETOY ENTERTAIN KIDS,Toys,Backend / description (only if copy supports it)
+Montessori,montessori toys for 3 + year old,51392,Both,84367,51392,7.59,7.79,3.85,1.14,B (30-100k),Open (<10%),Wembley,Toys,Backend / description (only if copy supports it)
+Montessori,montessori toys,57006,Both,106501,57006,8.45,12.59,5.41,14.71,B (30-100k),Moderate (10-25%),Clapstore,Toys,Backend / description (only if copy supports it)
